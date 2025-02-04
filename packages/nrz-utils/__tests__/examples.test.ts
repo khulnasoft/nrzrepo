@@ -45,7 +45,7 @@ describe("examples", () => {
         defaultBranch: "main",
         expectBranchLookup: true,
         expected: {
-          username: "vercel",
+          username: "khulnasoft",
           name: "nrzrepo",
           branch: "main",
           filePath: "",
@@ -58,7 +58,7 @@ describe("examples", () => {
         defaultBranch: "canary",
         expectBranchLookup: false,
         expected: {
-          username: "vercel",
+          username: "khulnasoft",
           name: "nrzrepo",
           branch: "canary",
           filePath: "examples/kitchen-sink",
@@ -70,7 +70,7 @@ describe("examples", () => {
         defaultBranch: "canary",
         expectBranchLookup: false,
         expected: {
-          username: "vercel",
+          username: "khulnasoft",
           name: "nrzrepo",
           branch: "tek/test-branch",
           filePath: "examples/basic",
@@ -108,14 +108,14 @@ describe("examples", () => {
     it.each([
       {
         repoInfo: {
-          username: "vercel",
+          username: "khulnasoft",
           name: "nrz",
           branch: "main",
           filePath: "",
         },
         expected: true,
         expectedUrl:
-          "https://api.github.com/repos/vercel/nrz/contents/package.json?ref=main",
+          "https://api.github.com/repos/khulnasoft/nrz/contents/package.json?ref=main",
       },
     ])(
       "checks repo at $expectedUrl",
