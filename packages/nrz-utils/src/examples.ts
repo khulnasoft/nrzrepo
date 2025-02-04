@@ -91,7 +91,7 @@ export function existsInRepo(nameOrUrl: string): Promise<boolean> {
     return isUrlOk(url.href);
   } catch {
     return isUrlOk(
-      `https://api.github.com/repos/vercel/nrzrepo/contents/examples/${encodeURIComponent(
+      `https://api.github.com/repos/khulnasoft/nrzrepo/contents/examples/${encodeURIComponent(
         nameOrUrl
       )}`
     );
