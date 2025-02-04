@@ -15,12 +15,12 @@ rustls-tls = ["nrzrepo-lib/rustls-tls"]
 crop = "0.4.0"
 itertools.workspace = true
 jsonc-parser = "0.23.0"
+nrzpath = { version = "0.1.0", path = "../nrzrepo-paths" }
+nrzrepo-lib = { version = "0.1.0", path = "../nrzrepo-lib" }
+nrzrepo-repository = { version = "0.1.0", path = "../nrzrepo-repository" }
 pidlock = { version = "0.1.4", path = "../nrzrepo-pidlock" }
 serde_json.workspace = true
 tokio = { workspace = true, features = ["rt-multi-thread", "macros", "io-std"] }
 tokio-retry = "0.3.0"
 tower-lsp = "0.20.0"
-nrzpath = { version = "0.1.0", path = "../nrzrepo-paths" }
-nrzrepo-lib = { version = "0.1.0", path = "../nrzrepo-lib" }
-nrzrepo-repository = { version = "0.1.0", path = "../nrzrepo-repository" }
 wax.workspace = true

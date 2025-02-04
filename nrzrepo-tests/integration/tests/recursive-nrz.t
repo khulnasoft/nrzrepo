@@ -15,8 +15,8 @@ sed replaces the square brackets with parentheses so prysk can parse the file pa
      ,-\(.*package.json:3:1\) (re)
    3 |   "scripts": {
    4 |     "something": "nrz run build"
-     :                  ^^^^^^^^|^^^^^^^^
-     :                          `-- This script calls `nrz`, which calls the script, which calls `nrz`...
+     :                  ^^^^^^^|^^^^^^^
+     :                         `-- This script calls `nrz`, which calls the script, which calls `nrz`...
    5 |   },
      `----
   

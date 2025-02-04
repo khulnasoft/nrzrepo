@@ -36,9 +36,9 @@ Check
     "globalCacheInputs",
     "id",
     "monorepo",
+    "nrzVersion",
     "scm",
     "tasks",
-    "nrzVersion",
     "user",
     "version"
   ]
@@ -146,9 +146,9 @@ Check Rust implementation
     "globalCacheInputs",
     "id",
     "monorepo",
+    "nrzVersion",
     "scm",
     "tasks",
-    "nrzVersion",
     "user",
     "version"
   ]

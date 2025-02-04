@@ -11,9 +11,9 @@ workspace = true
 
 [dependencies]
 futures.workspace = true
+nrzrepo-api-client = { workspace = true }
+nrzrepo-vercel-api = { workspace = true }
 thiserror = { workspace = true }
 tokio = { workspace = true, features = ["full", "time"] }
 tracing = { workspace = true }
-nrzrepo-api-client = { workspace = true }
-nrzrepo-vercel-api = { workspace = true }
 uuid = { version = "1.5.0", features = ["v4"] }

@@ -31,6 +31,9 @@ indicatif = { workspace = true }
 itertools.workspace = true
 lazy_static = { workspace = true }
 nix = { version = "0.26.2", features = ["signal"] }
+nrzpath = { workspace = true }
+nrzrepo-ci = { workspace = true }
+nrzrepo-vt100 = { workspace = true }
 ratatui = { workspace = true }
 serde = { workspace = true, features = ["derive"] }
 serde_json = { workspace = true }
@@ -38,9 +41,6 @@ thiserror = { workspace = true }
 tokio = { workspace = true }
 tracing = { workspace = true }
 tui-term = { workspace = true }
-nrzpath = { workspace = true }
-nrzrepo-ci = { workspace = true }
-nrzrepo-vt100 = { workspace = true }
 which = { workspace = true }
 
 [target."cfg(windows)".dependencies]

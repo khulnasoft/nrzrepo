@@ -5,12 +5,12 @@ Check
   $ ${NRZ} run test
   \xe2\x80\xa2 Running test (esc)
   \xe2\x80\xa2 Remote caching disabled (esc)
-  build: cache miss, executing 7ece7b62aad25615
+  build: cache miss, executing bff0057a2fc6e6d5
   build: 
   build: > build
   build: > echo building > foo.txt
   build: 
-  test: cache miss, executing cb5839f7284aa5f3
+  test: cache miss, executing a64c49d5ab6ac4db
   test: 
   test: > test
   test: > cat foo.txt
@@ -25,12 +25,12 @@ Run a second time, verify caching works because there is a config
   $ ${NRZ} run test
   \xe2\x80\xa2 Running test (esc)
   \xe2\x80\xa2 Remote caching disabled (esc)
-  build: cache hit, replaying logs 7ece7b62aad25615
+  build: cache hit, replaying logs bff0057a2fc6e6d5
   build: 
   build: > build
   build: > echo building > foo.txt
   build: 
-  test: cache hit, replaying logs cb5839f7284aa5f3
+  test: cache hit, replaying logs a64c49d5ab6ac4db
   test: 
   test: > test
   test: > cat foo.txt
@@ -45,8 +45,8 @@ Run with --output-logs=hash-only
   $ ${NRZ} run test --output-logs=hash-only
   \xe2\x80\xa2 Running test (esc)
   \xe2\x80\xa2 Remote caching disabled (esc)
-  build: cache hit, suppressing logs 7ece7b62aad25615
-  test: cache hit, suppressing logs cb5839f7284aa5f3
+  build: cache hit, suppressing logs bff0057a2fc6e6d5
+  test: cache hit, suppressing logs a64c49d5ab6ac4db
   
    Tasks:    2 successful, 2 total
   Cached:    2 cached, 2 total

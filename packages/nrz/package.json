@@ -1,6 +1,6 @@
 {
   "name": "nrz",
-  "version": "2.4.1-canary.0",
+  "version": "1.0.0-canary.0",
   "description": "Nrzrepo is a high-performance build system for JavaScript and TypeScript codebases.",
   "repository": "https://github.com/khulnasoft/nrzrepo",
   "bugs": "https://github.com/khulnasoft/nrzrepo/issues",
@@ -18,11 +18,11 @@
     "schema.json"
   ],
   "optionalDependencies": {
-    "nrz-darwin-64": "2.4.1-canary.0",
-    "nrz-darwin-arm64": "2.4.1-canary.0",
-    "nrz-linux-64": "2.4.1-canary.0",
-    "nrz-linux-arm64": "2.4.1-canary.0",
-    "nrz-windows-64": "2.4.1-canary.0",
-    "nrz-windows-arm64": "2.4.1-canary.0"
+    "nrz-darwin-64": "1.0.0-canary.0",
+    "nrz-darwin-arm64": "1.0.0-canary.0",
+    "nrz-linux-64": "1.0.0-canary.0",
+    "nrz-linux-arm64": "1.0.0-canary.0",
+    "nrz-windows-64": "1.0.0-canary.0",
+    "nrz-windows-arm64": "1.0.0-canary.0"
   }
 }

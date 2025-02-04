@@ -4,16 +4,16 @@
   $ ${NRZ} run build --concurrency=1
     x Invalid task configuration
   
-  Error:   x You have 2 persistent tasks but `nrz` is configured for concurrency of
-    | 1. Set --concurrency to at least 3
+  Error:   x You have 2 persistent tasks but `nrz` is configured for concurrency of 1.
+    | Set --concurrency to at least 3
   
   [1]
 
   $ ${NRZ} run build --concurrency=2
     x Invalid task configuration
   
-  Error:   x You have 2 persistent tasks but `nrz` is configured for concurrency of
-    | 2. Set --concurrency to at least 3
+  Error:   x You have 2 persistent tasks but `nrz` is configured for concurrency of 2.
+    | Set --concurrency to at least 3
   
   [1]
 

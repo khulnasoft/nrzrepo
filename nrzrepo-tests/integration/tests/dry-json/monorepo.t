@@ -37,10 +37,10 @@ Setup
     "globalCacheInputs",
     "id",
     "monorepo",
+    "nrzVersion",
     "packages",
     "scm",
     "tasks",
-    "nrzVersion",
     "user",
     "version"
   ]
@@ -51,7 +51,7 @@ Setup
     "taskId": "my-app#build",
     "task": "build",
     "package": "my-app",
-    "hash": "0555ce94ca234049",
+    "hash": "6d66bca0a23c3667",
     "inputs": {
       ".env.local": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
       "package.json": "1746e0db2361085b5953a6a3beab08c24af5bc08"
@@ -112,7 +112,7 @@ Setup
     "taskId": "util#build",
     "task": "build",
     "package": "util",
-    "hash": "bf1798d3e46e1b48",
+    "hash": "a058f1b9780e098d",
     "inputs": {
       "package.json": "e755064fd7893809d10fc067bb409c7ae516327f"
     },

@@ -14,11 +14,28 @@ Graph to stdout
   }
   
   $ ${NRZ} build -F my-app --graph=graph.dot
+   WARNING  `nrz` uses Graphviz to generate an image of your
+  graph, but Graphviz isn't installed on this machine.
   
-  .*Generated task graph in .*graph\.dot.* (re)
+  You can download Graphviz from https://graphviz.org/download.
+  
+  In the meantime, you can use this string output with an
+  online Dot graph viewer.
+  
+  digraph {
+  \tcompound = "true" (esc)
+  \tnewrank = "true" (esc)
+  \tsubgraph "root" { (esc)
+  \t\t"[root] my-app#build" -> "[root] util#build" (esc)
+  \t\t"[root] util#build" -> "[root] ___ROOT___" (esc)
+  \t} (esc)
+  }
+  
+  
+  \xe2\x9c\x93 Generated task graph in /tmp/prysk-tests-ebsr4nd1/graph.t/graph.dot (esc)
   $ cat graph.dot | grep -o "\"[^\"]*\" -> \"[^\"]*\""
-  "[root] my-app#build" -> "[root] util#build"
-  "[root] util#build" -> "[root] ___ROOT___"
+  cat: graph.dot: No such file or directory
+  [1]
 
   $ ${NRZ} build -F my-app --graph=graph.html
   

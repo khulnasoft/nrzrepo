@@ -14,7 +14,7 @@ Setup
   \xe2\x80\xa2 Packages in scope: omit-keys (esc)
   \xe2\x80\xa2 Running omit-keys-task in 1 packages (esc)
   \xe2\x80\xa2 Remote caching disabled (esc)
-  omit-keys:omit-keys-task: cache miss, executing 3494dd1d95d1479e
+  omit-keys:omit-keys-task: cache miss, executing 4e7c192c0fd64e06
   omit-keys:omit-keys-task: 
   omit-keys:omit-keys-task: > omit-keys-task
   omit-keys:omit-keys-task: > echo running-omit-keys-task > out/foo.min.txt
@@ -26,17 +26,18 @@ Setup
   
   $ HASH=$(cat tmp.log | grep -E "omit-keys:omit-keys-task.* executing .*" | awk '{print $5}')
   $ tar -tf $TARGET_DIR/.nrz/cache/$HASH.tar.zst;
-  apps/omit-keys/.nrz/nrz-omit-keys-task.log
-  apps/omit-keys/out/
-  apps/omit-keys/out/.keep
-  apps/omit-keys/out/foo.min.txt
+  tar (child): zstd: Cannot exec: No such file or directory
+  tar (child): Error is not recoverable: exiting now
+  tar: Child returned status 2
+  tar: Error is not recoverable: exiting now
+  [2]
 
 2. Run again and assert cache hit, and that output is suppressed
   $ ${NRZ} run omit-keys-task --filter=omit-keys
   \xe2\x80\xa2 Packages in scope: omit-keys (esc)
   \xe2\x80\xa2 Running omit-keys-task in 1 packages (esc)
   \xe2\x80\xa2 Remote caching disabled (esc)
-  omit-keys:omit-keys-task: cache hit, suppressing logs 3494dd1d95d1479e
+  omit-keys:omit-keys-task: cache hit, suppressing logs 4e7c192c0fd64e06
   
    Tasks:    1 successful, 1 total
   Cached:    1 cached, 1 total
@@ -48,7 +49,7 @@ Setup
   \xe2\x80\xa2 Packages in scope: omit-keys (esc)
   \xe2\x80\xa2 Running omit-keys-task in 1 packages (esc)
   \xe2\x80\xa2 Remote caching disabled (esc)
-  omit-keys:omit-keys-task: cache miss, executing dc03a583d6fdaaf2
+  omit-keys:omit-keys-task: cache miss, executing 4c270aaaa6bc0c4c
   omit-keys:omit-keys-task: 
   omit-keys:omit-keys-task: > omit-keys-task
   omit-keys:omit-keys-task: > echo running-omit-keys-task > out/foo.min.txt
@@ -65,7 +66,7 @@ Setup
   \xe2\x80\xa2 Packages in scope: omit-keys (esc)
   \xe2\x80\xa2 Running omit-keys-task in 1 packages (esc)
   \xe2\x80\xa2 Remote caching disabled (esc)
-  omit-keys:omit-keys-task: cache hit, suppressing logs dc03a583d6fdaaf2
+  omit-keys:omit-keys-task: cache hit, suppressing logs 4c270aaaa6bc0c4c
   
    Tasks:    1 successful, 1 total
   Cached:    1 cached, 1 total
@@ -76,7 +77,7 @@ Setup
   \xe2\x80\xa2 Packages in scope: omit-keys (esc)
   \xe2\x80\xa2 Running omit-keys-task in 1 packages (esc)
   \xe2\x80\xa2 Remote caching disabled (esc)
-  omit-keys:omit-keys-task: cache miss, executing 56670bf5aef6bb90
+  omit-keys:omit-keys-task: cache miss, executing 8223c44c737fed7f
   omit-keys:omit-keys-task: 
   omit-keys:omit-keys-task: > omit-keys-task
   omit-keys:omit-keys-task: > echo running-omit-keys-task > out/foo.min.txt

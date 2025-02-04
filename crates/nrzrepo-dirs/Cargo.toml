@@ -8,8 +8,8 @@ license = "MIT"
 
 [dependencies]
 dirs-next = "2.0.0"
-thiserror.workspace = true
 nrzpath = { workspace = true }
+thiserror.workspace = true
 
 [lints]
 workspace = true

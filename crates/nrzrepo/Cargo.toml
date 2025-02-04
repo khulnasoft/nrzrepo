@@ -23,10 +23,10 @@ assert_cmd = { workspace = true }
 camino = { workspace = true }
 insta = { version = "1.40.0", features = ["json", "filters"] }
 itertools = { workspace = true }
+nrzpath = { workspace = true }
 pretty_assertions = { workspace = true }
 serde_json = { workspace = true }
 tempfile = { workspace = true }
-nrzpath = { workspace = true }
 which = { workspace = true }
 
 

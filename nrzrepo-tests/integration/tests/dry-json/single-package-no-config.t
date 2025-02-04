@@ -34,9 +34,9 @@ Setup
       {
         "taskId": "build",
         "task": "build",
-        "hash": "e2b99dad85a4ff66",
+        "hash": "3a5746cb57bccc58",
         "inputs": {
-          ".gitignore": "03b541460c1b836f96f9c0a941ceb48e91a9fd83",
+          ".gitignore": "50c750ceeaf56f5dd0b4a1dc723c1fd3a7573c89",
           "package-lock.json": "1c117cce37347befafe3a9cba1b8a609b3600021",
           "package.json": "8606ff4b95a5330740d8d9d0948faeada64f1f32",
           "somefile.txt": "45b983be36b73c0788dc9cbcb76cbb80fc7bb057"
