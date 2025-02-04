@@ -46,7 +46,7 @@ export async function createProject({
 
   if (isDefaultExample) {
     repoInfo = {
-      username: "vercel",
+      username: "khulnasoft",
       name: "nrzrepo",
       branch: "main",
       filePath: "examples/basic",
