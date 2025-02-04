@@ -5,8 +5,8 @@ Validate that we get an error when we try to run multiple persistent tasks with 
   $ ${NRZ} run build --concurrency=1
     x Invalid task configuration
   
-  Error:   x You have 2 persistent tasks but `nrz` is configured for concurrency of
-    | 1. Set --concurrency to at least 3
+  Error:   x You have 2 persistent tasks but `nrz` is configured for concurrency of 1.
+    | Set --concurrency to at least 3
   
   [1]
 

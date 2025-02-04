@@ -5,14 +5,14 @@ Setup
 
 Check a hash
   $ ${NRZ} build --dry=json --filter=my-app | jq '.tasks | last | .hash'
-  "56d7eb9a31d82ee0"
+  "03862aca6b444a20"
 Change engines
   $ jq '.engines = {"node": ">=16"}' package.json > package.json.new
   $ mv package.json.new package.json
 
 Verify hash has changed
   $ ${NRZ} build --dry=json --filter=my-app | jq ".tasks | last | .hash"
-  "1d8b8596ae37a40c"
+  "fb849f5ad08ef9eb"
 
 Verify engines are part of global cache inputs
   $ ${NRZ} build --dry=json | jq '.globalCacheInputs.engines'

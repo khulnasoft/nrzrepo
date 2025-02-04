@@ -19,7 +19,7 @@ Validate that we only run `my-app#build` with change not committed
   \xe2\x80\xa2 Packages in scope: my-app (esc)
   \xe2\x80\xa2 Running build in 1 packages (esc)
   \xe2\x80\xa2 Remote caching disabled (esc)
-  my-app:build: cache miss, executing 1b83c3b24476ec9c
+  my-app:build: cache miss, executing 9958927fcfbf2896
   my-app:build: 
   my-app:build: > build
   my-app:build: > echo building
@@ -103,7 +103,7 @@ Validate that we only run `my-app#build` with change not committed
   \xe2\x80\xa2 Packages in scope: my-app (esc)
   \xe2\x80\xa2 Running build in 1 packages (esc)
   \xe2\x80\xa2 Remote caching disabled (esc)
-  my-app:build: cache miss, executing c1189254892f813f
+  my-app:build: cache miss, executing 28ebef5a62799a2b
   my-app:build: 
   my-app:build: > build
   my-app:build: > echo building
@@ -151,7 +151,7 @@ Validate that we only run `my-app#build` with change committed
   \xe2\x80\xa2 Packages in scope: my-app (esc)
   \xe2\x80\xa2 Running build in 1 packages (esc)
   \xe2\x80\xa2 Remote caching disabled (esc)
-  my-app:build: cache hit, replaying logs c1189254892f813f
+  my-app:build: cache hit, replaying logs 28ebef5a62799a2b
   my-app:build: 
   my-app:build: > build
   my-app:build: > echo building
@@ -261,7 +261,7 @@ Run the build and expect only `my-app` to be affected, since between
   \xe2\x80\xa2 Packages in scope: my-app (esc)
   \xe2\x80\xa2 Running build in 1 packages (esc)
   \xe2\x80\xa2 Remote caching disabled (esc)
-  my-app:build: cache hit, replaying logs c1189254892f813f
+  my-app:build: cache hit, replaying logs 28ebef5a62799a2b
   my-app:build: 
   my-app:build: > build
   my-app:build: > echo building

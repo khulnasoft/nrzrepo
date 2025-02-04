@@ -10,7 +10,7 @@ Warm the cache
   \xe2\x80\xa2 Packages in scope: another (esc)
   \xe2\x80\xa2 Running build in 1 packages (esc)
   \xe2\x80\xa2 Remote caching disabled (esc)
-  another:build: cache miss, executing 6a4c300cb14847b0
+  another:build: cache miss, executing 733dd73376f97153
   
    Tasks:    1 successful, 1 total
   Cached:    0 cached, 1 total
@@ -23,7 +23,7 @@ Confirm cache hit
   \xe2\x80\xa2 Packages in scope: another (esc)
   \xe2\x80\xa2 Running build in 1 packages (esc)
   \xe2\x80\xa2 Remote caching disabled (esc)
-  another:build: cache hit, suppressing logs 6a4c300cb14847b0
+  another:build: cache hit, suppressing logs 733dd73376f97153
   
    Tasks:    1 successful, 1 total
   Cached:    1 cached, 1 total
@@ -38,7 +38,7 @@ All tasks should be a cache miss, even ones that don't depend on changed package
   \xe2\x80\xa2 Packages in scope: another (esc)
   \xe2\x80\xa2 Running build in 1 packages (esc)
   \xe2\x80\xa2 Remote caching disabled (esc)
-  another:build: cache miss, executing 34787620f332fb95
+  another:build: cache miss, executing 781eee783c59b10f
   
    Tasks:    1 successful, 1 total
   Cached:    0 cached, 1 total
@@ -64,7 +64,7 @@ Cache hit since only tracked files contribute to root dep hash
   \xe2\x80\xa2 Packages in scope: another (esc)
   \xe2\x80\xa2 Running build in 1 packages (esc)
   \xe2\x80\xa2 Remote caching disabled (esc)
-  another:build: cache hit, suppressing logs 34787620f332fb95
+  another:build: cache hit, suppressing logs 781eee783c59b10f
   
    Tasks:    1 successful, 1 total
   Cached:    1 cached, 1 total

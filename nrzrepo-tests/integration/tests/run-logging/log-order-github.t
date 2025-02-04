@@ -9,7 +9,7 @@ because otherwise prysk interprets them as multiline commands
   \xe2\x80\xa2 Running build in 2 packages (esc)
   \xe2\x80\xa2 Remote caching disabled (esc)
   ::group::my-app:build
-  cache bypass, force executing 0af90ec6a57471be
+  cache bypass, force executing 9947e0cefaeda3a8
   
   >\sbuild (re)
   \>\secho building && sleep 1 && echo done (re)
@@ -18,7 +18,7 @@ because otherwise prysk interprets them as multiline commands
   done
   ::endgroup::
   ::group::util:build
-  cache bypass, force executing 2da422600daca8be
+  cache bypass, force executing 7f63af9e61c46555
   
   >\sbuild (re)
   \>\ssleep 0.5 && echo building && sleep 1 && echo completed (re)
@@ -37,7 +37,7 @@ because otherwise prysk interprets them as multiline commands
   \xe2\x80\xa2 Running build in 1 packages (esc)
   \xe2\x80\xa2 Remote caching disabled (esc)
   ::group::util:build
-  util:build: cache bypass, force executing 2da422600daca8be
+  util:build: cache bypass, force executing 7f63af9e61c46555
   util:build: 
   util:build: > build
   util:build: > sleep 0.5 && echo building && sleep 1 && echo completed
@@ -57,18 +57,21 @@ Verify that errors are grouped properly
   \xe2\x80\xa2 Running fail in 2 packages (esc)
   \xe2\x80\xa2 Remote caching disabled (esc)
   \x1b[;31mutil:fail\x1b[;0m (esc)
-  cache miss, executing 91d719104281046f
+  cache miss, executing 0b89b63e3294f710
   
   \> fail (re)
   \> echo failing; exit 1 (re)
   
   failing
-  npm ERR! Lifecycle script `fail` failed with error: 
-  npm ERR! Error: command failed 
-  npm ERR!   in workspace: util 
-  npm ERR\!   at location: (.*)(\/|\\)packages(\/|\\)util  (re)
-  \[ERROR\] command finished with error: command \((.*)(\/|\\)packages(\/|\\)util\) (.*)npm(?:\.cmd)? run fail exited \(1\) (re)
-  ::error::util#fail: command \(.*(\/|\\)packages(\/|\\)util\) (.*)npm(?:\.cmd)? run fail exited \(1\) (re)
+  npm error Lifecycle script `fail` failed with error:
+  npm error code 1
+  npm error path /tmp/prysk-tests-eir4a5ob/log-order-github.t/packages/util
+  npm error workspace util
+  npm error location /tmp/prysk-tests-eir4a5ob/log-order-github.t/packages/util
+  npm error command failed
+  npm error command bash -c echo failing; exit 1
+  [ERROR] command finished with error: command (/tmp/prysk-tests-eir4a5ob/log-order-github.t/packages/util) /home/gitpod/.nvm/versions/node/v22.11.0/bin/npm run fail exited (1)
+  ::error::util#fail: command (/tmp/prysk-tests-eir4a5ob/log-order-github.t/packages/util) /home/gitpod/.nvm/versions/node/v22.11.0/bin/npm run fail exited (1)
   
    Tasks:    0 successful, 1 total
   Cached:    0 cached, 1 total

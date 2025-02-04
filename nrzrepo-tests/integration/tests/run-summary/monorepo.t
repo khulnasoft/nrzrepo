@@ -37,10 +37,10 @@ Setup
     "globalCacheInputs",
     "id",
     "monorepo",
+    "nrzVersion",
     "packages",
     "scm",
     "tasks",
-    "nrzVersion",
     "user",
     "version"
   ]
@@ -158,10 +158,10 @@ Setup
     "globalCacheInputs",
     "id",
     "monorepo",
+    "nrzVersion",
     "packages",
     "scm",
     "tasks",
-    "nrzVersion",
     "user",
     "version"
   ]

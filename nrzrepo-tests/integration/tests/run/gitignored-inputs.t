@@ -16,7 +16,7 @@ Some helper functions to parse the summary file
 
 Just run the util package, it's simpler
   $ ${NRZ} run build --filter=util --output-logs=hash-only --summarize | grep "util:build: cache"
-  util:build: cache miss, executing 11cff3dd389fdfed
+  util:build: cache miss, executing f395bff40ea1cfab
 
   $ FIRST=$(/bin/ls .nrz/runs/*.json | head -n1)
   $ echo $(getSummaryTaskId $FIRST "util#build") | jq -r '.inputs."internal.txt"'
@@ -30,7 +30,7 @@ Change the content of internal.txt
 
 Hash does not change, because it is gitignored
   $ ${NRZ} run build --filter=util --output-logs=hash-only --summarize | grep "util:build: cache"
-  util:build: cache miss, executing a489883a3c7cd307
+  util:build: cache miss, executing 0883a2d7253e72d9
 
 The internal.txt hash should be different from the one before
   $ SECOND=$(/bin/ls .nrz/runs/*.json | head -n1)

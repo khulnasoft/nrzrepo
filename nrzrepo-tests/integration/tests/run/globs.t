@@ -5,7 +5,7 @@ Verify that input directory change causes cache miss
   \xe2\x80\xa2 Packages in scope: util (esc)
   \xe2\x80\xa2 Running build in 1 packages (esc)
   \xe2\x80\xa2 Remote caching disabled (esc)
-  util:build: cache miss, executing 5af1a9188f522439
+  util:build: cache miss, executing c17ef56b0121aa02
   
    Tasks:    1 successful, 1 total
   Cached:    0 cached, 1 total
@@ -16,7 +16,7 @@ Verify that input directory change causes cache miss
   \xe2\x80\xa2 Packages in scope: util (esc)
   \xe2\x80\xa2 Running build in 1 packages (esc)
   \xe2\x80\xa2 Remote caching disabled (esc)
-  util:build: cache miss, executing 1b809be951dcbf2e
+  util:build: cache miss, executing b24337b85c768851
   
    Tasks:    1 successful, 1 total
   Cached:    0 cached, 1 total
@@ -29,7 +29,7 @@ Verify that input directory change causes cache miss
   \xe2\x80\xa2 Packages in scope: util (esc)
   \xe2\x80\xa2 Running build in 1 packages (esc)
   \xe2\x80\xa2 Remote caching disabled (esc)
-  util:build: cache hit, suppressing logs 1b809be951dcbf2e
+  util:build: cache hit, suppressing logs b24337b85c768851
   
    Tasks:    1 successful, 1 total
   Cached:    1 cached, 1 total

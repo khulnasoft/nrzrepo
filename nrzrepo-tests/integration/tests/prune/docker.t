@@ -17,11 +17,11 @@ Make sure patches are part of the json output
 Make sure patches are part of the json output
   $ ls out/full
   apps
+  nrz.json
   package.json
   packages
   patches
   pnpm-workspace.yaml
-  nrz.json
 Make sure that pnpm-workspace.yaml is in the top out directory
   $ ls out
   full

@@ -7,7 +7,7 @@ Use --filter because otherwise we'll get nondeterministic execution summary depe
 whether the other workspaces had finished executing their task yet. We don't care to validate
 that behavior in this test.
   $ ${NRZ} run maybefails --filter=my-app --summarize > /dev/null 2>&1
-  [1]
+  [4]
 
   $ source "$TESTDIR/../../../helpers/run_summary.sh"
   $ SUMMARY=$(/bin/ls .nrz/runs/*.json | head -n1)
@@ -23,7 +23,7 @@ Validate that there was a failed task and exitCode is 1 (which is what we get fr
     "attempted": 1,
     "startTime": [0-9]+, (re)
     "endTime": [0-9]+, (re)
-    "exitCode": 1
+    "exitCode": 4
   }
 
 Validate that we got a full task summary for the failed task with an error in .execution
@@ -32,7 +32,7 @@ Validate that we got a full task summary for the failed task with an error in .e
     "taskId": "my-app#maybefails",
     "task": "maybefails",
     "package": "my-app",
-    "hash": "9f05a7188fdf4e93",
+    "hash": "a09d102270edc4a4",
     "inputs": {
       ".env.local": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
       "package.json": "1746e0db2361085b5953a6a3beab08c24af5bc08"
@@ -79,8 +79,8 @@ Validate that we got a full task summary for the failed task with an error in .e
     "execution": {
       "startTime": [0-9]+, (re)
       "endTime": [0-9]+, (re)
-      "error": "command .*npm(?:\.cmd)? run maybefails exited \(1\)", (re)
-      "exitCode": 1
+      "error": "command (/tmp/prysk-tests-eir4a5ob/error.t/apps/my-app) /home/gitpod/.nvm/versions/node/v22.11.0/bin/npm run maybefails exited (4)",
+      "exitCode": 4
     }
   }
 
@@ -89,7 +89,7 @@ Use  --force flag so we can be deterministic about cache hits
 Don't use --filter here, so we can validate that both tasks attempted to run
   $ rm -rf .nrz/runs
   $ ${NRZ} run maybefails --summarize --force --continue > /dev/null  2>&1
-  [1]
+  [4]
 
   $ source "$TESTDIR/../../../helpers/run_summary.sh"
   $ SUMMARY=$(/bin/ls .nrz/runs/*.json | head -n1)
@@ -105,7 +105,7 @@ success should be 1, and attempted should be 2
     "attempted": 2,
     "startTime": [0-9]+, (re)
     "endTime": [0-9]+, (re)
-    "exitCode": 1
+    "exitCode": 4
   }
 
   $ cat $SUMMARY | jq '.tasks | length'
@@ -116,6 +116,6 @@ success should be 1, and attempted should be 2
   {
     "startTime": [0-9]+, (re)
     "endTime": [0-9]+, (re)
-    "error": "command .*npm(?:\.cmd)? run maybefails exited \(1\)", (re)
-    "exitCode": 1
+    "error": "command (/tmp/prysk-tests-eir4a5ob/error.t/apps/my-app) /home/gitpod/.nvm/versions/node/v22.11.0/bin/npm run maybefails exited (4)",
+    "exitCode": 4
   }
