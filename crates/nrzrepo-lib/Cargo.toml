@@ -21,13 +21,13 @@ assert_cmd = { workspace = true }
 async-stream = "0.3.4"
 insta = { workspace = true }
 itertools = { workspace = true }
+nrzrepo-vercel-api-mock = { workspace = true }
 port_scanner = { workspace = true }
 pretty_assertions = { workspace = true }
 tempfile = { workspace = true }
 test-case = { workspace = true }
 tracing-test = { version = "0.2.4", features = ["no-env-filter"] }
 tracing.workspace = true
-nrzrepo-vercel-api-mock = { workspace = true }
 
 [lints]
 workspace = true
@@ -77,6 +77,28 @@ merge = { workspace = true }
 miette = { workspace = true, features = ["fancy"] }
 nix = "0.26.2"
 notify = { workspace = true }
+nrz-trace = { workspace = true }
+nrz-updater = { workspace = true }
+nrzpath = { workspace = true }
+nrzrepo-analytics = { path = "../nrzrepo-analytics" }
+nrzrepo-api-client = { workspace = true }
+nrzrepo-auth = { path = "../nrzrepo-auth" }
+nrzrepo-cache = { workspace = true }
+nrzrepo-ci = { workspace = true }
+nrzrepo-dirs = { path = "../nrzrepo-dirs" }
+nrzrepo-env = { workspace = true }
+nrzrepo-errors = { workspace = true }
+nrzrepo-filewatch = { path = "../nrzrepo-filewatch" }
+nrzrepo-fs = { path = "../nrzrepo-fs" }
+nrzrepo-graph-utils = { path = "../nrzrepo-graph-utils" }
+nrzrepo-lockfiles = { workspace = true }
+nrzrepo-microfrontends = { workspace = true }
+nrzrepo-repository = { path = "../nrzrepo-repository" }
+nrzrepo-scm = { workspace = true }
+nrzrepo-telemetry = { path = "../nrzrepo-telemetry" }
+nrzrepo-ui = { workspace = true }
+nrzrepo-unescape = { workspace = true }
+nrzrepo-vercel-api = { path = "../nrzrepo-vercel-api" }
 num_cpus = { workspace = true }
 owo-colors = { workspace = true }
 oxc_resolver = { workspace = true }
@@ -121,28 +143,6 @@ tracing-appender = "0.2.2"
 tracing-chrome = "0.7.1"
 tracing-subscriber = { version = "0.3.17", features = ["env-filter"] }
 tracing.workspace = true
-nrz-trace = { workspace = true }
-nrz-updater = { workspace = true }
-nrzpath = { workspace = true }
-nrzrepo-analytics = { path = "../nrzrepo-analytics" }
-nrzrepo-api-client = { workspace = true }
-nrzrepo-auth = { path = "../nrzrepo-auth" }
-nrzrepo-cache = { workspace = true }
-nrzrepo-ci = { workspace = true }
-nrzrepo-dirs = { path = "../nrzrepo-dirs" }
-nrzrepo-env = { workspace = true }
-nrzrepo-errors = { workspace = true }
-nrzrepo-filewatch = { path = "../nrzrepo-filewatch" }
-nrzrepo-fs = { path = "../nrzrepo-fs" }
-nrzrepo-graph-utils = { path = "../nrzrepo-graph-utils" }
-nrzrepo-lockfiles = { workspace = true }
-nrzrepo-microfrontends = { workspace = true }
-nrzrepo-repository = { path = "../nrzrepo-repository" }
-nrzrepo-scm = { workspace = true }
-nrzrepo-telemetry = { path = "../nrzrepo-telemetry" }
-nrzrepo-ui = { workspace = true }
-nrzrepo-unescape = { workspace = true }
-nrzrepo-vercel-api = { path = "../nrzrepo-vercel-api" }
 twox-hash = "1.6.3"
 uds_windows = "1.0.2"
 wax = { workspace = true }

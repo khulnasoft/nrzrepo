@@ -10,6 +10,7 @@ clap = { version = "4.5.17", features = ["derive"] }
 futures = { workspace = true }
 globwalk = { version = "0.1.0", path = "../nrzrepo-globwalk" }
 miette = { workspace = true, features = ["fancy"] }
+nrzpath = { workspace = true }
 oxc_resolver = { workspace = true }
 swc_common = { workspace = true, features = ["concurrent", "tty-emitter"] }
 swc_ecma_ast = { workspace = true }
@@ -19,7 +20,6 @@ thiserror = { workspace = true }
 tokio = { workspace = true, features = ["full"] }
 tracing = { workspace = true }
 tracing-subscriber = { workspace = true }
-nrzpath = { workspace = true }
 
 [lints]
 workspace = true
