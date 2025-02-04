@@ -1,6 +1,6 @@
 {
   "name": "eslint-config-nrz",
-  "version": "2.4.1-canary.0",
+  "version": "1.0.0-canary.0",
   "description": "ESLint config for Nrzrepo",
   "repository": {
     "type": "git",
