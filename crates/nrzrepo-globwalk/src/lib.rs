@@ -11,12 +11,12 @@ use std::{
 
 use camino::Utf8PathBuf;
 use itertools::Itertools;
+use nrzpath::{AbsoluteSystemPath, AbsoluteSystemPathBuf, PathError, RelativeUnixPath};
 use path_clean::PathClean;
 use path_slash::PathExt;
 use rayon::prelude::*;
 use regex::Regex;
 use tracing::debug;
-use nrzpath::{AbsoluteSystemPath, AbsoluteSystemPathBuf, PathError, RelativeUnixPath};
 use wax::{walk::FileIterator, BuildError, Glob};
 
 #[derive(Debug, PartialEq, Clone, Copy)]
@@ -476,9 +476,9 @@ mod test {
     use std::{collections::HashSet, str::FromStr};
 
     use itertools::Itertools;
+    use nrzpath::{AbsoluteSystemPath, AbsoluteSystemPathBuf};
     use tempfile::TempDir;
     use test_case::test_case;
-    use nrzpath::{AbsoluteSystemPath, AbsoluteSystemPathBuf};
 
     use crate::{
         add_doublestar_to_dir, collapse_path, escape_glob_literals, fix_glob_pattern, globwalk,

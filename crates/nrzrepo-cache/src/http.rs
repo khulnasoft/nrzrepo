@@ -5,14 +5,14 @@ use std::{
     sync::{Arc, Mutex},
 };
 
-use tokio_stream::StreamExt;
-use tracing::debug;
 use nrzpath::{AbsoluteSystemPath, AbsoluteSystemPathBuf, AnchoredSystemPathBuf};
 use nrzrepo_analytics::AnalyticsSender;
 use nrzrepo_api_client::{
     analytics::{self, AnalyticsEvent},
     APIAuth, APIClient, CacheClient, Response,
 };
+use tokio_stream::StreamExt;
+use tracing::debug;
 
 use crate::{
     cache_archive::{CacheReader, CacheWriter},
@@ -291,11 +291,11 @@ mod test {
     use anyhow::Result;
     use futures::future::try_join_all;
     use insta::assert_snapshot;
-    use tempfile::tempdir;
     use nrzpath::AbsoluteSystemPathBuf;
     use nrzrepo_analytics::start_analytics;
     use nrzrepo_api_client::{analytics, APIClient};
     use nrzrepo_vercel_api_mock::start_test_server;
+    use tempfile::tempdir;
 
     use crate::{
         http::{APIAuth, HTTPCache},

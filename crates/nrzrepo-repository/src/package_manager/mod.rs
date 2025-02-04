@@ -18,13 +18,13 @@ use miette::{Diagnostic, NamedSource, SourceSpan};
 use node_semver::SemverError;
 use npm::NpmDetector;
 use npmrc::NpmRc;
+use nrzpath::{AbsoluteSystemPath, AbsoluteSystemPathBuf, RelativeUnixPath};
+use nrzrepo_errors::Spanned;
+use nrzrepo_lockfiles::Lockfile;
 use regex::Regex;
 use serde::Deserialize;
 use thiserror::Error;
 use tracing::debug;
-use nrzpath::{AbsoluteSystemPath, AbsoluteSystemPathBuf, RelativeUnixPath};
-use nrzrepo_errors::Spanned;
-use nrzrepo_lockfiles::Lockfile;
 use yarnrc::YarnRc;
 
 use crate::{
@@ -100,20 +100,20 @@ impl Display for MissingWorkspaceError {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         let err = match self.package_manager {
             PackageManager::Pnpm | PackageManager::Pnpm6 | PackageManager::Pnpm9 => {
-                "pnpm-workspace.yaml: no packages found. Nrzrepo requires pnpm workspaces and \
-                 thus packages to be defined in the root pnpm-workspace.yaml"
+                "pnpm-workspace.yaml: no packages found. Nrzrepo requires pnpm workspaces and thus \
+                 packages to be defined in the root pnpm-workspace.yaml"
             }
             PackageManager::Yarn | PackageManager::Berry => {
-                "package.json: no workspaces found. Nrzrepo requires yarn workspaces to be \
-                 defined in the root package.json"
+                "package.json: no workspaces found. Nrzrepo requires yarn workspaces to be defined \
+                 in the root package.json"
             }
             PackageManager::Npm => {
-                "package.json: no workspaces found. Nrzrepo requires npm workspaces to be \
-                 defined in the root package.json"
+                "package.json: no workspaces found. Nrzrepo requires npm workspaces to be defined \
+                 in the root package.json"
             }
             PackageManager::Bun => {
-                "package.json: no workspaces found. Nrzrepo requires bun workspaces to be \
-                 defined in the root package.json"
+                "package.json: no workspaces found. Nrzrepo requires bun workspaces to be defined \
+                 in the root package.json"
             }
         };
         write!(f, "{}", err)
@@ -488,9 +488,7 @@ impl PackageManager {
             PackageManager::Yarn => {
                 Box::new(nrzrepo_lockfiles::Yarn1Lockfile::from_bytes(contents)?)
             }
-            PackageManager::Bun => {
-                Box::new(nrzrepo_lockfiles::BunLockfile::from_bytes(contents)?)
-            }
+            PackageManager::Bun => Box::new(nrzrepo_lockfiles::BunLockfile::from_bytes(contents)?),
             PackageManager::Berry => Box::new(nrzrepo_lockfiles::BerryLockfile::load(
                 contents,
                 Some(nrzrepo_lockfiles::BerryManifest::with_resolutions(

@@ -5,9 +5,9 @@ use std::{
 
 use clap::ValueEnum;
 use itertools::Itertools;
-use tracing::warn;
 use nrzpath::AbsoluteSystemPathBuf;
 use nrzrepo_cache::CacheConfig;
+use tracing::warn;
 
 use super::{ConfigurationOptions, Error, ResolvedConfigurationOptions};
 use crate::{
@@ -121,8 +121,8 @@ impl ResolvedConfigurationOptions for EnvVars {
 
         if remote_only.is_some() {
             warn!(
-                "NRZ_REMOTE_ONLY is deprecated and will be removed in a future major version. \
-                 Use NRZ_CACHE=remote:rw"
+                "NRZ_REMOTE_ONLY is deprecated and will be removed in a future major version. Use \
+                 NRZ_CACHE=remote:rw"
             );
         }
 

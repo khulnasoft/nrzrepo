@@ -4,9 +4,9 @@ use std::{
     process::{Command, Stdio},
 };
 
-use thiserror::Error;
 use nrzpath::{AbsoluteSystemPath, AbsoluteSystemPathBuf};
 use nrzrepo_ui::{cprintln, cwrite, cwriteln, ColorConfig, BOLD, BOLD_YELLOW_REVERSE, YELLOW};
+use thiserror::Error;
 use which::which;
 
 use crate::{engine::Engine, opts::GraphOpts, spawn_child};

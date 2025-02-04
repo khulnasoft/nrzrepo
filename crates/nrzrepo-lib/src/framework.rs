@@ -1,7 +1,7 @@
 use std::sync::OnceLock;
 
-use serde::Deserialize;
 use nrzrepo_repository::package_graph::PackageInfo;
+use serde::Deserialize;
 
 #[derive(Debug, PartialEq, Deserialize)]
 #[serde(rename_all = "camelCase")]
@@ -37,8 +37,7 @@ impl Framework {
 
 static FRAMEWORKS: OnceLock<Vec<Framework>> = OnceLock::new();
 
-const FRAMEWORKS_JSON: &str =
-    include_str!("../../../packages/nrz-types/src/json/frameworks.json");
+const FRAMEWORKS_JSON: &str = include_str!("../../../packages/nrz-types/src/json/frameworks.json");
 
 fn get_frameworks() -> &'static Vec<Framework> {
     FRAMEWORKS.get_or_init(|| {
@@ -80,8 +79,8 @@ pub fn infer_framework(workspace: &PackageInfo, is_monorepo: bool) -> Option<&Fr
 
 #[cfg(test)]
 mod tests {
-    use test_case::test_case;
     use nrzrepo_repository::{package_graph::PackageInfo, package_json::PackageJson};
+    use test_case::test_case;
 
     use crate::framework::{get_frameworks, infer_framework, Framework};
 

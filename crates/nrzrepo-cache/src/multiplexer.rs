@@ -3,10 +3,10 @@ use std::sync::{
     Arc, Mutex,
 };
 
-use tracing::{debug, warn};
 use nrzpath::{AbsoluteSystemPath, AnchoredSystemPathBuf};
 use nrzrepo_analytics::AnalyticsSender;
 use nrzrepo_api_client::{APIAuth, APIClient};
+use tracing::{debug, warn};
 
 use crate::{
     fs::FSCache,

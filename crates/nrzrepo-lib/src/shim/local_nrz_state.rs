@@ -5,11 +5,11 @@ use std::{
 
 use camino::Utf8PathBuf;
 use dunce::canonicalize as fs_canonicalize;
+use nrzpath::{AbsoluteSystemPath, AbsoluteSystemPathBuf};
+use nrzrepo_repository::package_json::PackageJson;
 use semver::Version;
 use serde::Deserialize;
 use tracing::debug;
-use nrzpath::{AbsoluteSystemPath, AbsoluteSystemPathBuf};
-use nrzrepo_repository::package_json::PackageJson;
 
 use super::NrzState;
 

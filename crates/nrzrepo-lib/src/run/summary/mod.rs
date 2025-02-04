@@ -18,18 +18,18 @@ pub use duration::NrzDuration;
 pub use execution::{TaskExecutionSummary, TaskTracker};
 pub use global_hash::GlobalHashSummary;
 use itertools::Itertools;
-use serde::Serialize;
-pub use spaces::{SpacesTaskClient, SpacesTaskInformation};
-use svix_ksuid::{Ksuid, KsuidLike};
-use tabwriter::TabWriter;
-use thiserror::Error;
-use tracing::{error, log::warn};
 use nrzpath::{AbsoluteSystemPath, AbsoluteSystemPathBuf, AnchoredSystemPath};
 use nrzrepo_api_client::{spaces::CreateSpaceRunPayload, APIAuth, APIClient};
 use nrzrepo_env::EnvironmentVariableMap;
 use nrzrepo_repository::package_graph::{PackageGraph, PackageName};
 use nrzrepo_scm::SCM;
 use nrzrepo_ui::{color, cprintln, cwriteln, ColorConfig, BOLD, BOLD_CYAN, GREY};
+use serde::Serialize;
+pub use spaces::{SpacesTaskClient, SpacesTaskInformation};
+use svix_ksuid::{Ksuid, KsuidLike};
+use tabwriter::TabWriter;
+use thiserror::Error;
+use tracing::{error, log::warn};
 
 use self::{
     execution::TaskState, task::SinglePackageTaskSummary, task_factory::TaskSummaryFactory,
@@ -776,8 +776,7 @@ impl<'a> RunSummary<'a> {
     fn get_path(&self) -> AbsoluteSystemPathBuf {
         let filename = format!("{}.json", self.id);
 
-        self.repo_root
-            .join_components(&[".nrz", "runs", &filename])
+        self.repo_root.join_components(&[".nrz", "runs", &filename])
     }
 
     fn get_failed_tasks(&self) -> Vec<&TaskSummary> {

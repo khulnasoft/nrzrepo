@@ -4,9 +4,9 @@ use biome_json_formatter::context::JsonFormatOptions;
 use biome_json_parser::JsonParserOptions;
 use id::PossibleKeyIter;
 use itertools::Itertools as _;
+use nrzrepo_errors::ParseDiagnostic;
 use serde::Deserialize;
 use serde_json::Value;
-use nrzrepo_errors::ParseDiagnostic;
 
 use crate::Lockfile;
 

@@ -12,10 +12,10 @@ mod ui;
 pub use auth::*;
 pub use error::Error;
 pub use login_server::*;
-use serde::Deserialize;
 use nrzpath::AbsoluteSystemPath;
 use nrzrepo_api_client::{CacheClient, Client, TokenClient};
 use nrzrepo_vercel_api::{token::ResponseTokenMetadata, User};
+use serde::Deserialize;
 
 pub struct TeamInfo<'a> {
     pub id: &'a str,
@@ -274,10 +274,10 @@ fn is_token_active(metadata: &ResponseTokenMetadata, current_time: u128) -> bool
 mod tests {
     use std::backtrace::Backtrace;
 
-    use reqwest::{Method, Response};
-    use tempfile::tempdir;
     use nrzpath::AbsoluteSystemPathBuf;
     use nrzrepo_vercel_api::{token::Scope, CachingStatus, CachingStatusResponse};
+    use reqwest::{Method, Response};
+    use tempfile::tempdir;
 
     use super::*;
 

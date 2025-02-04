@@ -1,11 +1,11 @@
 use std::{backtrace::Backtrace, ffi::OsString, io};
 
 use camino::Utf8Component;
-use tar::Entry;
-use tracing::debug;
 use nrzpath::{
     AbsoluteSystemPath, AbsoluteSystemPathBuf, AnchoredSystemPath, AnchoredSystemPathBuf,
 };
+use tar::Entry;
+use tracing::debug;
 
 use crate::CacheError;
 

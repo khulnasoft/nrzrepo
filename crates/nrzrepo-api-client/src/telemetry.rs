@@ -1,7 +1,7 @@
 use std::future::Future;
 
-use reqwest::Method;
 use nrzrepo_vercel_api::telemetry::TelemetryEvent;
+use reqwest::Method;
 
 use crate::{retry, AnonAPIClient, Error};
 

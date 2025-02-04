@@ -26,6 +26,7 @@ mod gitignore;
 pub(crate) mod globwatcher;
 mod hash;
 mod microfrontends;
+mod nrz_json;
 mod opts;
 mod package_changes_watcher;
 mod panic_handler;
@@ -38,7 +39,6 @@ mod signal;
 mod task_graph;
 mod task_hash;
 mod tracing;
-mod nrz_json;
 
 pub use crate::{
     child::spawn_child,

@@ -13,14 +13,6 @@ use std::{
 
 use futures::FutureExt;
 use notify::Event;
-use thiserror::Error;
-use tokio::{
-    join, select,
-    sync::{
-        broadcast::{self, error::RecvError},
-        mpsc, oneshot, watch,
-    },
-};
 use nrzpath::{AbsoluteSystemPath, AbsoluteSystemPathBuf};
 use nrzrepo_repository::{
     discovery::{
@@ -29,6 +21,14 @@ use nrzrepo_repository::{
     },
     package_manager::{self, PackageManager},
     workspaces::WorkspaceGlobs,
+};
+use thiserror::Error;
+use tokio::{
+    join, select,
+    sync::{
+        broadcast::{self, error::RecvError},
+        mpsc, oneshot, watch,
+    },
 };
 
 use crate::{

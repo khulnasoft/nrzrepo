@@ -1,8 +1,8 @@
 use std::fmt::Display;
 
-use serde::{Deserialize, Serialize};
 use nrzrepo_ci;
 use nrzrepo_vercel_api::telemetry::{TelemetryCommandEvent, TelemetryEvent};
+use serde::{Deserialize, Serialize};
 use uuid::Uuid;
 
 use super::{Event, EventBuilder, EventType, Identifiable};

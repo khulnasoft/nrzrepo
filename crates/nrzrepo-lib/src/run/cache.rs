@@ -5,8 +5,6 @@ use std::{
 };
 
 use itertools::Itertools;
-use tokio::sync::oneshot;
-use tracing::{debug, error, log::warn};
 use nrzpath::{
     AbsoluteSystemPath, AbsoluteSystemPathBuf, AnchoredSystemPath, AnchoredSystemPathBuf,
 };
@@ -17,6 +15,8 @@ use nrzrepo_repository::package_graph::PackageInfo;
 use nrzrepo_scm::SCM;
 use nrzrepo_telemetry::events::{task::PackageTaskEventBuilder, TrackedErrors};
 use nrzrepo_ui::{color, tui::event::CacheResult, ColorConfig, ColorSelector, LogWriter, GREY};
+use tokio::sync::oneshot;
+use tracing::{debug, error, log::warn};
 
 use crate::{
     cli::OutputLogsMode,

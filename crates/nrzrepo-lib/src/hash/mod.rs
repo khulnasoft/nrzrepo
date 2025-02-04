@@ -9,8 +9,8 @@ mod traits;
 use std::collections::HashMap;
 
 use capnp::message::{Builder, HeapAllocator};
-pub use traits::NrzHash;
 use nrzrepo_env::EnvironmentVariablePairs;
+pub use traits::NrzHash;
 
 use crate::{cli::EnvMode, task_graph::TaskOutputs};
 
@@ -381,12 +381,10 @@ impl From<GlobalHashable<'_>> for Builder<HeapAllocator> {
 
 #[cfg(test)]
 mod test {
-    use test_case::test_case;
     use nrzrepo_lockfiles::Package;
+    use test_case::test_case;
 
-    use super::{
-        FileHashes, GlobalHashable, LockFilePackages, TaskHashable, TaskOutputs, NrzHash,
-    };
+    use super::{FileHashes, GlobalHashable, LockFilePackages, NrzHash, TaskHashable, TaskOutputs};
     use crate::cli::EnvMode;
 
     #[test]

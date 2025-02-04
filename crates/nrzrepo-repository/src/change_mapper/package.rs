@@ -1,5 +1,5 @@
-use thiserror::Error;
 use nrzpath::{AnchoredSystemPath, AnchoredSystemPathBuf};
+use thiserror::Error;
 use wax::{BuildError, Program};
 
 use crate::{
@@ -153,8 +153,8 @@ impl PackageChangeMapper for GlobalDepsPackageChangeMapper<'_> {
 
 #[cfg(test)]
 mod tests {
-    use tempfile::tempdir;
     use nrzpath::{AbsoluteSystemPath, AnchoredSystemPathBuf};
+    use tempfile::tempdir;
 
     use super::{DefaultPackageChangeMapper, GlobalDepsPackageChangeMapper};
     use crate::{

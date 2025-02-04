@@ -128,8 +128,8 @@ fn copy_file_with_type(
 mod tests {
     use std::path::Path;
 
-    use test_case::test_case;
     use nrzpath::AbsoluteSystemPathBuf;
+    use test_case::test_case;
 
     use super::*;
 

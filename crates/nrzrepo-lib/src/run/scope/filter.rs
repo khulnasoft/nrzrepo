@@ -5,13 +5,13 @@ use std::{
 };
 
 use miette::Diagnostic;
-use tracing::debug;
 use nrzpath::{AbsoluteSystemPath, AbsoluteSystemPathBuf, AnchoredSystemPathBuf};
 use nrzrepo_repository::{
     change_mapper::{merge_changed_packages, ChangeMapError, PackageInclusionReason},
     package_graph::{self, PackageGraph, PackageName},
 };
 use nrzrepo_scm::SCM;
+use tracing::debug;
 use wax::Program;
 
 use super::{
@@ -19,7 +19,7 @@ use super::{
     simple_glob::{Match, SimpleGlob},
     target_selector::{GitRange, InvalidSelectorError, TargetSelector},
 };
-use crate::{run::scope::change_detector::ScopeChangeDetector, nrz_json::NrzJson};
+use crate::{nrz_json::NrzJson, run::scope::change_detector::ScopeChangeDetector};
 
 pub struct PackageInference {
     package_name: Option<String>,
@@ -709,9 +709,6 @@ pub enum ResolutionError {
 mod test {
     use std::collections::{HashMap, HashSet};
 
-    use pretty_assertions::assert_eq;
-    use tempfile::TempDir;
-    use test_case::test_case;
     use nrzpath::{AbsoluteSystemPathBuf, AnchoredSystemPathBuf, RelativeUnixPathBuf};
     use nrzrepo_repository::{
         change_mapper::PackageInclusionReason,
@@ -720,6 +717,9 @@ mod test {
         package_json::PackageJson,
         package_manager::PackageManager,
     };
+    use pretty_assertions::assert_eq;
+    use tempfile::TempDir;
+    use test_case::test_case;
 
     use super::{FilterResolver, PackageInference, TargetSelector};
     use crate::run::scope::{

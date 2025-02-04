@@ -1,13 +1,13 @@
 use std::collections::{BTreeMap, HashMap, HashSet};
 
 use miette::{Diagnostic, Report};
-use petgraph::graph::{Graph, NodeIndex};
-use tracing::{warn, Instrument};
 use nrzpath::{
     AbsoluteSystemPath, AbsoluteSystemPathBuf, AnchoredSystemPath, AnchoredSystemPathBuf,
 };
 use nrzrepo_graph_utils as graph;
 use nrzrepo_lockfiles::Lockfile;
+use petgraph::graph::{Graph, NodeIndex};
+use tracing::{warn, Instrument};
 
 use super::{
     dep_splitter::DependencySplitter, PackageGraph, PackageInfo, PackageName, PackageNode,
@@ -438,8 +438,8 @@ impl<'a, T: PackageDiscovery> BuildState<'a, ResolvedWorkspaces, T> {
             Ok(lockfile) => Some(lockfile),
             Err(e) => {
                 warn!(
-                    "Issues occurred when constructing package graph. Nrz will function, but \
-                     some features may not be available:\n {:?}",
+                    "Issues occurred when constructing package graph. Nrz will function, but some \
+                     features may not be available:\n {:?}",
                     Report::new(e)
                 );
                 None

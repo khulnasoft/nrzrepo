@@ -1,5 +1,4 @@
 use napi::Status;
-use thiserror::Error;
 use nrzpath::{AbsoluteSystemPathBuf, PathError};
 use nrzrepo_repository::{
     inference::{self, RepoMode as WorkspaceType, RepoState as WorkspaceState},
@@ -7,6 +6,7 @@ use nrzrepo_repository::{
     package_json::PackageJson,
     package_manager,
 };
+use thiserror::Error;
 
 use crate::{Package, PackageManager, Workspace};
 

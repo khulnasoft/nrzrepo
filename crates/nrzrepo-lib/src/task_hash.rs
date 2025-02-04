@@ -3,10 +3,6 @@ use std::{
     sync::{Arc, Mutex},
 };
 
-use rayon::prelude::*;
-use serde::Serialize;
-use thiserror::Error;
-use tracing::{debug, Span};
 use nrzpath::{AbsoluteSystemPath, AnchoredSystemPath, AnchoredSystemPathBuf};
 use nrzrepo_cache::CacheHitMetadata;
 use nrzrepo_env::{BySource, DetailedMap, EnvironmentVariableMap};
@@ -15,12 +11,16 @@ use nrzrepo_scm::SCM;
 use nrzrepo_telemetry::events::{
     generic::GenericEventBuilder, task::PackageTaskEventBuilder, EventBuilder,
 };
+use rayon::prelude::*;
+use serde::Serialize;
+use thiserror::Error;
+use tracing::{debug, Span};
 
 use crate::{
     cli::EnvMode,
     engine::TaskNode,
     framework::infer_framework,
-    hash::{FileHashes, LockFilePackages, TaskHashable, NrzHash},
+    hash::{FileHashes, LockFilePackages, NrzHash, TaskHashable},
     opts::RunOpts,
     run::task_id::TaskId,
     task_graph::TaskDefinition,

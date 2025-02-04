@@ -42,8 +42,8 @@ mod tests {
     use std::fs::File;
 
     use anyhow::Result;
-    use tempfile::tempdir;
     use nrzpath::AbsoluteSystemPathBuf;
+    use tempfile::tempdir;
 
     use super::LOCKFILE;
     use crate::package_manager::PackageManager;

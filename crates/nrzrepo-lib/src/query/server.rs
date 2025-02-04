@@ -3,9 +3,9 @@ use std::sync::Arc;
 use async_graphql::{EmptyMutation, EmptySubscription, MergedObject, Schema};
 use async_graphql_axum::GraphQL;
 use axum::{http::Method, routing::get, Router};
+use nrzrepo_ui::wui::query::SharedState;
 use tokio::net::TcpListener;
 use tower_http::cors::{Any, CorsLayer};
-use nrzrepo_ui::wui::query::SharedState;
 
 use crate::{query, query::graphiql, run::Run};
 

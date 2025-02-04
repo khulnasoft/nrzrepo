@@ -7,8 +7,6 @@ use std::{
 
 use ignore::gitignore::Gitignore;
 use notify::Event;
-use radix_trie::{Trie, TrieCommon};
-use tokio::sync::{broadcast, oneshot, Mutex};
 use nrzpath::{AbsoluteSystemPathBuf, AnchoredSystemPath, AnchoredSystemPathBuf};
 use nrzrepo_filewatch::{
     hash_watcher::{HashSpec, HashWatcher, InputGlobs},
@@ -20,6 +18,8 @@ use nrzrepo_repository::{
     package_json::PackageJson,
 };
 use nrzrepo_scm::package_deps::GitHashes;
+use radix_trie::{Trie, TrieCommon};
+use tokio::sync::{broadcast, oneshot, Mutex};
 
 use crate::nrz_json::{NrzJson, NrzJsonLoader, CONFIG_FILE};
 

@@ -3,8 +3,8 @@ use std::{
     io::{BufRead, BufReader, BufWriter, Write},
 };
 
-use tracing::{debug, warn};
 use nrzpath::AbsoluteSystemPath;
+use tracing::{debug, warn};
 
 use crate::Error;
 
@@ -124,8 +124,8 @@ mod tests {
     use std::{fs, io::Write};
 
     use anyhow::Result;
-    use tempfile::tempdir;
     use nrzpath::AbsoluteSystemPathBuf;
+    use tempfile::tempdir;
 
     use crate::{
         logs::replay_logs, ColorConfig, LogWriter, PrefixedUI, PrefixedWriter, BOLD, CYAN,

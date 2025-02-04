@@ -3,10 +3,10 @@ use std::sync::{atomic::AtomicBool, Arc};
 use std::{io::ErrorKind, sync::atomic::Ordering, time::Duration};
 
 use futures::Stream;
+use nrzpath::AbsoluteSystemPath;
 use tokio::io::{AsyncRead, AsyncWrite};
 use tonic::transport::server::Connected;
 use tracing::{debug, trace};
-use nrzpath::AbsoluteSystemPath;
 
 #[derive(thiserror::Error, Debug)]
 pub enum SocketOpenError {
@@ -181,8 +181,8 @@ mod test {
         sync::{atomic::AtomicBool, Arc},
     };
 
-    use pidlock::PidlockError;
     use nrzpath::{AbsoluteSystemPath, AbsoluteSystemPathBuf};
+    use pidlock::PidlockError;
 
     use super::listen_socket;
     use crate::daemon::{endpoint::SocketOpenError, Paths};

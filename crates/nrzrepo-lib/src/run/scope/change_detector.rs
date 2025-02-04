@@ -1,6 +1,5 @@
 use std::collections::{HashMap, HashSet};
 
-use tracing::debug;
 use nrzpath::{AbsoluteSystemPath, AnchoredSystemPathBuf};
 use nrzrepo_repository::{
     change_mapper::{
@@ -10,6 +9,7 @@ use nrzrepo_repository::{
     package_graph::{PackageGraph, PackageName},
 };
 use nrzrepo_scm::{git::InvalidRange, SCM};
+use tracing::debug;
 
 use crate::run::scope::ResolutionError;
 

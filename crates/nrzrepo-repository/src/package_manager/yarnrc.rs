@@ -1,8 +1,8 @@
 use std::io;
 
+use nrzpath::AbsoluteSystemPath;
 use serde::Deserialize;
 use serde_yaml;
-use nrzpath::AbsoluteSystemPath;
 
 pub const YARNRC_FILENAME: &str = ".yarnrc.yml";
 

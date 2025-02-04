@@ -13,9 +13,7 @@ impl<'a> NrzJsonReader<'a> {
         Self { repo_root }
     }
 
-    fn nrz_json_to_config_options(
-        nrz_json: RawNrzJson,
-    ) -> Result<ConfigurationOptions, Error> {
+    fn nrz_json_to_config_options(nrz_json: RawNrzJson) -> Result<ConfigurationOptions, Error> {
         let mut opts = if let Some(remote_cache_options) = &nrz_json.remote_cache {
             remote_cache_options.into()
         } else {

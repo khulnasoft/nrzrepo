@@ -203,8 +203,8 @@ impl fmt::Display for DependencyVersion<'_> {
 
 #[cfg(test)]
 mod test {
-    use test_case::test_case;
     use nrzpath::AbsoluteSystemPathBuf;
+    use test_case::test_case;
 
     use super::*;
     use crate::package_json::PackageJson;

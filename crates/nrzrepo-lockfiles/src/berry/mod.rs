@@ -12,10 +12,10 @@ use std::{
 
 use de::Entry;
 use identifiers::{Descriptor, Ident, Locator};
+use nrzpath::RelativeUnixPathBuf;
 use protocol_resolver::DescriptorResolver;
 use serde::Deserialize;
 use thiserror::Error;
-use nrzpath::RelativeUnixPathBuf;
 
 use self::resolution::{parse_resolution, Resolution};
 use super::Lockfile;

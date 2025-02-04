@@ -14,7 +14,7 @@ use nrzrepo_repository::{
 use nrzrepo_scm::SCM;
 
 pub use crate::run::scope::filter::ResolutionError;
-use crate::{opts::ScopeOpts, nrz_json::NrzJson};
+use crate::{nrz_json::NrzJson, opts::ScopeOpts};
 
 #[tracing::instrument(skip(opts, pkg_graph, scm))]
 pub fn resolve_packages(
@@ -28,13 +28,6 @@ pub fn resolve_packages(
         PackageInference::calculate(nrz_root, pkg_inference_path, pkg_graph)
     });
 
-    FilterResolver::new(
-        opts,
-        pkg_graph,
-        nrz_root,
-        pkg_inference,
-        scm,
-        root_nrz_json,
-    )?
-    .resolve(&opts.affected_range, &opts.get_filters())
+    FilterResolver::new(opts, pkg_graph, nrz_root, pkg_inference, scm, root_nrz_json)?
+        .resolve(&opts.affected_range, &opts.get_filters())
 }

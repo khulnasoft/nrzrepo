@@ -271,9 +271,9 @@ impl ShimArgs {
 #[cfg(test)]
 mod test {
     use miette::SourceSpan;
+    use nrzpath::{AbsoluteSystemPath, AbsoluteSystemPathBuf};
     use pretty_assertions::assert_eq;
     use test_case::test_case;
-    use nrzpath::{AbsoluteSystemPath, AbsoluteSystemPathBuf};
 
     use super::ShimArgs;
 

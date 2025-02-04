@@ -5,12 +5,12 @@ use std::{
     sync::{Arc, Mutex},
 };
 
-use serde::Deserialize;
-use tracing::{debug, error, warn};
 use nrzpath::{AbsoluteSystemPathBuf, PathRelation};
 use nrzrepo_cache::AsyncCache;
 use nrzrepo_scm::SCM;
 use nrzrepo_unescape::UnescapedString;
+use serde::Deserialize;
+use tracing::{debug, error, warn};
 
 use super::ConfigCache;
 use crate::{config::RawNrzJson, gitignore::ensure_nrz_is_gitignored};

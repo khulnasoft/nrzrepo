@@ -1,8 +1,8 @@
 use std::str::FromStr;
 
+use nrzpath::AnchoredSystemPathBuf;
 use regex::Regex;
 use thiserror::Error;
-use nrzpath::AnchoredSystemPathBuf;
 
 #[derive(Debug, Default, PartialEq)]
 pub struct GitRange {
@@ -239,9 +239,9 @@ pub fn is_selector_by_location(
 mod test {
     use std::str::FromStr;
 
+    use nrzpath::AnchoredSystemPathBuf;
     use pretty_assertions::assert_eq;
     use test_case::test_case;
-    use nrzpath::AnchoredSystemPathBuf;
 
     use super::TargetSelector;
     use crate::run::scope::target_selector::GitRange;

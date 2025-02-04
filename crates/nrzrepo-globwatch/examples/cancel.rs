@@ -2,8 +2,8 @@ use std::{path::PathBuf, time::Duration};
 
 use futures::{join, StreamExt};
 use globwatch::GlobWatcher;
-use tracing::{info, info_span};
 use nrzpath::AbsoluteSystemPathBuf;
+use tracing::{info, info_span};
 
 #[tokio::main]
 async fn main() {

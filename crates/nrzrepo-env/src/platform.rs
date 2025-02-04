@@ -81,8 +81,8 @@ impl PlatformEnv {
                 ceprintln!(
                     color_config,
                     BOLD,
-                    "Warning - the following environment variables are missing from \
-                     \"nrz.json\". {strict_message} Learn more at {docs_message}\n"
+                    "Warning - the following environment variables are missing from \"nrz.json\". \
+                     {strict_message} Learn more at {docs_message}\n"
                 );
             }
         }

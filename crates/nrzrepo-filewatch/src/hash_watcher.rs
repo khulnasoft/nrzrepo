@@ -8,6 +8,12 @@ use std::{
 };
 
 use notify::Event;
+use nrzpath::{AbsoluteSystemPathBuf, AnchoredSystemPath, AnchoredSystemPathBuf};
+use nrzrepo_repository::discovery::DiscoveryResponse;
+use nrzrepo_scm::{
+    package_deps::{GitHashes, INPUT_INCLUDE_DEFAULT_FILES},
+    Error as SCMError, SCM,
+};
 use radix_trie::{Trie, TrieCommon};
 use thiserror::Error;
 use tokio::{
@@ -15,12 +21,6 @@ use tokio::{
     sync::{broadcast, mpsc, oneshot, watch},
 };
 use tracing::{debug, trace};
-use nrzpath::{AbsoluteSystemPathBuf, AnchoredSystemPath, AnchoredSystemPathBuf};
-use nrzrepo_repository::discovery::DiscoveryResponse;
-use nrzrepo_scm::{
-    package_deps::{GitHashes, INPUT_INCLUDE_DEFAULT_FILES},
-    Error as SCMError, SCM,
-};
 
 use crate::{
     debouncer::Debouncer,
@@ -687,11 +687,11 @@ mod tests {
     };
 
     use git2::Repository;
-    use tempfile::{tempdir, TempDir};
     use nrzpath::{
         AbsoluteSystemPath, AbsoluteSystemPathBuf, AnchoredSystemPathBuf, RelativeUnixPathBuf,
     };
     use nrzrepo_scm::{package_deps::GitHashes, SCM};
+    use tempfile::{tempdir, TempDir};
 
     use super::{FileHashes, HashState};
     use crate::{

@@ -1,7 +1,7 @@
 use std::{ops::Deref, sync::Arc};
 
-use tokio::sync::{Semaphore, SemaphorePermit};
 use nrzrepo_scm::SCM;
+use tokio::sync::{Semaphore, SemaphorePermit};
 
 #[derive(Debug, Clone)]
 pub struct SCMResource {

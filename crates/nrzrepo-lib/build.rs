@@ -2,10 +2,8 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     let tonic_build_result = tonic_build::configure()
         .build_server(true)
         .file_descriptor_set_path("src/daemon/file_descriptor_set.bin")
-        .compile(
-            &["./src/daemon/proto/nrzd.proto"],
-            &["./src/daemon/proto"],
-        );
+        .protoc_arg("--experimental_allow_proto3_optional") // Add this line
+        .compile(&["./src/daemon/proto/nrzd.proto"], &["./src/daemon/proto"]);
     let capnpc_result = capnpc::CompilerCommand::new()
         .file("./src/hash/proto.capnp")
         .default_parent_module(vec!["hash".to_string()])

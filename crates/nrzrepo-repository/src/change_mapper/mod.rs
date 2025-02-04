@@ -6,12 +6,12 @@ use std::{
     hash::Hash,
 };
 
+use nrzpath::{AbsoluteSystemPath, AnchoredSystemPathBuf};
 pub use package::{
     DefaultPackageChangeMapper, Error, GlobalDepsPackageChangeMapper, PackageChangeMapper,
     PackageMapping,
 };
 use tracing::debug;
-use nrzpath::{AbsoluteSystemPath, AnchoredSystemPathBuf};
 use wax::Program;
 
 use crate::package_graph::{

@@ -5,12 +5,12 @@ use std::{
 };
 
 use console::StyledObject;
-use tokio::sync::oneshot;
-use tracing::{error, Instrument};
 use nrzrepo_env::{platform::PlatformEnv, EnvironmentVariableMap};
 use nrzrepo_repository::package_manager::PackageManager;
 use nrzrepo_telemetry::events::{task::PackageTaskEventBuilder, TrackedErrors};
 use nrzrepo_ui::{ColorConfig, OutputWriter};
+use tokio::sync::oneshot;
+use tracing::{error, Instrument};
 
 use super::{
     command::{CommandFactory, MicroFrontendProxyProvider, PackageGraphCommandProvider},

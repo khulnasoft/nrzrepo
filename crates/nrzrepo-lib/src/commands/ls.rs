@@ -1,12 +1,12 @@
 //! A command for outputting info about packages and tasks in a nrzrepo.
 
 use miette::Diagnostic;
-use serde::Serialize;
-use thiserror::Error;
 use nrzpath::AnchoredSystemPath;
 use nrzrepo_repository::package_graph::{PackageName, PackageNode};
 use nrzrepo_telemetry::events::command::CommandEventBuilder;
 use nrzrepo_ui::{color, cprint, cprintln, ColorConfig, BOLD, BOLD_GREEN, GREY};
+use serde::Serialize;
+use thiserror::Error;
 
 use crate::{
     cli,

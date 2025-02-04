@@ -2,8 +2,8 @@ use std::{sync::LazyLock, time::Duration};
 
 use console::{style, Style};
 use futures::StreamExt;
-use tokio_stream::StreamMap;
 use nrzrepo_ui::*;
+use tokio_stream::StreamMap;
 
 use super::CommandBase;
 use crate::{diagnostics::*, DaemonPaths};

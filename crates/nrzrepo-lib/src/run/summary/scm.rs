@@ -1,8 +1,8 @@
-use serde::{Deserialize, Serialize};
 use nrzpath::AbsoluteSystemPath;
 use nrzrepo_ci::Vendor;
 use nrzrepo_env::EnvironmentVariableMap;
 use nrzrepo_scm::SCM;
+use serde::{Deserialize, Serialize};
 
 #[derive(Clone, Debug, Deserialize, Serialize)]
 #[serde(rename_all = "lowercase")]

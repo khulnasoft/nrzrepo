@@ -1,7 +1,7 @@
 use std::io;
 
-use thiserror::Error;
 use nrzpath::{AbsoluteSystemPathBuf, PathError};
+use thiserror::Error;
 
 #[derive(Debug, Error)]
 pub enum Error {

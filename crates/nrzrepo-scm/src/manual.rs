@@ -3,8 +3,8 @@ use std::io::{ErrorKind, Read};
 use globwalk::fix_glob_pattern;
 use hex::ToHex;
 use ignore::WalkBuilder;
-use sha1::{Digest, Sha1};
 use nrzpath::{AbsoluteSystemPath, AnchoredSystemPath, IntoUnix};
+use sha1::{Digest, Sha1};
 use wax::{any, Glob, Program};
 
 use crate::{package_deps::GitHashes, Error};
@@ -87,12 +87,11 @@ pub(crate) fn get_package_file_hashes_without_git<S: AsRef<str>>(
         // relative to pkgPath
         //
         // - package.json is an input because if the `scripts` in the package.json
-        //   change (i.e. the tasks that nrz executes), we want a cache miss, since
-        //   any existing cache could be invalid.
+        //   change (i.e. the tasks that nrz executes), we want a cache miss, since any
+        //   existing cache could be invalid.
         // - nrz.json because it's the definition of the tasks themselves. The root
-        //   nrz.json is similarly included in the global hash. This file may not
-        //   exist in the workspace, but that is ok, because it will get ignored
-        //   downstream.
+        //   nrz.json is similarly included in the global hash. This file may not exist
+        //   in the workspace, but that is ok, because it will get ignored downstream.
         let nrz_g = to_glob("package.json")?;
         let package_g = to_glob("nrz.json")?;
         includes.push(nrz_g);
@@ -204,10 +203,10 @@ pub(crate) fn get_package_file_hashes_without_git<S: AsRef<str>>(
 mod tests {
     use std::assert_matches::assert_matches;
 
-    use test_case::test_case;
     use nrzpath::{
         AbsoluteSystemPathBuf, AnchoredSystemPathBuf, RelativeUnixPath, RelativeUnixPathBuf,
     };
+    use test_case::test_case;
 
     use super::*;
 
@@ -412,8 +411,7 @@ mod tests {
         );
 
         let hashes =
-            get_package_file_hashes_without_git::<&str>(&nrz_root, &pkg_path, &[], false)
-                .unwrap();
+            get_package_file_hashes_without_git::<&str>(&nrz_root, &pkg_path, &[], false).unwrap();
         assert_eq!(hashes, expected);
 
         // set a hash for an ignored file

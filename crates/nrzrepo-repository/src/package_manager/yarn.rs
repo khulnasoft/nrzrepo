@@ -102,8 +102,8 @@ mod tests {
     use std::collections::BTreeMap;
 
     use anyhow::Result;
-    use serde_json::json;
     use nrzpath::RelativeUnixPathBuf;
+    use serde_json::json;
 
     use super::prune_patches;
     use crate::{

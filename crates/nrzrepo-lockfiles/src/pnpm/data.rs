@@ -4,8 +4,8 @@ use std::{
     collections::{BTreeMap, HashMap},
 };
 
-use serde::{Deserialize, Serialize};
 use nrzpath::RelativeUnixPathBuf;
+use serde::{Deserialize, Serialize};
 
 use super::{dep_path::DepPath, Error, LockfileVersion, SupportedLockfileVersion};
 

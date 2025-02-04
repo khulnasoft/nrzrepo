@@ -1,11 +1,11 @@
 use std::sync::Arc;
 
 pub use error::Error;
+use nrzrepo_api_client::{CacheClient, Client, TokenClient};
+use nrzrepo_ui::{start_spinner, ColorConfig, BOLD};
 use reqwest::Url;
 use tokio::sync::OnceCell;
 use tracing::{debug, warn};
-use nrzrepo_api_client::{CacheClient, Client, TokenClient};
-use nrzrepo_ui::{start_spinner, ColorConfig, BOLD};
 
 use crate::{auth::extract_vercel_token, error, ui, LoginOptions, Token};
 
@@ -145,12 +145,12 @@ mod tests {
     use std::{assert_matches::assert_matches, sync::atomic::AtomicUsize};
 
     use async_trait::async_trait;
-    use reqwest::{Method, RequestBuilder, Response};
     use nrzrepo_vercel_api::{
         CachingStatus, CachingStatusResponse, Membership, Role, SpacesResponse, Team,
         TeamsResponse, User, UserResponse, VerifiedSsoUser,
     };
     use nrzrepo_vercel_api_mock::start_test_server;
+    use reqwest::{Method, RequestBuilder, Response};
 
     use super::*;
     use crate::{login_server, LoginServer};
@@ -277,8 +277,7 @@ mod tests {
         async fn get_metadata(
             &self,
             token: &str,
-        ) -> nrzrepo_api_client::Result<nrzrepo_vercel_api::token::ResponseTokenMetadata>
-        {
+        ) -> nrzrepo_api_client::Result<nrzrepo_vercel_api::token::ResponseTokenMetadata> {
             if token.is_empty() {
                 return Err(MockApiError::EmptyToken.into());
             }

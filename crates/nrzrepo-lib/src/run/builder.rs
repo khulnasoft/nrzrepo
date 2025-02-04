@@ -6,7 +6,6 @@ use std::{
 };
 
 use chrono::Local;
-use tracing::{debug, warn};
 use nrzpath::{AbsoluteSystemPath, AbsoluteSystemPathBuf};
 use nrzrepo_analytics::{start_analytics, AnalyticsHandle, AnalyticsSender};
 use nrzrepo_api_client::{APIAuth, APIClient};
@@ -27,14 +26,15 @@ use nrzrepo_telemetry::events::{
     EventBuilder, TrackedErrors,
 };
 use nrzrepo_ui::{ColorConfig, ColorSelector};
+use tracing::{debug, warn};
 #[cfg(feature = "daemon-package-discovery")]
 use {
     crate::run::package_discovery::DaemonPackageDiscovery,
-    std::time::Duration,
     nrzrepo_repository::discovery::{
         Error as DiscoveryError, FallbackPackageDiscovery, LocalPackageDiscoveryBuilder,
         PackageDiscoveryBuilder,
     },
+    std::time::Duration,
 };
 
 use crate::{
@@ -42,12 +42,12 @@ use crate::{
     commands::CommandBase,
     engine::{Engine, EngineBuilder},
     microfrontends::MicrofrontendsConfigs,
+    nrz_json::{NrzJson, NrzJsonLoader, UIMode},
     opts::Opts,
     process::ProcessManager,
     run::{scope, task_access::TaskAccess, task_id::TaskName, Error, Run, RunCache},
     shim::NrzState,
     signal::{SignalHandler, SignalSubscriber},
-    nrz_json::{NrzJson, NrzJsonLoader, UIMode},
     DaemonConnector,
 };
 

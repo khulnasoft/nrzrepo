@@ -7,6 +7,13 @@ use git2::Repository;
 use globwalk::Settings;
 use itertools::Itertools;
 use miette::{Diagnostic, NamedSource, Report, SourceSpan};
+use nrz_trace::{ImportFinder, ImportType, Tracer};
+use nrzpath::{AbsoluteSystemPath, AbsoluteSystemPathBuf, PathRelation, RelativeUnixPath};
+use nrzrepo_repository::{
+    package_graph::{PackageName, PackageNode},
+    package_json::PackageJson,
+};
+use nrzrepo_ui::{color, ColorConfig, BOLD_GREEN, BOLD_RED};
 use oxc_resolver::{ResolveError, Resolver};
 use regex::Regex;
 use swc_common::{
@@ -16,13 +23,6 @@ use swc_ecma_ast::EsVersion;
 use swc_ecma_parser::{lexer::Lexer, Capturing, EsSyntax, Parser, Syntax, TsSyntax};
 use swc_ecma_visit::VisitWith;
 use thiserror::Error;
-use nrz_trace::{ImportFinder, ImportType, Tracer};
-use nrzpath::{AbsoluteSystemPath, AbsoluteSystemPathBuf, PathRelation, RelativeUnixPath};
-use nrzrepo_repository::{
-    package_graph::{PackageName, PackageNode},
-    package_json::PackageJson,
-};
-use nrzrepo_ui::{color, ColorConfig, BOLD_GREEN, BOLD_RED};
 
 use crate::run::Run;
 

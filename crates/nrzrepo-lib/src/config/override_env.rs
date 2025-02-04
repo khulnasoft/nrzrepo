@@ -82,9 +82,7 @@ impl Output {
 impl From<Input> for Output {
     fn from(input: Input) -> Self {
         // NRZ_TEAMID+NRZ_TOKEN or NRZ_TEAM+NRZ_TOKEN
-        if input.NRZ_TOKEN.is_some()
-            && (input.NRZ_TEAMID.is_some() || input.NRZ_TEAM.is_some())
-        {
+        if input.NRZ_TOKEN.is_some() && (input.NRZ_TEAMID.is_some() || input.NRZ_TEAM.is_some()) {
             Output {
                 team_id: input.NRZ_TEAMID,
                 team_slug: input.NRZ_TEAM,
@@ -96,7 +94,7 @@ impl From<Input> for Output {
             Output {
                 team_id: input.VERCEL_ARTIFACTS_OWNER,
                 team_slug: input.NRZ_TEAM, /* this may or may not be Some, but if it is we can
-                                              * pass it along too */
+                                            * pass it along too */
                 token: input.VERCEL_ARTIFACTS_TOKEN,
             }
         }
@@ -292,8 +290,8 @@ mod test {
                 .token(NRZ_TOKEN),
             TestCase::new()
                 .reason(
-                    "a NRZ_TEAM+NRZ_TOKEN pair wins against an incomplete Vercel (just \
-                     artifacts token)",
+                    "a NRZ_TEAM+NRZ_TOKEN pair wins against an incomplete Vercel (just artifacts \
+                     token)",
                 )
                 .NRZ_TEAM()
                 .NRZ_TOKEN()

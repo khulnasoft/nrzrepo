@@ -45,8 +45,8 @@ mod tests {
     use std::assert_matches::assert_matches;
 
     use anyhow::Result;
-    use tempfile::tempdir;
     use nrzpath::AbsoluteSystemPathBuf;
+    use tempfile::tempdir;
 
     use super::*;
 

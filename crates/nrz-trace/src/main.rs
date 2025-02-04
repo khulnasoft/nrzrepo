@@ -4,8 +4,8 @@ mod tracer;
 use camino::Utf8PathBuf;
 use clap::Parser;
 use miette::Report;
-use tracer::Tracer;
 use nrzpath::{AbsoluteSystemPathBuf, PathError};
+use tracer::Tracer;
 
 #[derive(Parser, Debug)]
 struct Args {

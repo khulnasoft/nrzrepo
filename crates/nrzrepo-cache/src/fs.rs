@@ -1,10 +1,10 @@
 use std::{backtrace::Backtrace, fs::OpenOptions};
 
 use camino::Utf8Path;
-use serde::{Deserialize, Serialize};
 use nrzpath::{AbsoluteSystemPath, AbsoluteSystemPathBuf, AnchoredSystemPathBuf};
 use nrzrepo_analytics::AnalyticsSender;
 use nrzrepo_api_client::{analytics, analytics::AnalyticsEvent};
+use serde::{Deserialize, Serialize};
 
 use crate::{
     cache_archive::{CacheReader, CacheWriter},
@@ -182,11 +182,11 @@ mod test {
 
     use anyhow::Result;
     use futures::future::try_join_all;
-    use tempfile::tempdir;
     use nrzpath::AnchoredSystemPath;
     use nrzrepo_analytics::start_analytics;
     use nrzrepo_api_client::{APIAuth, APIClient};
     use nrzrepo_vercel_api_mock::start_test_server;
+    use tempfile::tempdir;
 
     use super::*;
     use crate::test_cases::{get_test_cases, validate_analytics, TestCase};

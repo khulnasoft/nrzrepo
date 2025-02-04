@@ -1,7 +1,7 @@
 use std::env;
 
-use tracing::debug;
 use nrzrepo_repository::{inference::RepoState, package_manager::PackageManager};
+use tracing::debug;
 
 const NRZ_DOWNLOAD_LOCAL_ENABLED: &str = "NRZ_DOWNLOAD_LOCAL_ENABLED";
 
@@ -65,11 +65,11 @@ impl LocalNrzConfig {
 
 #[cfg(test)]
 mod test {
-    use tempfile::TempDir;
     use nrzpath::AbsoluteSystemPath;
     use nrzrepo_repository::{
         inference::RepoMode, package_json::PackageJson, package_manager::Error,
     };
+    use tempfile::TempDir;
 
     use super::*;
 
@@ -131,11 +131,7 @@ mod test {
             root: root.to_owned(),
             mode: RepoMode::MultiPackage,
             root_package_json: PackageJson {
-                dependencies: Some(
-                    vec![("nrz".into(), "^2.0.0".into())]
-                        .into_iter()
-                        .collect(),
-                ),
+                dependencies: Some(vec![("nrz".into(), "^2.0.0".into())].into_iter().collect()),
                 ..Default::default()
             },
             package_manager: Err(Error::MissingPackageManager),
@@ -152,11 +148,7 @@ mod test {
             root: root.to_owned(),
             mode: RepoMode::MultiPackage,
             root_package_json: PackageJson {
-                dev_dependencies: Some(
-                    vec![("nrz".into(), "^2.0.0".into())]
-                        .into_iter()
-                        .collect(),
-                ),
+                dev_dependencies: Some(vec![("nrz".into(), "^2.0.0".into())].into_iter().collect()),
                 ..Default::default()
             },
             package_manager: Err(Error::MissingPackageManager),

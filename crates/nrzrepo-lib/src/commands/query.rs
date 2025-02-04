@@ -3,9 +3,9 @@ use std::{fs, sync::Arc};
 use async_graphql::{EmptyMutation, EmptySubscription, Request, Schema, ServerError, Variables};
 use camino::Utf8Path;
 use miette::{Diagnostic, Report, SourceSpan};
-use thiserror::Error;
 use nrzpath::AbsoluteSystemPathBuf;
 use nrzrepo_telemetry::events::command::CommandEventBuilder;
+use thiserror::Error;
 
 use crate::{
     commands::{run::get_signal, CommandBase},

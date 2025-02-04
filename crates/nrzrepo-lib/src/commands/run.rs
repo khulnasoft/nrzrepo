@@ -1,8 +1,8 @@
 use std::{future::Future, sync::Arc};
 
-use tracing::error;
 use nrzrepo_telemetry::events::command::CommandEventBuilder;
 use nrzrepo_ui::sender::UISender;
+use tracing::error;
 
 use crate::{commands::CommandBase, run, run::builder::RunBuilder, signal::SignalHandler};
 

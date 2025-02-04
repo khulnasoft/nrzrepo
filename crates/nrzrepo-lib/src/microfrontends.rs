@@ -1,15 +1,15 @@
 use std::collections::{HashMap, HashSet};
 
 use itertools::Itertools;
-use tracing::warn;
 use nrzpath::{AbsoluteSystemPath, RelativeUnixPath, RelativeUnixPathBuf};
 use nrzrepo_microfrontends::{Config as MFEConfig, Error, MICROFRONTENDS_PACKAGE};
 use nrzrepo_repository::package_graph::{PackageGraph, PackageName};
+use tracing::warn;
 
 use crate::{
     config,
-    run::task_id::{TaskId, TaskName},
     nrz_json::NrzJson,
+    run::task_id::{TaskId, TaskName},
 };
 
 #[derive(Debug, Clone)]
@@ -147,10 +147,7 @@ impl MicrofrontendsConfigs {
         }
     }
 
-    fn package_nrz_json_update<'a>(
-        &'a self,
-        package_name: &PackageName,
-    ) -> Option<FindResult<'a>> {
+    fn package_nrz_json_update<'a>(&'a self, package_name: &PackageName) -> Option<FindResult<'a>> {
         let results = self.configs.iter().filter_map(|(config, info)| {
             let dev_task = info.tasks.iter().find_map(|task| {
                 (task.package() == package_name.as_str()).then(|| FindResult {
@@ -271,8 +268,8 @@ impl ConfigInfo {
 
 #[cfg(test)]
 mod test {
-    use serde_json::json;
     use nrzrepo_microfrontends::MICROFRONTENDS_PACKAGE;
+    use serde_json::json;
 
     use super::*;
 

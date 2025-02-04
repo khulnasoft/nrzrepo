@@ -9,12 +9,12 @@ use biome_deserialize_macros::Deserializable;
 use camino::Utf8Path;
 use clap::ValueEnum;
 use miette::{NamedSource, SourceSpan};
-use serde::{Deserialize, Serialize};
-use struct_iterable::Iterable;
 use nrzpath::AbsoluteSystemPath;
 use nrzrepo_errors::Spanned;
 use nrzrepo_repository::package_graph::ROOT_PKG_NAME;
 use nrzrepo_unescape::UnescapedString;
+use serde::{Deserialize, Serialize};
+use struct_iterable::Iterable;
 
 use crate::{
     cli::{EnvMode, OutputLogsMode},
@@ -701,10 +701,7 @@ pub fn validate_extends(nrz_json: &NrzJson) -> Vec<Error> {
             vec![Error::ExtendFromNonRoot { span, text }]
         }
         None => {
-            let path = nrz_json
-                .path
-                .as_ref()
-                .map_or("nrz.json", |p| p.as_ref());
+            let path = nrz_json.path.as_ref().map_or("nrz.json", |p| p.as_ref());
 
             let (span, text) = match nrz_json.text {
                 Some(ref text) => {
@@ -759,17 +756,17 @@ mod tests {
     use anyhow::Result;
     use biome_deserialize::json::deserialize_from_json_str;
     use biome_json_parser::JsonParserOptions;
+    use nrzrepo_unescape::UnescapedString;
     use pretty_assertions::assert_eq;
     use serde_json::json;
     use test_case::test_case;
-    use nrzrepo_unescape::UnescapedString;
 
-    use super::{RawNrzJson, Spanned, NrzJson, UIMode};
+    use super::{NrzJson, RawNrzJson, Spanned, UIMode};
     use crate::{
         cli::OutputLogsMode,
+        nrz_json::RawTaskDefinition,
         run::task_id::TaskName,
         task_graph::{TaskDefinition, TaskOutputs},
-        nrz_json::RawTaskDefinition,
     };
 
     #[test_case(

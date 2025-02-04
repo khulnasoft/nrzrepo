@@ -7,10 +7,10 @@ use std::{
 };
 
 use notify::Event;
+use nrzpath::{AbsoluteSystemPathBuf, RelativeUnixPath};
 use thiserror::Error;
 use tokio::sync::{broadcast, mpsc, oneshot};
 use tracing::{debug, warn};
-use nrzpath::{AbsoluteSystemPathBuf, RelativeUnixPath};
 use wax::{Any, Glob, Program};
 
 use crate::{

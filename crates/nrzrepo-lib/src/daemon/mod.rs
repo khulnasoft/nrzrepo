@@ -30,9 +30,9 @@ mod server;
 
 pub use client::{DaemonClient, DaemonError};
 pub use connector::{DaemonConnector, DaemonConnectorError};
+use nrzpath::{AbsoluteSystemPath, AbsoluteSystemPathBuf};
 pub use server::{CloseReason, NrzGrpcService};
 use sha2::{Digest, Sha256};
-use nrzpath::{AbsoluteSystemPath, AbsoluteSystemPathBuf};
 
 #[derive(Clone, Debug)]
 pub struct Paths {

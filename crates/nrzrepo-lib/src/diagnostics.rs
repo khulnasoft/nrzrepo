@@ -1,6 +1,9 @@
 use std::{process::Stdio, sync::Arc, time::Duration};
 
 use futures::future::join_all;
+use nrz_updater::check_for_updates;
+use nrzpath::AbsoluteSystemPathBuf;
+use nrzrepo_scm::Git;
 use tokio::{
     process::Command,
     sync::{
@@ -9,9 +12,6 @@ use tokio::{
         Mutex,
     },
 };
-use nrz_updater::check_for_updates;
-use nrzpath::AbsoluteSystemPathBuf;
-use nrzrepo_scm::Git;
 
 use crate::{
     commands::{
@@ -521,9 +521,7 @@ impl Diagnostic for UpdateDiagnostic {
                                     .await;
                                     chan.failed("Unable to update Nrzrepo".to_string()).await
                                 }
-                                Err(_) => {
-                                    chan.failed("Unable to update Nrzrepo".to_string()).await
-                                }
+                                Err(_) => chan.failed("Unable to update Nrzrepo".to_string()).await,
                             }
                         }
                         Ok("No") => chan.failed("Nrzrepo on old version".to_string()).await,

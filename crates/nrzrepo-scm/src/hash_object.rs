@@ -1,5 +1,5 @@
-use tracing::Span;
 use nrzpath::{AbsoluteSystemPath, AnchoredSystemPathBuf, RelativeUnixPathBuf};
+use tracing::Span;
 
 use crate::{package_deps::GitHashes, Error};
 
@@ -58,12 +58,8 @@ mod test {
         let cwd = std::env::current_dir().unwrap();
         let cwd = AbsoluteSystemPathBuf::try_from(cwd).unwrap();
         let git_root = find_git_root(&cwd).unwrap();
-        let fixture_path = git_root.join_components(&[
-            "crates",
-            "nrzrepo-scm",
-            "fixtures",
-            "01-git-hash-object",
-        ]);
+        let fixture_path =
+            git_root.join_components(&["crates", "nrzrepo-scm", "fixtures", "01-git-hash-object"]);
 
         let fixture_child_path = fixture_path.join_component("child");
         let git_root = find_git_root(&fixture_path).unwrap();

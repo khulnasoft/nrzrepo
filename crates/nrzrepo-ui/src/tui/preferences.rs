@@ -1,5 +1,5 @@
-use serde::{Deserialize, Serialize};
 use nrzpath::AbsoluteSystemPathBuf;
+use serde::{Deserialize, Serialize};
 
 const TUI_PREFERENCES_PATH_COMPONENTS: &[&str] = &[".nrz", "preferences", "tui.json"];
 

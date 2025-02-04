@@ -14,9 +14,9 @@ use std::{
 };
 
 use bstr::io::BufReadExt;
+use nrzpath::{AbsoluteSystemPath, AbsoluteSystemPathBuf, PathError, RelativeUnixPathBuf};
 use thiserror::Error;
 use tracing::debug;
-use nrzpath::{AbsoluteSystemPath, AbsoluteSystemPathBuf, PathError, RelativeUnixPathBuf};
 
 pub mod git;
 mod hash_object;

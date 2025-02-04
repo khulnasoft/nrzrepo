@@ -1,12 +1,11 @@
-use tracing::error;
 use nrzpath::AbsoluteSystemPath;
 use nrzrepo_api_client::TokenClient;
 use nrzrepo_dirs::{config_dir, vercel_config_dir};
 use nrzrepo_ui::{cprintln, GREY};
+use tracing::error;
 
 use crate::{
-    Error, LogoutOptions, Token, NRZ_TOKEN_DIR, NRZ_TOKEN_FILE, VERCEL_TOKEN_DIR,
-    VERCEL_TOKEN_FILE,
+    Error, LogoutOptions, Token, NRZ_TOKEN_DIR, NRZ_TOKEN_FILE, VERCEL_TOKEN_DIR, VERCEL_TOKEN_FILE,
 };
 
 pub async fn logout<T: TokenClient>(options: &LogoutOptions<T>) -> Result<(), Error> {
@@ -82,8 +81,6 @@ impl<T: TokenClient> LogoutOptions<T> {
 mod tests {
     use std::backtrace::Backtrace;
 
-    use reqwest::{RequestBuilder, Response};
-    use tempfile::tempdir;
     use nrzpath::AbsoluteSystemPathBuf;
     use nrzrepo_api_client::Client;
     use nrzrepo_ui::ColorConfig;
@@ -91,6 +88,8 @@ mod tests {
         token::ResponseTokenMetadata, SpacesResponse, Team, TeamsResponse, UserResponse,
         VerifiedSsoUser,
     };
+    use reqwest::{RequestBuilder, Response};
+    use tempfile::tempdir;
     use url::Url;
 
     use super::*;

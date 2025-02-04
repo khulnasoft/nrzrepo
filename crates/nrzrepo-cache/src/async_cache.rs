@@ -1,11 +1,11 @@
 use std::sync::{atomic::AtomicU8, Arc, Mutex};
 
 use futures::{stream::FuturesUnordered, StreamExt};
-use tokio::sync::{mpsc, oneshot, Semaphore};
-use tracing::{warn, Instrument, Level};
 use nrzpath::{AbsoluteSystemPath, AbsoluteSystemPathBuf, AnchoredSystemPathBuf};
 use nrzrepo_analytics::AnalyticsSender;
 use nrzrepo_api_client::{APIAuth, APIClient};
+use tokio::sync::{mpsc, oneshot, Semaphore};
+use tracing::{warn, Instrument, Level};
 
 use crate::{
     http::UploadMap, multiplexer::CacheMultiplexer, CacheError, CacheHitMetadata, CacheOpts,
@@ -220,10 +220,10 @@ mod tests {
     use anyhow::Result;
     use camino::Utf8PathBuf;
     use futures::future::try_join_all;
-    use tempfile::tempdir;
     use nrzpath::AbsoluteSystemPathBuf;
     use nrzrepo_api_client::{APIAuth, APIClient};
     use nrzrepo_vercel_api_mock::start_test_server;
+    use tempfile::tempdir;
 
     use crate::{
         test_cases::{get_test_cases, TestCase},

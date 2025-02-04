@@ -1,7 +1,7 @@
 mod local_nrz_config;
 mod local_nrz_state;
-mod parser;
 mod nrz_state;
+mod parser;
 
 use std::{backtrace::Backtrace, env, process, process::Stdio, time::Duration};
 
@@ -9,15 +9,15 @@ use dunce::canonicalize as fs_canonicalize;
 use local_nrz_config::LocalNrzConfig;
 use local_nrz_state::{nrz_version_has_shim, LocalNrzState};
 use miette::{Diagnostic, SourceSpan};
-use parser::{MultipleCwd, ShimArgs};
-use thiserror::Error;
-use tiny_gradient::{GradientStr, RGB};
-use tracing::{debug, warn};
 pub use nrz_state::NrzState;
 use nrz_updater::display_update_check;
 use nrzpath::AbsoluteSystemPathBuf;
 use nrzrepo_repository::inference::{RepoMode, RepoState};
 use nrzrepo_ui::ColorConfig;
+use parser::{MultipleCwd, ShimArgs};
+use thiserror::Error;
+use tiny_gradient::{GradientStr, RGB};
+use tracing::{debug, warn};
 use which::which;
 
 use crate::{cli, get_version, spawn_child, tracing::NrzSubscriber};
@@ -117,13 +117,9 @@ fn spawn_local_nrz(
     local_nrz_state: LocalNrzState,
     mut shim_args: ShimArgs,
 ) -> Result<i32, Error> {
-    let local_nrz_path = fs_canonicalize(local_nrz_state.binary()).map_err(|_| {
-        Error::LocalNrzPath(local_nrz_state.binary().to_string_lossy().to_string())
-    })?;
-    debug!(
-        "Running local nrz binary in {}\n",
-        local_nrz_path.display()
-    );
+    let local_nrz_path = fs_canonicalize(local_nrz_state.binary())
+        .map_err(|_| Error::LocalNrzPath(local_nrz_state.binary().to_string_lossy().to_string()))?;
+    debug!("Running local nrz binary in {}\n", local_nrz_path.display());
     let cwd = fs_canonicalize(&repo_state.root)
         .map_err(|_| Error::RepoRootPath(repo_state.root.clone()))?;
 

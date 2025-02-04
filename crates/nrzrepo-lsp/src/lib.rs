@@ -22,13 +22,6 @@ use jsonc_parser::{
     ast::{ObjectPropName, StringLit},
     CollectOptions,
 };
-use serde_json::Value;
-use tokio::sync::watch::{Receiver, Sender};
-use tower_lsp::{
-    jsonrpc::{Error, Result as LspResult},
-    lsp_types::*,
-    Client, LanguageServer,
-};
 use nrzpath::AbsoluteSystemPathBuf;
 use nrzrepo_lib::{
     DaemonClient, DaemonConnector, DaemonConnectorError, DaemonError, DaemonPackageDiscovery,
@@ -37,6 +30,13 @@ use nrzrepo_lib::{
 use nrzrepo_repository::{
     discovery::{self, DiscoveryResponse, PackageDiscovery, WorkspaceData},
     package_json::PackageJson,
+};
+use serde_json::Value;
+use tokio::sync::watch::{Receiver, Sender};
+use tower_lsp::{
+    jsonrpc::{Error, Result as LspResult},
+    lsp_types::*,
+    Client, LanguageServer,
 };
 
 pub struct Backend {
@@ -98,8 +98,8 @@ impl LanguageServer for Backend {
                     self.client
                         .show_message(
                             MessageType::ERROR,
-                            "Pre-2.0 versions of nrzrepo are not compatible with 2.0 or later \
-                             of the extension. If you do not plan to update to nrz 2.0, please \
+                            "Pre-2.0 versions of nrzrepo are not compatible with 2.0 or later of \
+                             the extension. If you do not plan to update to nrz 2.0, please \
                              ensure you install the latest 1.0 version of the extension in this \
                              workspace.",
                         )

@@ -5,6 +5,7 @@ use std::{
     time::Duration,
 };
 
+use nrzpath::AbsoluteSystemPathBuf;
 use ratatui::{
     backend::{Backend, CrosstermBackend},
     layout::{Constraint, Layout},
@@ -16,7 +17,6 @@ use tokio::{
     time::Instant,
 };
 use tracing::{debug, trace};
-use nrzpath::AbsoluteSystemPathBuf;
 
 use crate::tui::popup::{popup, popup_area};
 
@@ -917,8 +917,8 @@ fn view<W>(app: &mut App<W>, f: &mut Frame) {
 
 #[cfg(test)]
 mod test {
-    use tempfile::tempdir;
     use nrzpath::AbsoluteSystemPathBuf;
+    use tempfile::tempdir;
 
     use super::*;
     use crate::tui::event::CacheResult;

@@ -2,10 +2,10 @@ use std::backtrace;
 
 use itertools::Itertools;
 use miette::Diagnostic;
-use thiserror::Error;
 use nrzrepo_repository::package_graph;
 use nrzrepo_telemetry::events::command::CommandEventBuilder;
 use nrzrepo_ui::{color, BOLD, GREY};
+use thiserror::Error;
 
 use crate::{
     commands::{bin, generate, link, ls, prune, run::get_signal, CommandBase},

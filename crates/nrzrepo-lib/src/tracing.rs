@@ -1,6 +1,7 @@
 use std::{io::Stderr, marker::PhantomData, path::Path, sync::Mutex};
 
 use chrono::Local;
+use nrzrepo_ui::ColorConfig;
 use owo_colors::{
     colors::{Black, Default, Red, Yellow},
     Color, OwoColorize,
@@ -22,7 +23,6 @@ use tracing_subscriber::{
     reload::{self, Handle},
     EnvFilter, Layer, Registry,
 };
-use nrzrepo_ui::ColorConfig;
 
 // a lot of types to make sure we record the right relationships
 
@@ -90,8 +90,8 @@ impl NrzSubscriber {
     ///
     /// ## Logging behaviour:
     /// - If stdout is a terminal, we use ansi colors. Otherwise, we do not.
-    /// - If the `NRZ_LOG_VERBOSITY` env var is set, it will be used to set
-    ///   the verbosity level. Otherwise, the default is `WARN`. See the
+    /// - If the `NRZ_LOG_VERBOSITY` env var is set, it will be used to set the
+    ///   verbosity level. Otherwise, the default is `WARN`. See the
     ///   documentation on the RUST_LOG env var for syntax.
     /// - If the verbosity argument (usually determined by a flag) is provided,
     ///   it overrides the default global log level. This means it overrides the
@@ -128,9 +128,7 @@ impl NrzSubscriber {
 
         let stderr = fmt::layer()
             .with_writer(StdErrWrapper {})
-            .event_format(NrzFormatter::new_with_ansi(
-                !color_config.should_strip_ansi,
-            ))
+            .event_format(NrzFormatter::new_with_ansi(!color_config.should_strip_ansi))
             .with_filter(env_filter(LevelFilter::WARN));
 
         // we set this layer to None to start with, effectively disabling it

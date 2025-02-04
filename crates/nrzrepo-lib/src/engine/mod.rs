@@ -12,12 +12,12 @@ use std::{
 pub use builder::{EngineBuilder, Error as BuilderError};
 pub use execute::{ExecuteError, ExecutionOptions, Message, StopExecution};
 use miette::{Diagnostic, NamedSource, SourceSpan};
-use petgraph::Graph;
-use thiserror::Error;
 use nrzrepo_errors::Spanned;
 use nrzrepo_repository::package_graph::{PackageGraph, PackageName};
+use petgraph::Graph;
+use thiserror::Error;
 
-use crate::{run::task_id::TaskId, task_graph::TaskDefinition, nrz_json::UIMode};
+use crate::{nrz_json::UIMode, run::task_id::TaskId, task_graph::TaskDefinition};
 
 #[derive(Debug, Clone, PartialEq, Eq, Hash, PartialOrd, Ord)]
 pub enum TaskNode {
@@ -594,12 +594,12 @@ mod test {
 
     use std::collections::BTreeMap;
 
-    use tempfile::TempDir;
     use nrzpath::AbsoluteSystemPath;
     use nrzrepo_repository::{
         discovery::{DiscoveryResponse, PackageDiscovery, WorkspaceData},
         package_json::PackageJson,
     };
+    use tempfile::TempDir;
 
     use super::*;
     use crate::run::task_id::TaskName;

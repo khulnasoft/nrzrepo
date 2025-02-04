@@ -1,7 +1,7 @@
 use std::future::Future;
 
-use reqwest::Method;
 pub use nrzrepo_vercel_api::{AnalyticsEvent, CacheEvent, CacheSource};
+use reqwest::Method;
 
 use crate::{retry, APIAuth, APIClient, Error};
 

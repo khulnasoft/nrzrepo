@@ -11,11 +11,11 @@ use nrzrepo_repository::package_graph::{PackageGraph, PackageName, PackageNode, 
 use super::Engine;
 use crate::{
     config,
+    nrz_json::{
+        validate_extends, validate_no_package_task_syntax, NrzJsonLoader, RawTaskDefinition,
+    },
     run::task_id::{TaskId, TaskName},
     task_graph::TaskDefinition,
-    nrz_json::{
-        validate_extends, validate_no_package_task_syntax, RawTaskDefinition, NrzJsonLoader,
-    },
 };
 
 #[derive(Debug, thiserror::Error, Diagnostic)]
@@ -208,12 +208,7 @@ impl<'a> EngineBuilder<'a> {
         let tasks: Vec<Spanned<TaskName<'static>>> = if self.add_all_tasks {
             let mut tasks = Vec::new();
             if let Ok(nrz_json) = nrz_json_loader.load(&PackageName::Root) {
-                tasks.extend(
-                    nrz_json
-                        .tasks
-                        .keys()
-                        .map(|task| Spanned::new(task.clone())),
-                );
+                tasks.extend(nrz_json.tasks.keys().map(|task| Spanned::new(task.clone())));
             }
 
             for workspace in self.workspaces.iter() {
@@ -221,12 +216,7 @@ impl<'a> EngineBuilder<'a> {
                     continue;
                 };
 
-                tasks.extend(
-                    nrz_json
-                        .tasks
-                        .keys()
-                        .map(|task| Spanned::new(task.clone())),
-                );
+                tasks.extend(nrz_json.tasks.keys().map(|task| Spanned::new(task.clone())));
             }
 
             tasks
@@ -594,20 +584,20 @@ mod test {
     use std::assert_matches::assert_matches;
 
     use insta::{assert_json_snapshot, assert_snapshot};
-    use pretty_assertions::assert_eq;
-    use serde_json::json;
-    use tempfile::TempDir;
-    use test_case::test_case;
     use nrzpath::AbsoluteSystemPathBuf;
     use nrzrepo_lockfiles::Lockfile;
     use nrzrepo_repository::{
         discovery::PackageDiscovery, package_json::PackageJson, package_manager::PackageManager,
     };
+    use pretty_assertions::assert_eq;
+    use serde_json::json;
+    use tempfile::TempDir;
+    use test_case::test_case;
 
     use super::*;
     use crate::{
         engine::TaskNode,
-        nrz_json::{RawNrzJson, NrzJson},
+        nrz_json::{NrzJson, RawNrzJson},
     };
 
     // Only used to prevent package graph construction from attempting to read

@@ -13,6 +13,16 @@ use std::{
 };
 
 use futures::Future;
+use nrzpath::{AbsoluteSystemPath, AbsoluteSystemPathBuf, AnchoredSystemPathBuf, PathError};
+use nrzrepo_filewatch::{
+    cookies::CookieWriter,
+    globwatcher::{Error as GlobWatcherError, GlobError, GlobSet, GlobWatcher},
+    hash_watcher::{Error as HashWatcherError, HashSpec, HashWatcher, InputGlobs},
+    package_watcher::{PackageWatchError, PackageWatcher},
+    FileSystemWatcher, WatchError,
+};
+use nrzrepo_repository::package_manager;
+use nrzrepo_scm::SCM;
 use prost::DecodeError;
 use semver::Version;
 use thiserror::Error;
@@ -25,16 +35,6 @@ use tokio_stream::wrappers::ReceiverStream;
 use tonic::{server::NamedService, transport::Server};
 use tower::ServiceBuilder;
 use tracing::{error, info, trace, warn};
-use nrzpath::{AbsoluteSystemPath, AbsoluteSystemPathBuf, AnchoredSystemPathBuf, PathError};
-use nrzrepo_filewatch::{
-    cookies::CookieWriter,
-    globwatcher::{Error as GlobWatcherError, GlobError, GlobSet, GlobWatcher},
-    hash_watcher::{Error as HashWatcherError, HashSpec, HashWatcher, InputGlobs},
-    package_watcher::{PackageWatchError, PackageWatcher},
-    FileSystemWatcher, WatchError,
-};
-use nrzrepo_repository::package_manager;
-use nrzrepo_scm::SCM;
 
 use super::{bump_timeout::BumpTimeout, endpoint::SocketOpenError, proto};
 use crate::{
@@ -239,9 +239,7 @@ where
             let service = ServiceBuilder::new()
                 .layer(BumpTimeoutLayer::new(bump_timeout.clone()))
                 .layer(DefaultTimeoutLayer)
-                .service(crate::daemon::proto::nrzd_server::NrzdServer::new(
-                    service,
-                ));
+                .service(crate::daemon::proto::nrzd_server::NrzdServer::new(service));
 
             Server::builder()
                 // we respect the timeout specified by the client if it is set, but
@@ -692,17 +690,17 @@ mod test {
     };
 
     use futures::FutureExt;
-    use semver::Version;
-    use test_case::test_case;
-    use tokio::sync::oneshot;
     use nrzpath::AbsoluteSystemPathBuf;
     use nrzrepo_repository::{
         discovery::{DiscoveryResponse, PackageDiscovery},
         package_manager::PackageManager,
     };
+    use semver::Version;
+    use test_case::test_case;
+    use tokio::sync::oneshot;
 
     use super::compare_versions;
-    use crate::daemon::{proto::VersionRange, CloseReason, Paths, NrzGrpcService};
+    use crate::daemon::{proto::VersionRange, CloseReason, NrzGrpcService, Paths};
 
     #[test_case("1.2.3", "1.2.3", VersionRange::Exact, true ; "exact match")]
     #[test_case("1.2.3", "1.2.3", VersionRange::Patch, true ; "patch match")]

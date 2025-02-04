@@ -7,12 +7,10 @@ use std::{
     process::Command,
 };
 
+use nrzpath::{AbsoluteSystemPath, AbsoluteSystemPathBuf, AnchoredSystemPathBuf, RelativeUnixPath};
+use nrzrepo_ci::Vendor;
 use serde::Deserialize;
 use tracing::warn;
-use nrzpath::{
-    AbsoluteSystemPath, AbsoluteSystemPathBuf, AnchoredSystemPathBuf, RelativeUnixPath,
-};
-use nrzrepo_ci::Vendor;
 
 use crate::{Error, Git, SCM};
 
@@ -423,9 +421,9 @@ mod tests {
     };
 
     use git2::{Oid, Repository, RepositoryInitOptions};
+    use nrzpath::{AbsoluteSystemPath, AbsoluteSystemPathBuf, PathError};
     use tempfile::{NamedTempFile, TempDir};
     use test_case::test_case;
-    use nrzpath::{AbsoluteSystemPath, AbsoluteSystemPathBuf, PathError};
     use which::which;
 
     use super::{previous_content, CIEnv, InvalidRange};

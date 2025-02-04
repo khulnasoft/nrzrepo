@@ -1,9 +1,9 @@
 use std::collections::BTreeMap;
 
-use serde::Serialize;
 use nrzpath::{AnchoredSystemPathBuf, RelativeUnixPathBuf};
 use nrzrepo_cache::CacheHitMetadata;
 use nrzrepo_env::{DetailedMap, EnvironmentVariableMap};
+use serde::Serialize;
 
 use super::{execution::TaskExecutionSummary, EnvMode};
 use crate::{

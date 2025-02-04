@@ -1,8 +1,8 @@
 use std::collections::BTreeMap;
 
-use serde::Serialize;
 use nrzpath::RelativeUnixPathBuf;
 use nrzrepo_env::EnvironmentVariablePairs;
+use serde::Serialize;
 
 use crate::run::{global_hash::GlobalHashableInputs, summary::Error};
 

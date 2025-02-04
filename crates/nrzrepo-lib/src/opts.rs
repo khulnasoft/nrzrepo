@@ -1,19 +1,19 @@
 use std::backtrace;
 
 use camino::Utf8PathBuf;
-use serde::Serialize;
-use thiserror::Error;
 use nrzpath::{AbsoluteSystemPath, AbsoluteSystemPathBuf, AnchoredSystemPathBuf};
 use nrzrepo_api_client::APIAuth;
 use nrzrepo_cache::{CacheOpts, RemoteCacheOpts};
+use serde::Serialize;
+use thiserror::Error;
 
 use crate::{
     cli::{
         Command, DryRunMode, EnvMode, ExecutionArgs, LogOrder, LogPrefix, OutputLogsMode, RunArgs,
     },
     config::ConfigurationOptions,
-    run::task_id::TaskId,
     nrz_json::UIMode,
+    run::task_id::TaskId,
     Args,
 };
 
@@ -541,20 +541,20 @@ impl ScopeOpts {
 mod test {
     use clap::Parser;
     use itertools::Itertools;
-    use serde_json::json;
-    use tempfile::TempDir;
-    use test_case::test_case;
     use nrzpath::AbsoluteSystemPathBuf;
     use nrzrepo_cache::{CacheActions, CacheConfig, CacheOpts};
     use nrzrepo_ui::ColorConfig;
+    use serde_json::json;
+    use tempfile::TempDir;
+    use test_case::test_case;
 
     use super::{APIClientOpts, RepoOpts, RunOpts};
     use crate::{
         cli::{Command, DryRunMode, RunArgs},
         commands::CommandBase,
         config::ConfigurationOptions,
-        opts::{Opts, RunCacheOpts, ScopeOpts},
         nrz_json::UIMode,
+        opts::{Opts, RunCacheOpts, ScopeOpts},
         Args,
     };
 

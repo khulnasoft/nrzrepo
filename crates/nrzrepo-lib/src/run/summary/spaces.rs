@@ -8,15 +8,15 @@ use std::{
 use chrono::{DateTime, Local};
 use futures::{stream::FuturesUnordered, StreamExt};
 use itertools::Itertools;
-use serde::Serialize;
-use tokio::{sync::mpsc::Sender, task::JoinHandle};
-use tracing::debug;
 use nrzrepo_api_client::{
     spaces::{CreateSpaceRunPayload, SpaceTaskSummary, SpacesCacheStatus},
     APIAuth, APIClient,
 };
 use nrzrepo_cache::CacheHitMetadata;
 use nrzrepo_vercel_api::SpaceRun;
+use serde::Serialize;
+use tokio::{sync::mpsc::Sender, task::JoinHandle};
+use tracing::debug;
 
 use super::execution::TaskExecutionSummary;
 use crate::{
@@ -352,8 +352,6 @@ mod tests {
 
     use anyhow::Result;
     use chrono::Local;
-    use pretty_assertions::assert_eq;
-    use test_case::test_case;
     use nrzrepo_api_client::{
         spaces::{CreateSpaceRunPayload, SpaceTaskSummary},
         APIAuth, APIClient,
@@ -362,6 +360,8 @@ mod tests {
         start_test_server, EXPECTED_SPACE_ID, EXPECTED_SPACE_RUN_ID, EXPECTED_TEAM_ID,
         EXPECTED_TEAM_SLUG, EXPECTED_TOKEN,
     };
+    use pretty_assertions::assert_eq;
+    use test_case::test_case;
 
     use super::trim_logs;
     use crate::run::summary::spaces::SpacesClient;

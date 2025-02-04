@@ -3,15 +3,15 @@ mod visitor;
 use std::str::FromStr;
 
 use globwalk::{GlobError, ValidatedGlob};
-use serde::{Deserialize, Serialize};
 use nrzpath::{AnchoredSystemPath, AnchoredSystemPathBuf, RelativeUnixPathBuf};
 use nrzrepo_errors::Spanned;
+use serde::{Deserialize, Serialize};
 pub use visitor::{Error as VisitorError, Visitor};
 
 use crate::{
     cli::{EnvMode, OutputLogsMode},
-    run::task_id::{TaskId, TaskName},
     nrz_json::RawTaskDefinition,
+    run::task_id::{TaskId, TaskName},
 };
 
 // TaskOutputs represents the patterns for including and excluding files from

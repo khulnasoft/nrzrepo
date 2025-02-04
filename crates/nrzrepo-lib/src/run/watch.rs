@@ -6,20 +6,21 @@ use std::{
 
 use futures::StreamExt;
 use miette::{Diagnostic, SourceSpan};
-use thiserror::Error;
-use tokio::{select, sync::Notify, task::JoinHandle};
-use tracing::{instrument, trace, warn};
 use nrzrepo_repository::package_graph::PackageName;
 use nrzrepo_telemetry::events::command::CommandEventBuilder;
 use nrzrepo_ui::sender::UISender;
+use thiserror::Error;
+use tokio::{select, sync::Notify, task::JoinHandle};
+use tracing::{instrument, trace, warn};
 
 use crate::{
     commands::{self, CommandBase},
     daemon::{proto, DaemonConnectorError, DaemonError},
-    get_version, opts,
+    get_version,
+    nrz_json::CONFIG_FILE,
+    opts,
     run::{self, builder::RunBuilder, scope::target_selector::InvalidSelectorError, Run},
     signal::SignalHandler,
-    nrz_json::CONFIG_FILE,
     DaemonConnector, DaemonPaths,
 };
 

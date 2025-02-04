@@ -1,7 +1,7 @@
 mod env;
 mod file;
-mod override_env;
 mod nrz_json;
+mod override_env;
 
 use std::{collections::HashMap, ffi::OsString, io};
 
@@ -12,16 +12,16 @@ use env::EnvVars;
 use file::{AuthFile, ConfigFile};
 use merge::Merge;
 use miette::{Diagnostic, NamedSource, SourceSpan};
-use override_env::OverrideEnvVars;
-use serde::Deserialize;
-use struct_iterable::Iterable;
-use thiserror::Error;
-use tracing::debug;
 use nrz_json::NrzJsonReader;
 use nrzpath::{AbsoluteSystemPath, AbsoluteSystemPathBuf};
 use nrzrepo_cache::CacheConfig;
 use nrzrepo_errors::NRZ_SITE;
 use nrzrepo_repository::package_graph::PackageName;
+use override_env::OverrideEnvVars;
+use serde::Deserialize;
+use struct_iterable::Iterable;
+use thiserror::Error;
+use tracing::debug;
 
 pub use crate::nrz_json::{RawNrzJson, UIMode};
 use crate::{
@@ -514,8 +514,8 @@ impl NrzrepoConfigBuilder {
 mod test {
     use std::{collections::HashMap, ffi::OsString};
 
-    use tempfile::TempDir;
     use nrzpath::{AbsoluteSystemPath, AbsoluteSystemPathBuf};
+    use tempfile::TempDir;
 
     use crate::config::{
         ConfigurationOptions, NrzrepoConfigBuilder, DEFAULT_API_URL, DEFAULT_LOGIN_URL,

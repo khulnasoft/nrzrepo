@@ -7,13 +7,13 @@ use std::{
 
 use command_group::AsyncCommandGroup;
 use notify::{Config, Event, EventKind, Watcher};
+use nrzpath::AbsoluteSystemPath;
 use pidlock::PidFileError;
 use sysinfo::{Pid, ProcessExt, ProcessRefreshKind, RefreshKind, SystemExt};
 use thiserror::Error;
 use tokio::{sync::mpsc, time::timeout};
 use tonic::transport::Endpoint;
 use tracing::debug;
-use nrzpath::AbsoluteSystemPath;
 
 use super::{proto::nrzd_client::NrzdClient, DaemonClient, Paths};
 use crate::daemon::DaemonError;
@@ -411,6 +411,7 @@ enum WaitAction {
 mod test {
     use std::assert_matches::assert_matches;
 
+    use nrzpath::AbsoluteSystemPathBuf;
     use tokio::{
         select,
         sync::{oneshot::Sender, Mutex},
@@ -419,7 +420,6 @@ mod test {
     use tonic::{Request, Response, Status};
     use tower::ServiceBuilder;
     use tracing::info;
-    use nrzpath::AbsoluteSystemPathBuf;
 
     use super::*;
     use crate::daemon::{

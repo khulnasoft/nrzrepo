@@ -14,8 +14,6 @@ use clap::{
 };
 use clap_complete::{generate, Shell};
 pub use error::Error;
-use serde::{Deserialize, Serialize};
-use tracing::{debug, error, log::warn};
 use nrzpath::AbsoluteSystemPathBuf;
 use nrzrepo_api_client::AnonAPIClient;
 use nrzrepo_repository::inference::{RepoMode, RepoState};
@@ -24,6 +22,8 @@ use nrzrepo_telemetry::{
     init_telemetry, track_usage, TelemetryHandle,
 };
 use nrzrepo_ui::{ColorConfig, GREY};
+use serde::{Deserialize, Serialize};
+use tracing::{debug, error, log::warn};
 
 use crate::{
     cli::error::print_potential_tasks,
@@ -32,10 +32,10 @@ use crate::{
         run, scan, telemetry, unlink, CommandBase,
     },
     get_version,
+    nrz_json::UIMode,
     run::watch::WatchClient,
     shim::NrzState,
     tracing::NrzSubscriber,
-    nrz_json::UIMode,
 };
 
 mod error;
@@ -3009,8 +3009,7 @@ mod test {
     #[test]
     fn test_prevent_affected_and_filter() {
         assert!(
-            Args::try_parse_from(["nrz", "run", "build", "--affected", "--filter", "foo"])
-                .is_err(),
+            Args::try_parse_from(["nrz", "run", "build", "--affected", "--filter", "foo"]).is_err(),
         );
         assert!(Args::try_parse_from(["nrz", "build", "--affected", "--filter", "foo"]).is_err(),);
         assert!(Args::try_parse_from(["nrz", "build", "--filter", "foo", "--affected"]).is_err(),);
@@ -3058,8 +3057,7 @@ mod test {
         }
     }
 
-    const NO_SINGLE_PKG: SinglePackageTestCase =
-        SinglePackageTestCase::new(&["nrz", "--version"]);
+    const NO_SINGLE_PKG: SinglePackageTestCase = SinglePackageTestCase::new(&["nrz", "--version"]);
     const SINGLE_PKG_AFTER_PASS: SinglePackageTestCase =
         SinglePackageTestCase::new(&["nrz", "--", "--single-package"]);
     const SINGLE_PKG: SinglePackageTestCase =

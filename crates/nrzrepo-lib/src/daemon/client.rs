@@ -2,10 +2,10 @@ use std::{io, time::Duration};
 
 use globwalk::ValidatedGlob;
 use miette::Diagnostic;
+use nrzpath::{AbsoluteSystemPathBuf, AnchoredSystemPath};
 use thiserror::Error;
 use tonic::{Code, IntoRequest, Status};
 use tracing::info;
-use nrzpath::{AbsoluteSystemPathBuf, AnchoredSystemPath};
 
 use super::{
     connector::{DaemonConnector, DaemonConnectorError},

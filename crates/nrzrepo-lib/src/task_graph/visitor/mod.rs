@@ -16,10 +16,6 @@ use exec::ExecContextFactory;
 use futures::{stream::FuturesUnordered, StreamExt};
 use itertools::Itertools;
 use miette::{Diagnostic, NamedSource, SourceSpan};
-use output::{StdWriter, TaskOutput};
-use regex::Regex;
-use tokio::sync::mpsc;
-use tracing::{debug, error, warn, Span};
 use nrzpath::{AbsoluteSystemPath, AnchoredSystemPath};
 use nrzrepo_ci::{Vendor, VendorBehavior};
 use nrzrepo_env::{platform::PlatformEnv, EnvironmentVariableMap};
@@ -31,6 +27,10 @@ use nrzrepo_telemetry::events::{
 use nrzrepo_ui::{
     sender::UISender, ColorConfig, ColorSelector, OutputClient, OutputSink, PrefixedUI,
 };
+use output::{StdWriter, TaskOutput};
+use regex::Regex;
+use tokio::sync::mpsc;
+use tracing::{debug, error, warn, Span};
 
 use crate::{
     cli::EnvMode,
@@ -78,8 +78,8 @@ pub enum Error {
     },
     #[error(
         "Your `package.json` script looks like it invokes a Root Task ({task_name}), creating a \
-         loop of `nrz` invocations. You likely have misconfigured your scripts and tasks or \
-         your package manager's Workspace structure."
+         loop of `nrz` invocations. You likely have misconfigured your scripts and tasks or your \
+         package manager's Workspace structure."
     )]
     #[diagnostic(
         code(recursive_nrz_invocations),
@@ -454,9 +454,7 @@ impl<'a> Visitor<'a> {
             crate::opts::ResolvedLogOrder::Stream if self.run_tracker.spaces_enabled() => {
                 nrzrepo_ui::OutputClientBehavior::InMemoryBuffer
             }
-            crate::opts::ResolvedLogOrder::Stream => {
-                nrzrepo_ui::OutputClientBehavior::Passthrough
-            }
+            crate::opts::ResolvedLogOrder::Stream => nrzrepo_ui::OutputClientBehavior::Passthrough,
             crate::opts::ResolvedLogOrder::Grouped => nrzrepo_ui::OutputClientBehavior::Grouped,
         };
 

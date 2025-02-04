@@ -272,8 +272,7 @@ mod test {
         writer.write_all(b"\n").unwrap();
         assert_eq!(
             String::from_utf8(buffer).unwrap(),
-            "nrz > not a line yet, now\nnrz > but \rnrz > another one starts done\nnrz > \
-             \n"
+            "nrz > not a line yet, now\nnrz > but \rnrz > another one starts done\nnrz > \n"
         );
     }
 }

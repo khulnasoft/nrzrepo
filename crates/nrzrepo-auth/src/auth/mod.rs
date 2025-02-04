@@ -4,11 +4,11 @@ mod sso;
 
 pub use login::*;
 pub use logout::*;
-pub use sso::*;
 #[cfg(test)]
 use nrzpath::AbsoluteSystemPathBuf;
 use nrzrepo_api_client::{CacheClient, Client, TokenClient};
 use nrzrepo_ui::ColorConfig;
+pub use sso::*;
 
 use crate::LoginServer;
 

@@ -3,6 +3,7 @@ use std::{collections::HashMap, fmt, sync::Arc};
 use camino::{Utf8Path, Utf8PathBuf};
 use globwalk::WalkType;
 use miette::{Diagnostic, Report, SourceSpan};
+use nrzpath::{AbsoluteSystemPath, AbsoluteSystemPathBuf, PathError};
 use oxc_resolver::{
     EnforceExtension, ResolveError, ResolveOptions, Resolver, TsconfigOptions, TsconfigReferences,
 };
@@ -18,7 +19,6 @@ use swc_ecma_visit::VisitWith;
 use thiserror::Error;
 use tokio::task::JoinSet;
 use tracing::{debug, error};
-use nrzpath::{AbsoluteSystemPath, AbsoluteSystemPathBuf, PathError};
 
 use crate::import_finder::ImportFinder;
 

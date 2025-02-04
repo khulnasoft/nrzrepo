@@ -73,10 +73,10 @@ pub(crate) fn prune_patches<R: AsRef<RelativeUnixPath>>(
 mod test {
     use std::{collections::BTreeMap, fs::File};
 
+    use nrzpath::{AbsoluteSystemPathBuf, RelativeUnixPathBuf};
     use serde_json::json;
     use tempfile::tempdir;
     use test_case::test_case;
-    use nrzpath::{AbsoluteSystemPathBuf, RelativeUnixPathBuf};
 
     use super::*;
 

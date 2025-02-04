@@ -1,14 +1,14 @@
 use std::collections::HashMap;
 
-use tracing::debug;
 use nrzpath::{AbsoluteSystemPath, AbsoluteSystemPathBuf};
 use nrzrepo_errors::Spanned;
 use nrzrepo_repository::{
     package_graph::{PackageInfo, PackageName},
     package_json::PackageJson,
 };
+use tracing::debug;
 
-use super::{Pipeline, RawTaskDefinition, NrzJson, CONFIG_FILE};
+use super::{NrzJson, Pipeline, RawTaskDefinition, CONFIG_FILE};
 use crate::{
     cli::EnvMode,
     config::Error,
@@ -210,11 +210,7 @@ impl NrzJsonLoader {
                 if !matches!(package, PackageName::Root) {
                     Err(Error::InvalidNrzJsonLoad(package.clone()))
                 } else {
-                    load_task_access_trace_nrz_json(
-                        &self.repo_root,
-                        root_nrz_json,
-                        package_json,
-                    )
+                    load_task_access_trace_nrz_json(&self.repo_root, root_nrz_json, package_json)
                 }
             }
             Strategy::Noop => Err(Error::NoNrzJSON),
@@ -393,12 +389,12 @@ mod test {
     use std::{collections::BTreeMap, fs};
 
     use anyhow::Result;
+    use nrzrepo_unescape::UnescapedString;
     use tempfile::tempdir;
     use test_case::test_case;
-    use nrzrepo_unescape::UnescapedString;
 
     use super::*;
-    use crate::{task_graph::TaskDefinition, nrz_json::CONFIG_FILE};
+    use crate::{nrz_json::CONFIG_FILE, task_graph::TaskDefinition};
 
     #[test_case(r"{}", NrzJson::default() ; "empty")]
     #[test_case(r#"{ "globalDependencies": ["tsconfig.json", "jest.config.ts"] }"#,
@@ -504,11 +500,8 @@ mod test {
             fs::write(&root_nrz_json, content)?;
         }
 
-        let mut loader = NrzJsonLoader::single_package(
-            repo_root.to_owned(),
-            root_nrz_json,
-            root_package_json,
-        );
+        let mut loader =
+            NrzJsonLoader::single_package(repo_root.to_owned(), root_nrz_json, root_package_json);
         let mut nrz_json = loader.load(&PackageName::Root)?.clone();
         nrz_json.text = None;
         nrz_json.path = None;

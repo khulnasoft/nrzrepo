@@ -4,16 +4,14 @@ use std::sync::OnceLock;
 
 use lazy_static::lazy_static;
 use miette::Diagnostic;
-use tracing::trace;
-use nrzpath::{
-    AbsoluteSystemPathBuf, AnchoredSystemPath, AnchoredSystemPathBuf, RelativeUnixPath,
-};
+use nrzpath::{AbsoluteSystemPathBuf, AnchoredSystemPath, AnchoredSystemPathBuf, RelativeUnixPath};
 use nrzrepo_repository::{
     package_graph::{self, PackageGraph, PackageName, PackageNode},
     package_json::PackageJson,
 };
 use nrzrepo_telemetry::events::command::CommandEventBuilder;
 use nrzrepo_ui::BOLD;
+use tracing::trace;
 
 use super::CommandBase;
 use crate::nrz_json::RawNrzJson;

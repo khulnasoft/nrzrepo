@@ -1,9 +1,9 @@
 use std::{backtrace::Backtrace, collections::HashMap, io::Read};
 
+use nrzpath::{AbsoluteSystemPath, AbsoluteSystemPathBuf, AnchoredSystemPathBuf};
 use petgraph::graph::DiGraph;
 use sha2::{Digest, Sha512};
 use tar::Entry;
-use nrzpath::{AbsoluteSystemPath, AbsoluteSystemPathBuf, AnchoredSystemPathBuf};
 
 use crate::{
     cache_archive::{
@@ -184,11 +184,11 @@ mod tests {
     use std::{fs, fs::File, io::empty, path::Path};
 
     use anyhow::Result;
+    use nrzpath::{AbsoluteSystemPath, AbsoluteSystemPathBuf, AnchoredSystemPathBuf};
     use tar::Header;
     use tempfile::{tempdir, TempDir};
     use test_case::test_case;
     use tracing::debug;
-    use nrzpath::{AbsoluteSystemPath, AbsoluteSystemPathBuf, AnchoredSystemPathBuf};
 
     use crate::cache_archive::{restore::CacheReader, restore_symlink::canonicalize_linkname};
 

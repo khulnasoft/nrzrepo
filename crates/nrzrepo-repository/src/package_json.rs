@@ -9,10 +9,10 @@ use biome_deserialize_macros::Deserializable;
 use biome_diagnostics::DiagnosticExt;
 use biome_json_parser::JsonParserOptions;
 use miette::Diagnostic;
-use serde::Serialize;
 use nrzpath::{AbsoluteSystemPath, RelativeUnixPathBuf};
 use nrzrepo_errors::{ParseDiagnostic, Spanned, WithMetadata};
 use nrzrepo_unescape::UnescapedString;
+use serde::Serialize;
 
 #[derive(Debug, Clone, Default, PartialEq, Eq, Serialize)]
 #[serde(rename_all = "camelCase")]

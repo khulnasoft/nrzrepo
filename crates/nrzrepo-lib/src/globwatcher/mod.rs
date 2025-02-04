@@ -9,10 +9,10 @@ use futures::{stream::iter, StreamExt};
 use globwatch::{ConfigError, GlobWatcher, StopToken, WatchConfig, WatchError, Watcher};
 use itertools::Itertools;
 use notify::{EventKind, RecommendedWatcher};
+use nrzpath::{AbsoluteSystemPath, AbsoluteSystemPathBuf, PathError};
 use thiserror::Error;
 use tokio::time::timeout;
 use tracing::{trace, warn};
-use nrzpath::{AbsoluteSystemPath, AbsoluteSystemPathBuf, PathError};
 use wax::{Glob as WaxGlob, Program};
 
 // these aliases are for readability, but they're just strings. it may make
@@ -373,8 +373,8 @@ mod test {
     use std::{sync::Arc, time::Duration};
 
     use globwatch::StopSource;
-    use tokio::time::timeout;
     use nrzpath::{AbsoluteSystemPath, AbsoluteSystemPathBuf, RelativeUnixPathBuf};
+    use tokio::time::timeout;
 
     fn temp_dir() -> (AbsoluteSystemPathBuf, tempfile::TempDir) {
         let tmp = tempfile::tempdir().unwrap();

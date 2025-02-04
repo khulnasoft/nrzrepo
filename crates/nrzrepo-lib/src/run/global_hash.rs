@@ -6,8 +6,6 @@ use std::{
 use either::Either;
 use globwalk::{ValidatedGlob, WalkType};
 use itertools::Itertools;
-use thiserror::Error;
-use tracing::debug;
 use nrzpath::{AbsoluteSystemPath, AbsoluteSystemPathBuf, RelativeUnixPathBuf};
 use nrzrepo_env::{get_global_hashable_env_vars, DetailedMap, EnvironmentVariableMap};
 use nrzrepo_lockfiles::Lockfile;
@@ -16,6 +14,8 @@ use nrzrepo_repository::{
     package_manager::{self, PackageManager},
 };
 use nrzrepo_scm::SCM;
+use thiserror::Error;
+use tracing::debug;
 
 use crate::{
     cli::EnvMode,

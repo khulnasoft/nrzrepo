@@ -8,6 +8,8 @@
 use std::time::Duration;
 
 use futures::{stream::FuturesUnordered, StreamExt};
+use nrzrepo_api_client::{analytics::AnalyticsClient, APIAuth};
+pub use nrzrepo_vercel_api::AnalyticsEvent;
 use thiserror::Error;
 use tokio::{
     select,
@@ -15,8 +17,6 @@ use tokio::{
     task::{JoinError, JoinHandle},
 };
 use tracing::debug;
-use nrzrepo_api_client::{analytics::AnalyticsClient, APIAuth};
-pub use nrzrepo_vercel_api::AnalyticsEvent;
 use uuid::Uuid;
 
 const BUFFER_THRESHOLD: usize = 10;
@@ -184,12 +184,12 @@ mod tests {
         time::Duration,
     };
 
+    use nrzrepo_api_client::{analytics::AnalyticsClient, APIAuth};
+    use nrzrepo_vercel_api::{AnalyticsEvent, CacheEvent, CacheSource};
     use tokio::{
         select,
         sync::{mpsc, mpsc::UnboundedReceiver},
     };
-    use nrzrepo_api_client::{analytics::AnalyticsClient, APIAuth};
-    use nrzrepo_vercel_api::{AnalyticsEvent, CacheEvent, CacheSource};
 
     use crate::start_analytics;
 

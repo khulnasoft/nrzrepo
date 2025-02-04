@@ -1,9 +1,9 @@
 use std::{collections::HashMap, str::FromStr};
 
 use globwalk::ValidatedGlob;
-use tracing::debug;
 use nrzpath::{AbsoluteSystemPath, AnchoredSystemPath, PathError, RelativeUnixPathBuf};
 use nrzrepo_telemetry::events::task::{FileHashMethod, PackageTaskEventBuilder};
+use tracing::debug;
 
 use crate::{hash_object::hash_objects, Error, Git, SCM};
 
@@ -126,12 +126,7 @@ impl Git {
 
         // we have inputs, but no $NRZ_DEFAULT$
         if !include_default_files {
-            return self.get_package_file_hashes_from_inputs(
-                nrz_root,
-                package_path,
-                inputs,
-                true,
-            );
+            return self.get_package_file_hashes_from_inputs(nrz_root, package_path, inputs, true);
         }
 
         // we have inputs, and $NRZ_DEFAULT$
@@ -195,12 +190,11 @@ impl Git {
             // relative to pkgPath
             //
             // - package.json is an input because if the `scripts` in the package.json
-            //   change (i.e. the tasks that nrz executes), we want a cache miss, since
-            //   any existing cache could be invalid.
+            //   change (i.e. the tasks that nrz executes), we want a cache miss, since any
+            //   existing cache could be invalid.
             // - nrz.json because it's the definition of the tasks themselves. The root
-            //   nrz.json is similarly included in the global hash. This file may not
-            //   exist in the workspace, but that is ok, because it will get ignored
-            //   downstream.
+            //   nrz.json is similarly included in the global hash. This file may not exist
+            //   in the workspace, but that is ok, because it will get ignored downstream.
             inputs.push("package.json".to_string());
             inputs.push("nrz.json".to_string());
         }

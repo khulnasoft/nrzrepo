@@ -1,6 +1,6 @@
 use itertools::Itertools as _;
-use petgraph::Graph;
 use nrzrepo_graph_utils::cycles_and_cut_candidates;
+use petgraph::Graph;
 
 fn main() {
     let size: usize = cli_size().unwrap_or(6);

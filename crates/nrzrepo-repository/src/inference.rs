@@ -1,5 +1,5 @@
-use thiserror::Error;
 use nrzpath::{AbsoluteSystemPath, AbsoluteSystemPathBuf};
+use thiserror::Error;
 
 use crate::{
     package_json::PackageJson,

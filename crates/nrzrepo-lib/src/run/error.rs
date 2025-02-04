@@ -1,7 +1,7 @@
 use miette::Diagnostic;
-use thiserror::Error;
 use nrzrepo_repository::package_graph;
 use nrzrepo_ui::tui;
+use thiserror::Error;
 
 use super::graph_visualizer;
 use crate::{

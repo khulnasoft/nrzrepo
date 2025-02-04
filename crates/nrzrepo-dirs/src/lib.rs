@@ -1,6 +1,6 @@
 use dirs_next::config_dir as dirs_config_dir;
-use thiserror::Error;
 use nrzpath::{AbsoluteSystemPathBuf, PathError};
+use thiserror::Error;
 
 /// Returns the path to the user's configuration directory.
 ///

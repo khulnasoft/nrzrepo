@@ -9,14 +9,14 @@ use biome_json_parser::JsonParserOptions;
 use biome_json_syntax::TextRange;
 use convert_case::{Case, Casing};
 use miette::Diagnostic;
-use struct_iterable::Iterable;
-use thiserror::Error;
 use nrzrepo_errors::{ParseDiagnostic, WithMetadata};
 use nrzrepo_unescape::UnescapedString;
+use struct_iterable::Iterable;
+use thiserror::Error;
 
 use crate::{
+    nrz_json::{Pipeline, RawNrzJson, RawTaskDefinition, Spanned},
     run::task_id::TaskName,
-    nrz_json::{Pipeline, RawTaskDefinition, RawNrzJson, Spanned},
 };
 
 #[derive(Debug, Error, Diagnostic)]

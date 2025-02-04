@@ -3,8 +3,8 @@ use std::{
     fmt,
 };
 
-use serde::{Deserialize, Serialize};
 use nrzrepo_repository::package_graph::{PackageName, ROOT_PKG_NAME};
+use serde::{Deserialize, Serialize};
 
 pub const TASK_DELIMITER: &str = "#";
 

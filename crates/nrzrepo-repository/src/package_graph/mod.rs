@@ -4,13 +4,13 @@ use std::{
 };
 
 use itertools::Itertools;
-use serde::Serialize;
-use tracing::debug;
 use nrzpath::{
     AbsoluteSystemPath, AbsoluteSystemPathBuf, AnchoredSystemPath, AnchoredSystemPathBuf,
 };
 use nrzrepo_graph_utils as graph;
 use nrzrepo_lockfiles::Lockfile;
+use serde::Serialize;
+use tracing::debug;
 
 use crate::{
     discovery::LocalPackageDiscoveryBuilder, package_json::PackageJson,

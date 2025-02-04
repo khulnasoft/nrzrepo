@@ -821,10 +821,10 @@ mod test {
     use std::{assert_matches::assert_matches, time::Duration};
 
     use futures::{stream::FuturesUnordered, StreamExt};
+    use nrzpath::AbsoluteSystemPathBuf;
     use test_case::test_case;
     use tokio::io::{AsyncReadExt, AsyncWriteExt};
     use tracing_test::traced_test;
-    use nrzpath::AbsoluteSystemPathBuf;
 
     use super::{Child, ChildInput, ChildOutput, ChildState, Command};
     use crate::process::{

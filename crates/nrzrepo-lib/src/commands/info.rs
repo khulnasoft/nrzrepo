@@ -1,8 +1,8 @@
 use std::{env, io, path::Path};
 
+use nrzrepo_repository::{package_json::PackageJson, package_manager::PackageManager};
 use sysinfo::{System, SystemExt};
 use thiserror::Error;
-use nrzrepo_repository::{package_json::PackageJson, package_manager::PackageManager};
 
 use super::CommandBase;
 use crate::{DaemonConnector, DaemonConnectorError};

@@ -6,8 +6,8 @@ use std::{
     path::Path,
 };
 
-use tar::{EntryType, Header};
 use nrzpath::{AbsoluteSystemPath, AnchoredSystemPath, IntoUnix};
+use tar::{EntryType, Header};
 
 use crate::CacheError;
 
@@ -162,9 +162,9 @@ mod tests {
     use std::path::PathBuf;
 
     use anyhow::Result;
+    use nrzpath::{AbsoluteSystemPathBuf, AnchoredSystemPathBuf};
     use tempfile::tempdir;
     use test_case::test_case;
-    use nrzpath::{AbsoluteSystemPathBuf, AnchoredSystemPathBuf};
 
     use super::*;
     use crate::cache_archive::restore::CacheReader;

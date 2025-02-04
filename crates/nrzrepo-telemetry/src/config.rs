@@ -11,12 +11,12 @@ use std::env;
 
 use chrono::{DateTime, Utc};
 pub use config::{Config, ConfigError, File, FileFormat};
-use serde::{Deserialize, Serialize};
-use sha2::{Digest, Sha256};
-use tracing::{error, trace};
 use nrzpath::{AbsoluteSystemPath, AbsoluteSystemPathBuf};
 use nrzrepo_dirs::config_dir;
 use nrzrepo_ui::{color, ColorConfig, BOLD, GREY, UNDERLINE};
+use serde::{Deserialize, Serialize};
+use sha2::{Digest, Sha256};
+use tracing::{error, trace};
 use uuid::Uuid;
 
 static DEBUG_ENV_VAR: &str = "NRZ_TELEMETRY_DEBUG";
@@ -204,8 +204,7 @@ impl TelemetryConfig {
     pub fn is_telemetry_warning_enabled() -> bool {
         let nrz_telemetry_msg_disabled =
             env::var(DISABLED_MESSAGE_ENV_VAR).unwrap_or("0".to_string());
-        let is_disabled =
-            nrz_telemetry_msg_disabled == "1" || nrz_telemetry_msg_disabled == "true";
+        let is_disabled = nrz_telemetry_msg_disabled == "1" || nrz_telemetry_msg_disabled == "true";
 
         !is_disabled
     }

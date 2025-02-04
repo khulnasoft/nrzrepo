@@ -14,14 +14,14 @@ use dialoguer::Confirm;
 #[cfg(not(test))]
 use dialoguer::FuzzySelect;
 use dirs_next::home_dir;
-#[cfg(test)]
-use rand::Rng;
-use thiserror::Error;
 use nrzrepo_api_client::{CacheClient, Client};
 #[cfg(not(test))]
 use nrzrepo_ui::CYAN;
 use nrzrepo_ui::{DialoguerTheme, BOLD, GREY};
 use nrzrepo_vercel_api::{CachingStatus, Space, Team};
+#[cfg(test)]
+use rand::Rng;
+use thiserror::Error;
 
 use crate::{
     cli::LinkTarget,
@@ -372,9 +372,7 @@ pub async fn link(
                 base.color_config
                     .apply(BOLD.apply_to(&repo_root_with_tilde)),
                 base.color_config.apply(BOLD.apply_to(&space.name)),
-                GREY.apply_to(
-                    "To remove Spaces integration, run `npx nrz unlink --target spaces`"
-                )
+                GREY.apply_to("To remove Spaces integration, run `npx nrz unlink --target spaces`")
             );
 
             Ok(())
@@ -460,9 +458,8 @@ fn select_space<'a>(base: &CommandBase, spaces: &'a [Space]) -> Result<SelectedS
 
     let prompt = format!(
         "{}\n  {}",
-        base.color_config.apply(
-            BOLD.apply_to("Which Vercel space do you want associated with this Nrzrepo?",)
-        ),
+        base.color_config
+            .apply(BOLD.apply_to("Which Vercel space do you want associated with this Nrzrepo?",)),
         base.color_config
             .apply(CYAN.apply_to("[Use arrows to move, type to filter]"))
     );
@@ -588,17 +585,17 @@ mod test {
     use std::fs;
 
     use anyhow::Result;
-    use tempfile::{NamedTempFile, TempDir};
     use nrzpath::AbsoluteSystemPathBuf;
     use nrzrepo_ui::ColorConfig;
     use nrzrepo_vercel_api_mock::start_test_server;
+    use tempfile::{NamedTempFile, TempDir};
 
     use crate::{
         cli::LinkTarget,
         commands::{link, CommandBase},
         config::NrzrepoConfigBuilder,
-        opts::Opts,
         nrz_json::RawNrzJson,
+        opts::Opts,
         Args,
     };
 

@@ -35,6 +35,7 @@ use futures::{channel::oneshot, future::Either, FutureExt, Stream, StreamExt as 
 use itertools::Itertools;
 use merge_streams::MergeStreams;
 pub use notify::{Event, Watcher};
+use nrzpath::{AbsoluteSystemPath, AbsoluteSystemPathBuf, PathError};
 pub use stop_token::{stream::StreamExt, StopSource, StopToken, TimedOutError};
 use thiserror::Error;
 use tokio::sync::{
@@ -43,7 +44,6 @@ use tokio::sync::{
 };
 use tokio_stream::wrappers::UnboundedReceiverStream;
 use tracing::{error, event, span, trace, warn, Level};
-use nrzpath::{AbsoluteSystemPath, AbsoluteSystemPathBuf, PathError};
 
 /// WatchError wraps errors produced by GlobWatcher
 #[derive(Debug, Error)]

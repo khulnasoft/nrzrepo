@@ -9,9 +9,9 @@
 //! these strategies will implement some sort of monad-style composition so that
 //! we can track areas of run that are performing sub-optimally.
 
+use nrzpath::AbsoluteSystemPathBuf;
 use tokio::time::error::Elapsed;
 use tokio_stream::{iter, StreamExt};
-use nrzpath::AbsoluteSystemPathBuf;
 
 use crate::{
     package_json::PackageJson,
@@ -151,10 +151,7 @@ impl PackageDiscovery for LocalPackageDiscovery {
 
         iter(package_paths)
             .then(|path| async move {
-                let potential_nrz = path
-                    .parent()
-                    .expect("non-root")
-                    .join_component("nrz.json");
+                let potential_nrz = path.parent().expect("non-root").join_component("nrz.json");
                 let potential_nrz_exists = tokio::fs::try_exists(potential_nrz.as_path()).await;
 
                 Ok(WorkspaceData {

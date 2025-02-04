@@ -42,10 +42,10 @@ use notify::event::EventKind;
 #[cfg(not(target_os = "macos"))]
 use notify::{Config, RecommendedWatcher};
 use notify::{Event, EventHandler, RecursiveMode, Watcher};
+use nrzpath::{AbsoluteSystemPath, AbsoluteSystemPathBuf, PathRelation};
 use thiserror::Error;
 use tokio::sync::{broadcast, mpsc, watch::error::RecvError};
 use tracing::{debug, warn};
-use nrzpath::{AbsoluteSystemPath, AbsoluteSystemPathBuf, PathRelation};
 #[cfg(feature = "manual_recursive_watch")]
 use {
     notify::{
@@ -491,8 +491,8 @@ mod test {
     #[cfg(not(target_os = "windows"))]
     use notify::event::RenameMode;
     use notify::{event::ModifyKind, Event, EventKind};
-    use tokio::sync::broadcast;
     use nrzpath::{AbsoluteSystemPath, AbsoluteSystemPathBuf};
+    use tokio::sync::broadcast;
 
     use crate::{FileSystemWatcher, NotifyError};
 

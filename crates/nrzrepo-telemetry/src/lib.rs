@@ -14,6 +14,8 @@ use std::time::Duration;
 use config::{ConfigError, TelemetryConfig};
 use events::TelemetryEvent;
 use futures::{stream::FuturesUnordered, StreamExt};
+use nrzrepo_api_client::telemetry;
+use nrzrepo_ui::{color, ColorConfig, BOLD, GREY};
 use once_cell::sync::OnceCell;
 use thiserror::Error;
 use tokio::{
@@ -22,8 +24,6 @@ use tokio::{
     task::{JoinError, JoinHandle},
 };
 use tracing::{debug, error, trace};
-use nrzrepo_api_client::telemetry;
-use nrzrepo_ui::{color, ColorConfig, BOLD, GREY};
 use uuid::Uuid;
 
 const BUFFER_THRESHOLD: usize = 10;
@@ -256,14 +256,14 @@ mod tests {
         time::Duration,
     };
 
-    use tokio::{
-        select,
-        sync::{mpsc, mpsc::UnboundedReceiver},
-    };
     use nrzpath::AbsoluteSystemPathBuf;
     use nrzrepo_api_client::telemetry::TelemetryClient;
     use nrzrepo_ui::ColorConfig;
     use nrzrepo_vercel_api::telemetry::{TelemetryEvent, TelemetryGenericEvent};
+    use tokio::{
+        select,
+        sync::{mpsc, mpsc::UnboundedReceiver},
+    };
 
     use crate::{config::TelemetryConfig, init};
 
@@ -332,8 +332,7 @@ mod tests {
     async fn test_batching() {
         let (_tmp, temp_dir) = temp_dir();
         let config =
-            TelemetryConfig::new(temp_dir.join_components(&["nrzrepo", "telemetry.json"]))
-                .unwrap();
+            TelemetryConfig::new(temp_dir.join_components(&["nrzrepo", "telemetry.json"])).unwrap();
 
         let (tx, mut rx) = mpsc::unbounded_channel();
 
@@ -373,8 +372,7 @@ mod tests {
     async fn test_batching_across_two_batches() {
         let (_tmp, temp_dir) = temp_dir();
         let config =
-            TelemetryConfig::new(temp_dir.join_components(&["nrzrepo", "telemetry.json"]))
-                .unwrap();
+            TelemetryConfig::new(temp_dir.join_components(&["nrzrepo", "telemetry.json"])).unwrap();
         let (tx, mut rx) = mpsc::unbounded_channel();
 
         let client = DummyClient {
@@ -419,8 +417,7 @@ mod tests {
     async fn test_closing() {
         let (_tmp, temp_dir) = temp_dir();
         let config =
-            TelemetryConfig::new(temp_dir.join_components(&["nrzrepo", "telemetry.json"]))
-                .unwrap();
+            TelemetryConfig::new(temp_dir.join_components(&["nrzrepo", "telemetry.json"])).unwrap();
         let (tx, mut _rx) = mpsc::unbounded_channel();
 
         let client = DummyClient {

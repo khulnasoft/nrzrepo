@@ -3,10 +3,10 @@ use std::sync::Arc;
 use async_graphql::{Enum, Object, SimpleObject};
 use camino::Utf8PathBuf;
 use miette::SourceCode;
-use swc_ecma_ast::EsVersion;
-use swc_ecma_parser::{EsSyntax, Syntax, TsSyntax};
 use nrz_trace::Tracer;
 use nrzpath::AbsoluteSystemPathBuf;
+use swc_ecma_ast::EsVersion;
+use swc_ecma_parser::{EsSyntax, Syntax, TsSyntax};
 
 use crate::{
     query::{Array, Diagnostic, Error},

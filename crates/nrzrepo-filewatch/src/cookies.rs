@@ -39,13 +39,13 @@ use std::{collections::BinaryHeap, fs::OpenOptions, time::Duration};
 
 use futures::FutureExt;
 use notify::EventKind;
+use nrzpath::{AbsoluteSystemPath, AbsoluteSystemPathBuf, PathRelation};
 use thiserror::Error;
 use tokio::{
     sync::{broadcast, mpsc, oneshot, watch},
     time::error::Elapsed,
 };
 use tracing::trace;
-use nrzpath::{AbsoluteSystemPath, AbsoluteSystemPathBuf, PathRelation};
 
 use crate::{optional_watch::SomeRef, NotifyError, OptionalWatch};
 
@@ -517,11 +517,11 @@ mod test {
     use std::time::Duration;
 
     use notify::{event::CreateKind, Event, EventKind};
+    use nrzpath::AbsoluteSystemPathBuf;
     use tokio::{
         sync::{broadcast, mpsc, oneshot},
         task::JoinSet,
     };
-    use nrzpath::AbsoluteSystemPathBuf;
 
     use super::{CookieWatcher, CookiedRequest};
     use crate::{cookies::CookieWriter, NotifyError, OptionalWatch};

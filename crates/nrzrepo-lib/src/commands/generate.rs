@@ -3,9 +3,9 @@ use std::{
     process::{Command, Stdio},
 };
 
+use nrzrepo_telemetry::events::command::CommandEventBuilder;
 use thiserror::Error;
 use tracing::debug;
-use nrzrepo_telemetry::events::command::CommandEventBuilder;
 use which::which;
 
 use crate::{

@@ -1,7 +1,7 @@
 use std::{fs::OpenOptions, io, io::Read, path::Path};
 
-use tar::Entry;
 use nrzpath::{AbsoluteSystemPath, AnchoredSystemPath, AnchoredSystemPathBuf};
+use tar::Entry;
 
 use crate::{cache_archive::restore_directory::CachedDirTree, CacheError};
 

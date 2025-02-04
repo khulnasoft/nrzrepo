@@ -6,16 +6,16 @@
 use std::{backtrace::Backtrace, env, future::Future, time::Duration};
 
 use lazy_static::lazy_static;
-use regex::Regex;
-pub use reqwest::Response;
-use reqwest::{Body, Method, RequestBuilder, StatusCode};
-use serde::Deserialize;
 use nrzrepo_ci::{is_ci, Vendor};
 use nrzrepo_vercel_api::{
     token::ResponseTokenMetadata, APIError, CachingStatus, CachingStatusResponse,
     PreflightResponse, SpacesResponse, Team, TeamsResponse, UserResponse, VerificationResponse,
     VerifiedSsoUser,
 };
+use regex::Regex;
+pub use reqwest::Response;
+use reqwest::{Body, Method, RequestBuilder, StatusCode};
+use serde::Deserialize;
 use url::Url;
 
 pub use crate::error::{Error, Result};
