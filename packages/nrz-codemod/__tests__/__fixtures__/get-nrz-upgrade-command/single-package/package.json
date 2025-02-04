@@ -1,0 +1,8 @@
+{
+  "name": "single-package",
+  "version": "0.0.0",
+  "dependencies": {
+    "nrz": "1.0.0"
+  },
+  "devDependencies": {}
+}

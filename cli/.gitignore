@@ -1,0 +1,16 @@
+/dist/
+/dist-*
+
+# Built binaries.
+/nrz
+/nrz-new
+/nrz-new.exe
+/nrz.exe
+
+testbed
+
+# Windows lib files
+nrz.h
+nrz.lib
+libnrz.a
+libnrz.h

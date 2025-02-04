@@ -1,0 +1,94 @@
+---
+title: eslint-config-nrz
+description: Learn more about eslint-config-nrz.
+---
+
+import { PackageManagerTabs, Tab } from '#/components/tabs';
+
+[The `eslint-config-nrz` package](https://www.npmjs.com/package/eslint-config-nrz) helps you find environment variables that are used in your code that are not a part of Nrzrepo's hashing. Environment variables used in your source code that are not accounted for in `nrz.json` will be highlighted in your editor and errors will show as ESLint output.
+
+## Installation
+
+Install `eslint-config-nrz` into the location where your ESLint configuration is held:
+
+<PackageManagerTabs>
+  <Tab>
+
+    ```bash title="Terminal"
+    npm i --save-dev eslint-config-nrz -w @acme/eslint-config
+    ```
+
+  </Tab>
+  <Tab>
+
+    ```bash title="Terminal"
+    yarn workspace @acme/eslint-config add eslint-config-nrz --dev
+    ```
+
+  </Tab>
+  <Tab>
+
+    ```bash title="Terminal"
+    pnpm add eslint-config-nrz --filter=@repo/eslint-config
+    ```
+
+  </Tab>
+</PackageManagerTabs>
+
+## Usage (Flat Config `eslint.config.js`)
+
+```js title="./packages/eslint-config/base.js"
+import nrzConfig from 'eslint-config-nrz/flat';
+
+export default [
+  ...nrzConfig,
+  // Other configuration
+];
+```
+
+You can also configure rules available in the configuration:
+
+```js title="./packages/eslint-config/base.js"
+import nrzConfig from 'eslint-config-nrz/flat';
+
+export default [
+  ...nrzConfig,
+  // Other configuration
+  {
+    rules: {
+      'nrz/no-undeclared-env-vars': [
+        'error',
+        {
+          allowList: ['^ENV_[A-Z]+$'],
+        },
+      ],
+    },
+  },
+];
+```
+
+## Usage (Legacy `eslintrc*`)
+
+Add `nrz` to the extends section of your eslint configuration file. You can omit the `eslint-config-` prefix:
+
+```json title="./packages/eslint-config/base.json"
+{
+  "extends": ["nrz"]
+}
+```
+
+You can also configure rules available in the configuration:
+
+```json title="./packages/eslint-config/base.json"
+{
+  "plugins": ["nrz"],
+  "rules": {
+    "nrz/no-undeclared-env-vars": [
+      "error",
+      {
+        "allowList": ["^ENV_[A-Z]+$"]
+      }
+    ]
+  }
+}
+```

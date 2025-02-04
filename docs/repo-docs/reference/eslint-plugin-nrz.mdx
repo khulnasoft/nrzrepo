@@ -1,0 +1,121 @@
+---
+title: eslint-plugin-nrz
+description: Learn more about eslint-plugin-nrz.
+---
+
+import { PackageManagerTabs, Tab } from '#/components/tabs';
+
+[The `eslint-plugin-nrz` package](https://www.npmjs.com/package/eslint-plugin-nrz) helps you find environment variables that are used in your code that are not a part of Nrzrepo's hashing. Environment variables used in your source code that are not accounted for in `nrz.json` will be highlighted in your editor and errors will show as ESLint output.
+
+## Installation
+
+Install `eslint-config-nrz` into the location where your ESLint configuration is held:
+
+<PackageManagerTabs>
+  <Tab>
+
+    ```bash title="Terminal"
+    npm i --save-dev eslint-config-nrz -w @acme/eslint-config
+    ```
+
+  </Tab>
+  <Tab>
+
+    ```bash title="Terminal"
+    yarn workspace @acme/eslint-config add eslint-config-nrz --dev
+    ```
+
+  </Tab>
+  <Tab>
+
+    ```bash title="Terminal"
+    pnpm add eslint-config-nrz --filter=@repo/eslint-config
+    ```
+
+  </Tab>
+</PackageManagerTabs>
+
+## Usage (Flat Config `eslint.config.js`)
+
+ESLint v9 uses the Flat Config format seen below:
+
+```js title="./packages/eslint-config/base.js"
+import nrz from 'eslint-plugin-nrz';
+
+export default [nrz.configs['flat/recommended']];
+```
+
+Otherwise, you may configure the rules you want to use under the rules section.
+
+```js title="./packages/eslint-config/base.js"
+import nrz from 'eslint-plugin-nrz';
+
+export default [
+  {
+    plugins: {
+      nrz,
+    },
+    rules: {
+      'nrz/no-undeclared-env-vars': 'error',
+    },
+  },
+];
+```
+
+## Example (Flat Config `eslint.config.js`)
+
+```js title="./packages/eslint-config/base.js"
+import nrz from 'eslint-plugin-nrz';
+
+export default [
+  {
+    plugins: {
+      nrz,
+    },
+    rules: {
+      'nrz/no-undeclared-env-vars': [
+        'error',
+        {
+          allowList: ['^ENV_[A-Z]+$'],
+        },
+      ],
+    },
+  },
+];
+```
+
+## Usage (Legacy `eslintrc*`)
+
+Add `nrz` to the plugins section of your `.eslintrc` configuration file. You can omit the `eslint-plugin-` prefix:
+
+```json title="./packages/eslint-config/base.json"
+{
+  "plugins": ["nrz"]
+}
+```
+
+Then configure the rules you want to use under the rules section.
+
+```json title="./packages/eslint-config/base.json"
+{
+  "rules": {
+    "nrz/no-undeclared-env-vars": "error"
+  }
+}
+```
+
+## Example (Legacy `eslintrc*`)
+
+```json title="./packages/eslint-config/base.json"
+{
+  "plugins": ["nrz"],
+  "rules": {
+    "nrz/no-undeclared-env-vars": [
+      "error",
+      {
+        "allowList": ["^ENV_[A-Z]+$"]
+      }
+    ]
+  }
+}
+```

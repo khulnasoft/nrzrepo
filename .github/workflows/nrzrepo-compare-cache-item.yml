@@ -1,0 +1,79 @@
+name: Nrzrepo Compare Cache Item
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: Nrzrepo release to test.
+        type: string
+        default: "canary"
+
+jobs:
+  generate_cache_artifact:
+    strategy:
+      matrix:
+        os: [macos-latest, ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+
+    steps:
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: create-nrz
+        run: |
+          npm install -g pnpm nrz@${{ inputs.version }}
+          pnpm dlx create-nrz@${{ inputs.version }} my-nrzrepo pnpm
+
+      - name: Run build
+        run: |
+          cd my-nrzrepo
+          nrz run build --filter=docs --filter=web --summarize --skip-infer -vvv
+
+      - name: Grab Nrzrepo artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: cache-item-${{ matrix.os }}-${{ inputs.version }}
+          path: |
+            my-nrzrepo/node_modules/.cache/nrz
+            my-nrzrepo/.nrz/runs
+          retention-days: 1
+
+  use_cache_artifact:
+    needs: generate_cache_artifact
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [macos-latest, ubuntu-latest, windows-latest]
+        cache_os: [macos-latest, ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+
+    steps:
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: create-nrz
+        run: |
+          npm install -g pnpm nrz@${{ inputs.version }}
+          pnpm dlx create-nrz@${{ inputs.version }} my-nrzrepo pnpm
+
+      - name: Download cache artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: cache-item-${{ matrix.cache_os }}-${{ inputs.version }}
+          path: my-nrzrepo
+
+      - name: Check for cache hit
+        run: |
+          cd my-nrzrepo
+          rm .nrz/runs/*.json
+          nrz run build --filter=docs --filter=web --summarize --skip-infer -vvv
+          cat .nrz/runs/*.json | jq -e '.execution.cached == 2'
+
+      - name: Check for functional server
+        run: |
+          curl https://raw.githubusercontent.com/vercel/nrz/main/scripts/server.js -O
+          node server.js my-nrzrepo/apps/docs

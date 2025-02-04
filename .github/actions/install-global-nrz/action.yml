@@ -1,0 +1,12 @@
+name: "Install Global Nrz"
+description: "Installs nrz globally. Expects Node and npm to already be installed"
+
+runs:
+  using: "composite"
+  steps:
+    - name: Install Nrz globally
+      shell: bash
+      run: |
+        VERSION=$(npm view nrz --json | jq -r '.versions | map(select(test("2."))) | last')
+        echo "Latest published version: $VERSION"
+        npm i -g nrz@$VERSION

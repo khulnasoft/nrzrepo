@@ -1,0 +1,40 @@
+---
+title: telemetry
+description: API reference for the `nrz telemetry` command
+---
+
+import { LinkToDocumentation } from '#/components/link-to-documentation';
+
+`nrz telemetry [argument]`
+
+Manage telemetry for this machine.
+
+<LinkToDocumentation href="/repo/docs/telemetry">
+  Learn more about Nrzrepo's telemetry.
+</LinkToDocumentation>
+
+## Arguments
+
+### `status`
+
+Retrieve the current state of telemetry for this machine.
+
+```bash title="Terminal"
+nrz telemetry status
+```
+
+### `enable`
+
+Enable telemetry for this machine.
+
+```bash title="Terminal"
+nrz telemetry enable
+```
+
+### `disable`
+
+Disable telemetry for this machine.
+
+```bash title="Terminal"
+nrz telemetry disable
+```

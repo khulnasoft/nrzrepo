@@ -1,0 +1,9 @@
+---
+source: crates/nrzrepo-lib/src/opts.rs
+expression: cache_config
+---
+Err(
+    Opts(
+        OverlappingCacheOptions,
+    ),
+)

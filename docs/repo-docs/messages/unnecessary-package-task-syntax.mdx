@@ -1,0 +1,40 @@
+---
+title: Unnecessary package task syntax error
+description: Learn more about errors with unnecessary package task syntax in Nrzrepo.
+---
+
+## Why this error occurred
+
+Nrzrepo supports adding additional `nrz.json` files in a package directory
+to override the `nrz.json` file declared at the repository root, a feature called [Workspace Configurations](/repo/docs/crafting-your-repository/structuring-a-repository#specifying-packages-in-a-monorepo).
+In those additional `nrz.json` files, you can only configure tasks for that specific
+package. Therefore, only the task name should be included in the task,
+not the package and task name (`package#task`).
+
+`nrz.json` file in `apps/web` directory:
+
+```json title="./nrz.json"
+{
+  "tasks": {
+    "web#build": {
+      "dependsOn": ["lint"]
+    }
+  }
+}
+```
+
+Since this `nrz.json` file is inside a package directory, the `web` prefix is unnecessary.
+
+## Solution
+
+Remove the package prefix from the task name:
+
+```json title="./nrz.json"
+{
+  "tasks": {
+    "build": {
+      "dependsOn": ["lint"]
+    }
+  }
+}
+```

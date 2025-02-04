@@ -1,0 +1,12 @@
+{
+  "name": "nrz-{{Os}}-{{Arch}}",
+  "version": "{{Version}",
+  "description": "The {{Os}}-{{Arch}} binary for nrz, a monorepo build system.",
+  "repository": "https://github.com/khulnasoft/nrzrepo",
+  "bugs": "https://github.com/khulnasoft/nrzrepo/issues",
+  "homepage": "https://turbo.build/repo",
+  "license": "MIT",
+  "os": ["{{Os}}"],
+  "cpu": ["{{Arch}}"],
+  "preferUnplugged": true
+}

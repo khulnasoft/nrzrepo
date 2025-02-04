@@ -1,0 +1,16 @@
+{
+  "extends": "@nrz/tsconfig/library.json",
+  "skipLibCheck": true,
+  "include": [
+    "./src/**/*"
+  ],
+  "exclude": [
+    "./src/templates/**/*"
+  ],
+  "compilerOptions": {
+    "rootDir": ".",
+    "lib": [
+      "ES2020"
+    ],
+  }
+}

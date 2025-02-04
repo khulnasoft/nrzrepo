@@ -1,0 +1,12 @@
+{
+  "pages": [
+    "index",
+    "why-nrzpack",
+    "incremental-computation",
+    "roadmap",
+    "features",
+    "benchmarks",
+    "migrating-from-webpack",
+    "advanced"
+  ]
+}

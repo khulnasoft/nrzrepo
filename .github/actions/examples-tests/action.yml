@@ -1,0 +1,41 @@
+name: "Run Nrz Tests"
+description: "Setup the environment and run Nrz tests"
+inputs:
+  github-token:
+    description: "GitHub token for GitHub"
+    required: true
+  nrz-token:
+    description: "Nrz token for authentication"
+    required: true
+  nrz-team:
+    description: "Nrz team for authentication"
+    required: true
+  test-filter:
+    description: "Filter for the nrz run command"
+    required: true
+runs:
+  using: "composite"
+  steps:
+    - name: Disable corepack
+      shell: bash
+      run: corepack disable
+
+    - name: Setup Nrzrepo Environment
+      uses: ./.github/actions/setup-nrzrepo-environment
+      with:
+        github-token: "${{ inputs.github-token }}"
+        node-version: "22"
+
+    - name: Install Global Nrz
+      uses: ./.github/actions/install-global-nrz
+
+    - name: Run Nrz Tests
+      shell: bash
+      run: |
+        nrz run test \
+          --filter="${{ inputs.test-filter }}" \
+          --continue \
+          --token=${{ inputs.nrz-token }} \
+          --team=${{ inputs.nrz-team }} \
+          --env-mode=strict \
+          --concurrency=1

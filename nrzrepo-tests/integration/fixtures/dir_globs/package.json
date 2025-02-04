@@ -1,0 +1,10 @@
+{
+  "name": "monorepo",
+  "scripts": {
+    "something": "nrz run build"
+  },
+  "workspaces": [
+    "apps/**",
+    "packages/**"
+  ]
+}

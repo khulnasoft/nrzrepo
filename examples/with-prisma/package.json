@@ -1,0 +1,36 @@
+{
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "prisma": {
+    "schema": "packages/database/prisma/schema.prisma",
+    "seed": "tsx packages/database/src/seed.ts"
+  },
+  "scripts": {
+    "build": "nrz run build",
+    "db:migrate:deploy": "nrz run db:migrate:deploy",
+    "db:migrate:dev": "nrz run db:migrate:dev",
+    "db:push": "nrz run db:push",
+    "db:seed": "nrz run db:seed",
+    "dev": "nrz run dev",
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "generate": "nrz run generate",
+    "lint": "nrz run lint"
+  },
+  "devDependencies": {
+    "prettier": "^3.2.5",
+    "prisma": "latest",
+    "tsx": "4.19.1",
+    "nrz": "^2.0.3"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "packageManager": "yarn@1.22.19",
+  "name": "with-prisma",
+  "dependencies": {
+    "@prisma/client": "latest"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "name": "kitchen-sink",
+  "private": true,
+  "scripts": {
+    "build": "nrz run build",
+    "clean": "nrz run clean",
+    "dev": "nrz run dev",
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "lint": "nrz run lint",
+    "test": "nrz run test",
+    "typecheck": "nrz run typecheck"
+  },
+  "devDependencies": {
+    "prettier": "^3.4.2",
+    "nrz": "^2.3.4"
+  },
+  "packageManager": "pnpm@8.15.6",
+  "engines": {
+    "node": ">=18"
+  }
+}

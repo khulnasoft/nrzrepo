@@ -1,0 +1,26 @@
+{
+  "name": "my-nrzrepo",
+  "version": "0.0.0",
+  "private": true,
+  "description": "",
+  "author": "",
+  "license": "UNLICENSED",
+  "scripts": {
+    "dev": "nrz dev",
+    "build": "nrz build",
+    "test": "nrz test",
+    "test:e2e": "nrz test:e2e",
+    "lint": "nrz lint",
+    "format": "prettier --write \"**/*.{ts,tsx,md}\""
+  },
+  "devDependencies": {
+    "@repo/eslint-config": "workspace:*",
+    "@repo/typescript-config": "workspace:*",
+    "prettier": "^3.2.5",
+    "nrz": "^2.0.4"
+  },
+  "packageManager": "pnpm@8.15.5",
+  "engines": {
+    "node": ">=18"
+  }
+}

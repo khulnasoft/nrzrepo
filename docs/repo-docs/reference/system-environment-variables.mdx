@@ -1,0 +1,334 @@
+---
+title: System environment variables
+description: Learn about system variables used by Nrzrepo.
+---
+
+import { Heading } from 'fumadocs-ui/components/heading';
+
+By setting certain environment variables, you can change Nrzrepo's behavior. This can be useful for creating specific configurations for different environments and machines.
+
+System environment variables are always overridden by flag values provided directly to your `nrz` commands.
+
+<table id="system-environment-variables-table">
+  <thead>
+    <tr>
+      <th>Variable</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr id="nrz_api">
+      <td>
+        <code>NRZ_API</code>
+      </td>
+      <td>
+        Set the base URL for{' '}
+        <a href="/repo/docs/core-concepts/remote-caching">Remote Cache</a>.
+      </td>
+    </tr>
+    <tr id="nrz_binary_path">
+      <td>
+        <code>
+          <code>NRZ_BINARY_PATH</code>
+        </code>
+      </td>
+      <td>
+        Manually set the path to the <code>nrz</code> binary. By default,{' '}
+        <code>nrz</code> will automatically discover the binary so you should
+        only use this in rare circumstances.
+      </td>
+    </tr>
+    <tr id="nrz_cache">
+      <td>
+        <code>
+          <code>NRZ_CACHE</code>
+        </code>
+      </td>
+      <td>
+        Control reading and writing for cache sources. Uses the same syntax as{' '}
+        <a href="/repo/docs/reference/run#--cache-options">
+          <code>--cache</code>
+        </a>
+        .
+      </td>
+    </tr>
+    <tr id="nrz_cache_dir">
+      <td>
+        <code>NRZ_CACHE_DIR</code>
+      </td>
+      <td>
+        Sets the cache directory, similar to using{' '}
+        <a href="/repo/docs/reference/run#--cache-dir-path">
+          <code>--cache-dir</code>
+        </a>{' '}
+        flag
+      </td>
+    </tr>
+    <tr id="nrz_ci_vendor_env_key">
+      <td>
+        <code>NRZ_CI_VENDOR_ENV_KEY</code>
+      </td>
+      <td>
+        Set a prefix for environment variables that you want{' '}
+        <strong>excluded</strong> from{' '}
+        <a href="/repo/docs/crafting-your-repository/using-environment-variables#framework-inference">
+          Framework Inference
+        </a>
+        . <strong>NOTE</strong>: This does not need to be set by the user and should
+        be configured automatically by supported platforms.
+      </td>
+    </tr>
+    <tr id="nrz_dangerously_disable_package_manager_check">
+      <td>
+        <code>NRZ_DANGEROUSLY_DISABLE_PACKAGE_MANAGER_CHECK</code>
+      </td>
+      <td>
+        Disable checking the <code>packageManager</code> field in{' '}
+        <code>package.json</code>. You may run into{' '}
+        <a href="/repo/docs/reference/run#--dangerously-disable-package-manager-check">
+          errors and unexpected caching behavior
+        </a>{' '}
+        when disabling this check. Use <code>true</code> or <code>1</code> to
+        disable.
+      </td>
+    </tr>
+    <tr id="nrz_download_local_enabled">
+      <td>
+        <code>NRZ_DOWNLOAD_LOCAL_ENABLED</code>
+      </td>
+      <td>
+        Enables global <code>nrz</code> to install the correct local version
+        if one is not found.
+      </td>
+    </tr>
+    <tr id="nrz_force">
+      <td>
+        <code>NRZ_FORCE</code>
+      </td>
+      <td>
+        Set to <code>true</code> to force all tasks to run in full, opting out
+        of all caching.
+      </td>
+    </tr>
+    <tr id="nrz_global_warning_disabled">
+      <td>
+        <code>NRZ_GLOBAL_WARNING_DISABLED</code>
+      </td>
+      <td>
+        Disable warning when global <code>nrz</code> cannot find a local
+        version to use.
+      </td>
+    </tr>
+    <tr id="nrz_print_version_disabled">
+      <td>
+        <code>NRZ_PRINT_VERSION_DISABLED</code>
+      </td>
+      <td>
+        Disable printing the version of <code>nrz</code> that is being
+        executed.
+      </td>
+    </tr>
+    <tr id="nrz_log_order">
+      <td>
+        <code>NRZ_LOG_ORDER</code>
+      </td>
+      <td>
+        Set the{' '}
+        <a href="/repo/docs/reference/run#--log-order-option">log order</a>.
+        Allowed values are <code>grouped</code> and <code>default</code>.
+      </td>
+    </tr>
+    <tr id="nrz_login">
+      <td>
+        <code>NRZ_LOGIN</code>
+      </td>
+      <td>
+        Set the URL used to log in to{' '}
+        <a href="/repo/docs/core-concepts/remote-caching">Remote Cache</a>.
+      </td>
+    </tr>
+    <tr id="nrz_no_update_notifier">
+      <td>
+        <code>NRZ_NO_UPDATE_NOTIFIER</code>
+      </td>
+      <td>
+        Remove the update notifier that appears when a new version of{' '}
+        <code>nrz</code> is available. You can also use{' '}
+        <code>NO_UPDATE_NOTIFIER</code> per ecosystem convention.
+      </td>
+    </tr>
+    <tr id="nrz_platform_env">
+      <td>
+        <code>NRZ_PLATFORM_ENV</code>
+      </td>
+      <td>
+        A CSV of environment variable keys that are configured in a supported CI
+        environment (Vercel). <strong>NOTE</strong>: This variable is meant for
+        platforms looking to implement zero-configuration environment variables.
+        You are not meant to use this variable as an end user.{' '}
+      </td>
+    </tr>
+    <tr id="nrz_platform_env_disabled">
+      <td>
+        <code>NRZ_PLATFORM_ENV_DISABLED</code>
+      </td>
+      <td>
+        Disable checking environment variables configured in your{' '}
+        <code>nrz.json</code> against those set on your supported platform
+      </td>
+    </tr>
+    <tr id="nrz_preflight">
+      <td>
+        <code>NRZ_PREFLIGHT</code>
+      </td>
+      <td>
+        Enables sending a preflight request before every cache artifact and
+        analytics request. The follow-up upload and download will follow
+        redirects. Only applicable when{' '}
+        <a href="/repo/docs/core-concepts/remote-caching">Remote Caching</a> is
+        configured.
+      </td>
+    </tr>
+    <tr id="nrz_remote_cache_read_only">
+      <td>
+        <code>NRZ_REMOTE_CACHE_READ_ONLY</code>
+      </td>
+      <td>
+        Prevent writing to the{' '}
+        <a href="/repo/docs/core-concepts/remote-caching">Remote Cache</a> - but
+        still allow reading.
+      </td>
+    </tr>
+    <tr id="nrz_remote_cache_signature_key">
+      <td>
+        <code>NRZ_REMOTE_CACHE_SIGNATURE_KEY</code>
+      </td>
+      <td>
+        Sign artifacts with a secret key. For more information, visit{' '}
+        <a href="/repo/docs/core-concepts/remote-caching#artifact-integrity-and-authenticity-verification">
+          the Artifact Integrity section
+        </a>
+        .
+      </td>
+    </tr>
+    <tr id="nrz_remote_cache_timeout">
+      <td>
+        <code>NRZ_REMOTE_CACHE_TIMEOUT</code>
+      </td>
+      <td>
+        Set a timeout in seconds for <code>nrz</code> to get artifacts from{' '}
+        <a href="/repo/docs/core-concepts/remote-caching">Remote Cache</a>.
+      </td>
+    </tr>
+    <tr id="nrz_remote_cache_upload_timeout">
+      <td>
+        <code>NRZ_REMOTE_CACHE_UPLOAD_TIMEOUT</code>
+      </td>
+      <td>
+        Set a timeout in seconds for <code>nrz</code> to upload artifacts to{' '}
+        <a href="/repo/docs/core-concepts/remote-caching">Remote Cache</a>.
+      </td>
+    </tr>
+    <tr id="nrz_remote_only">
+      <td>
+        <code>NRZ_REMOTE_ONLY</code>
+      </td>
+      <td>Always ignore the local filesystem cache for all tasks.</td>
+    </tr>
+    <tr id="nrz_run_summary">
+      <td>
+        <code>NRZ_RUN_SUMMARY</code>
+      </td>
+      <td>
+        Generate a{' '}
+        <a href="/repo/docs/reference/run#--summarize">Run Summary</a> when you
+        run tasks.
+      </td>
+    </tr>
+    <tr id="nrz_scm_base">
+      <td>
+        <code>NRZ_SCM_BASE</code>
+      </td>
+      <td>
+        Base used by <code>--affected</code> when calculating what has changed
+        from <code>base...head</code>
+      </td>
+    </tr>
+    <tr id="nrz_scm_head">
+      <td>
+        <code>NRZ_SCM_HEAD</code>
+      </td>
+      <td>
+        Head used by <code>--affected</code> when calculating what has changed
+        from <code>base...head</code>
+      </td>
+    </tr>
+    <tr id="nrz_team">
+      <td>
+        <code>NRZ_TEAM</code>
+      </td>
+      <td>
+        The account name associated with your repository. When using{' '}
+        <a
+          href="https://vercel.com/docs/monorepos/remote-caching#vercel-remote-cache"
+          rel="noreferrer noopener"
+          target="_blank"
+        >
+          Vercel Remote Cache
+        </a>
+        , this is your team's slug.
+      </td>
+    </tr>
+    <tr id="nrz_teamid">
+      <td>
+        <code>NRZ_TEAMID</code>
+      </td>
+      <td>
+        The account identifier associated with your repository. When using{' '}
+        <a
+          href="https://vercel.com/docs/monorepos/remote-caching#vercel-remote-cache"
+          rel="noreferrer noopener"
+          target="_blank"
+        >
+          Vercel Remote Cache
+        </a>
+        , this is your team's ID.
+      </td>
+    </tr>
+    <tr id="nrz_telemetry_message_disabled">
+      <td>
+        <code>NRZ_TELEMETRY_MESSAGE_DISABLED</code>
+      </td>
+      <td>
+        Disable the message notifying you that{' '}
+        <a href="/repo/docs/telemetry">Telemetry</a> is enabled.
+      </td>
+    </tr>
+    <tr id="nrz_token">
+      <td>
+        <code>NRZ_TOKEN</code>
+      </td>
+      <td>
+        The Bearer token for authentication to access{' '}
+        <a href="/repo/docs/core-concepts/remote-caching">Remote Cache</a>.
+      </td>
+    </tr>
+    <tr id="nrz_ui">
+      <td>
+        <code>NRZ_UI</code>
+      </td>
+      <td>
+        Enables TUI when passed true or 1, disables when passed false or 0.
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+## Environment variables in tasks
+
+Nrzrepo will make the following environment variables available within your tasks while they are executing:
+
+| Variable       | Description                                                                                  |
+| -------------- | -------------------------------------------------------------------------------------------- |
+| `NRZ_HASH`   | The hash of the currently running task.                                                      |
+| `NRZ_IS_TUI` | When using the [TUI](/repo/docs/reference/configuration#ui), this variable is set to `true`. |

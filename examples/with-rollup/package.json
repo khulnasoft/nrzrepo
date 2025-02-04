@@ -1,0 +1,16 @@
+{
+  "private": true,
+  "scripts": {
+    "build": "nrz run build",
+    "dev": "nrz run dev",
+    "lint": "nrz run lint",
+    "format": "prettier --write \"**/*.{ts,tsx,md}\""
+  },
+  "devDependencies": {
+    "eslint": "^8.57.0",
+    "prettier": "^3.2.5",
+    "nrz": "^2.0.3"
+  },
+  "packageManager": "pnpm@8.15.6",
+  "name": "with-rollup"
+}

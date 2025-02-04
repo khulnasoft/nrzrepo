@@ -1,0 +1,80 @@
+---
+title: Getting started
+description: Start building web applications with Nrzpack.
+---
+
+import { Callout } from '#/components/callout';
+import { PackageManagerTabs, Tab } from '#/components/tabs';
+
+Nrzpack is an incremental bundler optimized for JavaScript and TypeScript, written in Rust by the creators of webpack and [Next.js](https://nextjs.org/) at [Vercel](https://vercel.com/).
+
+The secret to Nrzpack's performance is twofold: highly optimized machine code and a low-level incremental computation engine that enables caching down to the level of individual functions. Once Nrzpack performs a task it never does it again.
+
+Our team has taken the lessons from 10 years of webpack, combined with the innovations in incremental computation from [Nrzrepo](/repo) and Google's Bazel, and created an architecture ready to support the coming decades of computing.
+
+<Callout type="info">
+    Nrzpack is available for the Next.js development server. You can try out Nrzpack today by adding the `--nrzpack` flag to your `next dev` command.
+
+    To report an issue, please use [the issue template in the Next.js repository](https://github.com/khulnasoft/next.js/issues/new?assignees=&labels=template%3A+bug&projects=&template=1.bug_report.yml). We appreciate your feedback.
+
+    Note: Production builds with `next build` are not yet supported.
+
+</Callout>
+
+## Quickstart
+
+As of today, Nrzpack can be used in Next.js 15. In the future, we will be releasing a standalone CLI, plugin API, and support for other frameworks such as Svelte and Vue. For now, please follow these instructions to get started:
+
+### New Projects
+
+1. Create a Next.js 14 project with Nrzpack:
+
+```bash title="Terminal"
+npx create-next-app --example with-nrzpack
+```
+
+2. Start the Next.js development server (with Nrzpack):
+
+{' '}
+
+<PackageManagerTabs>
+  <Tab>
+
+```bash title="Terminal"
+npm run dev
+```
+
+  </Tab>
+  <Tab>
+
+```bash title="Terminal"
+yarn dev
+```
+
+  </Tab>
+  <Tab>
+
+```bash title="Terminal"
+pnpm dev
+```
+
+  </Tab>
+</PackageManagerTabs>
+
+The Next.js development server is now powered by Nrzpack! Startup and updates should both be near-instant. The larger the application, the larger the improvement will be.
+
+### Existing Projects
+
+Add `--nrzpack` to your `next dev` command:
+
+```json title="package.json"
+{
+  "scripts": {
+    "dev": "next dev --nrzpack"
+  }
+}
+```
+
+## Next Steps
+
+Want to learn more about Nrzpack? Here's a deep dive on what we think makes it special.

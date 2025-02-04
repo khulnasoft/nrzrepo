@@ -1,0 +1,24 @@
+{
+  "private": true,
+  "scripts": {
+    "build": "nrz build",
+    "dev": "nrz dev",
+    "lint": "nrz lint",
+    "clean": "nrz clean && rm -rf node_modules",
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "changeset": "changeset",
+    "version-packages": "changeset version",
+    "release": "nrz build --filter=docs^... && changeset publish"
+  },
+  "devDependencies": {
+    "@changesets/cli": "^2.27.1",
+    "eslint": "^8.57.0",
+    "prettier": "^3.2.5",
+    "nrz": "^2.0.3"
+  },
+  "packageManager": "pnpm@8.15.6",
+  "engines": {
+    "node": ">=18"
+  },
+  "name": "with-changesets"
+}

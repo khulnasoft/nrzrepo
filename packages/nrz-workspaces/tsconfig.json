@@ -1,0 +1,6 @@
+{
+  "extends": "@nrz/tsconfig/library.json",
+  "compilerOptions": {
+    "rootDir": "."
+  }
+}

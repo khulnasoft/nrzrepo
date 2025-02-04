@@ -1,0 +1,9 @@
+{
+  "name": "my-nrzrepo",
+  "description": "A barebones Nrzrepo example for working with Task Graphs.",
+  "private": true,
+  "packageManager": "pnpm@8.15.6",
+  "devDependencies": {
+    "nrz": "^2.4.0"
+  }
+}

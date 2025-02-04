@@ -1,0 +1,10 @@
+{
+  "name": "cli",
+  "private": true,
+  "version": "0.0.0",
+  "scripts": {
+    "clean": "cargo clean --package nrz",
+    "build": "cargo build --package nrz",
+    "build:release": "cargo build --package nrz --profile release-nrzrepo"
+  }
+}

@@ -1,0 +1,102 @@
+{
+  "name": "nrz-vsc",
+  "displayName": "Nrzrepo LSP",
+  "version": "2.0.0",
+  "description": "Tools and instant feedback for your build system",
+  "main": "out/main.js",
+  "publisher": "Vercel",
+  "scripts": {
+    "vscode:prepublish": "npm run esbuild-base -- --minify",
+    "esbuild-base": "esbuild ./src/extension.ts --bundle --main-fields=module,main --outfile=out/main.js --external:vscode --format=cjs --platform=node",
+    "esbuild": "npm run esbuild-base -- --sourcemap",
+    "esbuild-watch": "npm run esbuild-base -- --sourcemap --watch",
+    "package": "pnpm vsce package --no-dependencies --baseContentUrl https://github.com/khulnasoft/nrzrepo/raw/HEAD/packages/nrz-vsc",
+    "publish": "pnpm vsce publish --no-dependencies --baseContentUrl https://github.com/khulnasoft/nrzrepo/raw/HEAD/packages/nrz-vsc",
+    "copy-darwin-arm64": "cp out/artifacts/nrzrepo-lsp-aarch64-apple-darwin/nrzrepo-lsp out/nrzrepo-lsp-darwin-arm64 && chmod +x out/nrzrepo-lsp-darwin-arm64",
+    "copy-darwin-x64": "cp out/artifacts/nrzrepo-lsp-x86_64-apple-darwin/nrzrepo-lsp out/nrzrepo-lsp-darwin-x64 && chmod +x out/nrzrepo-lsp-darwin-x64",
+    "copy-win32-x64": "cp out/artifacts/nrzrepo-lsp-x86_64-pc-windows-msvc/nrzrepo-lsp.exe out/nrzrepo-lsp-win32-x64.exe",
+    "copy-linux-arm64": "cp out/artifacts/nrzrepo-lsp-aarch64-unknown-linux-musl/nrzrepo-lsp out/nrzrepo-lsp-linux-arm64 && chmod +x out/nrzrepo-lsp-linux-arm64",
+    "copy-linux-x64": "cp out/artifacts/nrzrepo-lsp-x86_64-unknown-linux-musl/nrzrepo-lsp out/nrzrepo-lsp-linux-x64 && chmod +x out/nrzrepo-lsp-linux-x64",
+    "copy": "pnpm run copy-darwin-arm64 && pnpm run copy-darwin-x64 && pnpm run copy-win32-x64 && pnpm run copy-linux-arm64 && pnpm run copy-linux-x64",
+    "test-compile": "tsc -p ./"
+  },
+  "keywords": [
+    "nrz",
+    "nrzrepo",
+    "monorepo",
+    "vercel"
+  ],
+  "readme": "README.md",
+  "categories": [
+    "Linters"
+  ],
+  "icon": "resources/icon.png",
+  "bugs": {
+    "url": "https://github.com/khulnasoft/nrzrepo/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/khulnasoft/nrzrepo",
+    "directory": "packages/nrz-vsc"
+  },
+  "author": "Vercel",
+  "license": "MIT",
+  "dependencies": {
+    "jsonc-parser": "^3.2.0",
+    "vscode-languageclient": "^9.0.1"
+  },
+  "engines": {
+    "vscode": "^1.84.2"
+  },
+  "devDependencies": {
+    "@types/node": "^20.9.0",
+    "@types/vscode": "^1.84.1",
+    "esbuild": "^0.15.0",
+    "@nrz/tsconfig": "workspace:*"
+  },
+  "contributes": {
+    "commands": [
+      {
+        "command": "nrz.daemon.start",
+        "title": "Start the Nrzrepo Daemon",
+        "category": "nrz"
+      },
+      {
+        "command": "nrz.daemon.stop",
+        "title": "Stop the Nrzrepo Daemon",
+        "category": "nrz"
+      },
+      {
+        "command": "nrz.daemon.status",
+        "title": "Get the status of the Nrzrepo Daemon",
+        "category": "nrz"
+      }
+    ],
+    "configuration": {
+      "title": "Nrzrepo LSP",
+      "properties": {
+        "nrz.path": {
+          "type": "string",
+          "required": false,
+          "default": null,
+          "description": "The path to your global `nrz` executable, if you'd rather not rely on auto-detection."
+        },
+        "nrz.useLocalNrz": {
+          "type": "boolean",
+          "required": false,
+          "default": false,
+          "description": "Silence the 'install global nrz' prompt and always use local nrz."
+        }
+      }
+    }
+  },
+  "capabilities": {
+    "virtualWorkspaces": {
+      "supported": "limited",
+      "description": "The language server requires a nrz daemon to function correctly."
+    }
+  },
+  "activationEvents": [
+    "workspaceContains:**/nrz.json"
+  ]
+}

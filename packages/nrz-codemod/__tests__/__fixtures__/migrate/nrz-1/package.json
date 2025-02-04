@@ -1,0 +1,8 @@
+{
+  "name": "nrz-1",
+  "version": "1.0.0",
+  "dependencies": {},
+  "devDependencies": {
+    "nrz": "1.7.1"
+  }
+}

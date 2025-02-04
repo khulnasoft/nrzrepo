@@ -1,0 +1,71 @@
+---
+title: Support policy
+description: Learn about Nrzrepo's Support policy.
+---
+
+import { Callout } from '#/components/callout';
+
+## Package managers
+
+Core `nrz` functionality depends on the package managers in the JavaScript ecosystem and their implementations of Workspaces and
+lockfiles formats.
+
+| Package manager | Supported                       |
+| --------------- | ------------------------------- |
+| pnpm 8+         | Yes                             |
+| npm 8+          | Yes                             |
+| yarn 1+         | Yes (Includes Yarn Plug'n'Play) |
+| bun 1+          | Beta                            |
+
+<Callout type="info">
+  Package managers have their own release schedules, bugs, and features. While
+  we intend to keep up with new major versions, we likely will not be able to
+  release support immediately.
+</Callout>
+
+## Platforms
+
+`nrz` is generally supported on Debian-based Linux distributions, macOS, and
+Windows on both x86_64 and ARM 64 architectures. Specifically, we build and ship
+the following binaries via npm:
+
+- `nrz-darwin-64` (macOS with Intel chips)
+- `nrz-darwin-arm64` (macOS with Apple Silicon)
+- `nrz-linux-64`
+- `nrz-linux-arm64`
+- `nrz-windows-64`\*
+- `nrz-windows-arm64`\*
+
+<small>
+  \*: Requires [Windows C Runtime
+  Libraries](https://learn.microsoft.com/en-us/cpp/windows/latest-supported-vc-redist)
+</small>
+
+## Node.js
+
+Core `nrz` functionality does not depend on the
+active Node.js version on your system, but [some packages in the Nrzrepo ecosystem](/repo/docs/reference#packages)
+such as [`create-nrz`](/repo/docs/reference/create-nrz), [`nrz-ignore`](/repo/docs/reference/nrz-ignore), and [`eslint-config-nrz`](/repo/docs/reference/eslint-config-nrz) do. For these features,
+we intend to support the [Active and Maintenance LTS versions of Node.js](https://nodejs.org/en/about/previous-releases).
+
+Nrzrepo's [examples](/repo/docs/getting-started/examples) are also expected to work with these Node.js versions.
+
+## Version control
+
+We support repositories that are version controlled with Git and repositories that don't have
+version control at all. Any other version control system will be ignored.
+
+Note that we use Git to hash files, so repositories without git may perform and behave differently.
+
+## LTS policy
+
+Major versions of Nrzrepo will be supported for two years from the release date of the next major version.
+
+Changes required for critical security fixes in older versions will be backported. Such situations will be rare and will land as semver-minor releases, even if they are breaking changes.
+
+We highly encourage you to use the most current version of Nrzrepo whenever possible.
+
+| Major version | Release date | End-of-life date |
+| ------------- | ------------ | ---------------- |
+| 2.x           | Jun. 4, 2024 |                  |
+| 1.x           | Dec. 9, 2021 | Jun. 4, 2026     |

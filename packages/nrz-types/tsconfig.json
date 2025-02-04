@@ -1,0 +1,8 @@
+{
+  "extends": "@nrz/tsconfig/library.json",
+  "compilerOptions": {
+    "rootDir": ".",
+    "module": "ESNext",
+    "lib": ["ESNext"]
+  }
+}

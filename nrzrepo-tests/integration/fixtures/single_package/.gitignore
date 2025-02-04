@@ -1,0 +1,4 @@
+node_modules/
+.nrz
+foo.txt
+.npmrc

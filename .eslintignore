@@ -1,0 +1,12 @@
+node_modules/
+target/
+.next/
+build/
+dist/
+
+/examples/
+
+packages/eslint-plugin-nrz/__fixtures__
+packages/create-nrz/templates
+crates/*/tests/**
+crates/*/js/src/compiled

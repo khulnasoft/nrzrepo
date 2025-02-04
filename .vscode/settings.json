@@ -1,0 +1,28 @@
+{
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
+  ],
+  "eslint.workingDirectories": [{ "mode": "auto" }],
+  "debug.javascript.unmapMissingSources": true,
+  "files.associations": {
+    "libnrz.h": "c",
+    "nrz.json": "jsonc",
+    "*.t.err": "cram"
+  },
+  "[cram]": {
+    "editor.trimAutoWhitespace": false,
+    "files.trimFinalNewlines": false,
+    "files.insertFinalNewline": false,
+    "files.trimTrailingWhitespace": false
+  },
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "json.schemas": [
+    {
+      "fileMatch": ["nrz.json"],
+      "url": "./packages/nrz-types/schemas/schema.json"
+    }
+  ]
+}

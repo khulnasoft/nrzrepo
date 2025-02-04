@@ -1,0 +1,61 @@
+name: Nrzrepo Native Library Tests
+on:
+  push:
+    branches: [main]
+    paths-ignore:
+      - "docs/**"
+  pull_request:
+
+permissions:
+  actions: write
+  contents: read
+  pull-requests: read
+
+jobs:
+  js_native_packages:
+    name: "@nrz/repository (${{matrix.os.name}}, Node ${{matrix.node-version}})"
+    timeout-minutes: 30
+    runs-on: ${{ matrix.os.runner }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os:
+          - name: ubuntu
+            runner: ubuntu-latest
+          - name: macos
+            runner: macos-latest
+        node-version:
+          - 18
+          - 20
+    env:
+      NRZ_TOKEN: ${{ secrets.NRZ_TOKEN }}
+      NRZ_TEAM: ${{ vars.NRZ_TEAM }}
+      NRZ_REMOTE_ONLY: true
+
+    steps:
+      - name: Determine fetch depth
+        id: fetch-depth
+        run: |
+          echo "depth=$(( ${{ github.event.pull_request.commits || 1 }} + 1 ))" >> $GITHUB_OUTPUT
+
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref }}
+          fetch-depth: ${{ steps.fetch-depth.outputs.depth  }}
+
+      - name: Setup Nrzrepo Environment
+        uses: ./.github/actions/setup-nrzrepo-environment
+        with:
+          github-token: "${{ secrets.GITHUB_TOKEN }}"
+          node-version: ${{ matrix.node-version }}
+
+      - name: Install Global Nrz
+        uses: ./.github/actions/install-global-nrz
+
+      - name: Run tests
+        # Manually set NRZ_API to an empty string to override Hetzner env
+        run: |
+          NRZ_API= nrz run test --filter "nrzrepo-repository" --color --env-mode=strict
+        env:
+          NODE_VERSION: ${{ matrix.node-version }}

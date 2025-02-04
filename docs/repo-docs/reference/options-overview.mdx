@@ -1,0 +1,118 @@
+---
+title: Options overview
+description: Flags, configurations, and System Environment Variables for Nrzrepo
+---
+
+There are three ways to manage the behavior of a `nrz` invocation:
+
+- [Configuration in `nrz.json`](/repo/docs/reference/configuration)
+- [System Environment Variables](/repo/docs/reference/system-environment-variables)
+- [Flags passed to the CLI invocation](/repo/docs/reference/run)
+
+The three strategies listed above are in order of precedence. Where a flag value is provided, for the same System Environment Variable or `nrz.json` configuration, the value for the flag will be used. Because of this, we recommend using:
+
+- `nrz.json` configuration for defaults
+- System Environment Variables for per-environment overrides
+- Flags for per-invocation overrides
+
+## Options table
+
+### Caching
+
+<div className="options-cheat-sheet-table">
+
+| Behavior                    | Flags                                                                  | Environment Variables                                                                                                      | nrz.json                                                                      |
+| --------------------------- | ---------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
+| Force tasks to run          | [`--force`](/repo/docs/reference/run#--force)                          | [`NRZ_FORCE`](/repo/docs/reference/system-environment-variables#nrz_force)                                             | [`cache`](/repo/docs/reference/configuration#cache)                             |
+| Remote Cache timeout        | [`--remote-cache-timeout`](/repo/docs/reference/configuration#timeout) | [`NRZ_REMOTE_CACHE_TIMEOUT`](/repo/docs/reference/system-environment-variables#nrz_remote_cache_timeout)               | [`remoteCache.timeout`](/repo/docs/reference/configuration#timeout)             |
+| Remote Cache upload timeout | -                                                                      | [`NRZ_REMOTE_CACHE_UPLOAD_TIMEOUT`](/repo/docs/reference/system-environment-variables#nrz_remote_cache_upload_timeout) | [`remoteCache.uploadTimeout`](/repo/docs/reference/configuration#uploadtimeout) |
+| Cache signature key         | -                                                                      | [`NRZ_REMOTE_CACHE_SIGNATURE_KEY`](/repo/docs/reference/system-environment-variables#nrz_remote_cache_signature_key)   | [`signature`](/repo/docs/reference/configuration#signature)                     |
+| Preflight request           | [`--preflight`](/repo/docs/reference/run#--preflight)                  | [`NRZ_PREFLIGHT`](/repo/docs/reference/system-environment-variables#nrz_preflight)                                     | [`remoteCache.preflight`](/repo/docs/reference/configuration#preflight)         |
+| Remote Cache base URL       | -                                                                      | [`NRZ_API`](/repo/docs/reference/system-environment-variables#nrz_api)                                                 | [`remoteCache.apiUrl`](/repo/docs/reference/configuration#remote-caching)       |
+| Cache sources               | [`--cache`](/repo/docs/reference/run#--cache-options)                  | [`NRZ_CACHE`](/repo/docs/reference/system-environment-variables#nrz_cache)                                             | -                                                                               |
+| Local cache directory       | [`--cache-dir`](/repo/docs/reference/run#--cache-dir-path)             | [`NRZ_CACHE_DIR`](/repo/docs/reference/system-environment-variables#nrz_cache_dir)                                     | [`cacheDir`](/repo/docs/reference/configuration#cachedir)                       |
+
+</div>
+
+### Messages
+
+<div className="options-cheat-sheet-table">
+
+| Behavior                       | Flags | Environment Variables                                                                                                    | nrz.json |
+| ------------------------------ | ----- | ------------------------------------------------------------------------------------------------------------------------ | ---------- |
+| Disable version print          | -     | [`NRZ_PRINT_VERSION_DISABLED`](/repo/docs/reference/system-environment-variables#nrz_print_version_disabled)         | -          |
+| Disable telemetry message      | -     | [`NRZ_TELEMETRY_MESSAGE_DISABLED`](/repo/docs/reference/system-environment-variables#nrz_telemetry_message_disabled) | -          |
+| Disable global `nrz` warning | -     | [`NRZ_GLOBAL_WARNING_DISABLED`](/repo/docs/reference/system-environment-variables#nrz_global_warning_disabled)       | -          |
+| No update notifier             | -     | [`NRZ_NO_UPDATE_NOTIFIER`](/repo/docs/reference/system-environment-variables#nrz_no_update_notifier)                 | -          |
+
+</div>
+
+### Task running and logs
+
+<div className="options-cheat-sheet-table">
+
+| Behavior                          | Flags                                                                                                                 | Environment Variables                                                                                                                                  | nrz.json                                                                                                          |
+| --------------------------------- | --------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------- |
+| Terminal UI                       | [`--ui`](/repo/docs/reference/run#--ui)                                                                               | [`NRZ_UI`](/repo/docs/reference/system-environment-variables#nrz_ui)                                                                               | [`ui`](/repo/docs/reference/configuration#ui)                                                                       |
+| Run affected tasks                | [`--affected`](/repo/docs/reference/run#--affected)                                                                   | -                                                                                                                                                      | -                                                                                                                   |
+| Disable package manager check     | [`--dangerously-disable-package-manager-check`](/repo/docs/reference/run#--dangerously-disable-package-manager-check) | [`NRZ_DANGEROUSLY_DISABLE_PACKAGE_MANAGER_CHECK`](/repo/docs/reference/system-environment-variables#nrz_dangerously_disable_package_manager_check) | [`dangerouslyDisablePackageManagerCheck`](/repo/docs/reference/configuration#dangerouslydisablepackagemanagercheck) |
+| Affected base ref                 | -                                                                                                                     | [`NRZ_SCM_BASE`](/repo/docs/reference/system-environment-variables#nrz_scm_base)                                                                   | -                                                                                                                   |
+| Affected head ref                 | -                                                                                                                     | [`NRZ_SCM_HEAD`](/repo/docs/reference/system-environment-variables#nrz_scm_head)                                                                   | -                                                                                                                   |
+| Only run directly specified tasks | [`--only`](/repo/docs/reference/run#--only)                                                                           | -                                                                                                                                                      | -                                                                                                                   |
+| Task concurrency                  | [`--concurrency`](/repo/docs/reference/run#--concurrency-number--percentage)                                          | -                                                                                                                                                      | -                                                                                                                   |
+| Task log order                    | [`--log-order`](/repo/docs/reference/run#--log-order-option)                                                          | [`NRZ_LOG_ORDER`](/repo/docs/reference/system-environment-variables#nrz_log_order)                                                                 | -                                                                                                                   |
+| Current working directory         | [`--cwd`](/repo/docs/reference/run#--cwd-path)                                                                        | -                                                                                                                                                      | -                                                                                                                   |
+| Streamed logs prefix              | [`--log-prefix`](/repo/docs/reference/run#--log-prefix-option)                                                        | -                                                                                                                                                      | -                                                                                                                   |
+| Task logs output level            | [`--output-logs-option`](/repo/docs/reference/run#--output-logs-option)                                               | -                                                                                                                                                      | [`outputLogs`](/repo/docs/reference/configuration#outputlogs)                                                       |
+| Global inputs                     | [`--global-deps`](/repo/docs/reference/run#--global-deps-file-glob)                                                   | -                                                                                                                                                      | [`globalDependencies`](/repo/docs/reference/configuration#globaldependencies)                                       |
+
+</div>
+
+### Environment variables
+
+<div className="options-cheat-sheet-table">
+
+| Behavior                      | Flags                                                                     | Environment Variables                                                                                  | nrz.json                                              |
+| ----------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------- |
+| Environment variable mode     | [`--env-mode`](/repo/docs/reference/run#--env-mode-option)                | -                                                                                                      | [`envMode`](/repo/docs/reference/configuration#envmode) |
+| Vendor environment variables  | -                                                                         | [`NRZ_CI_VENDOR_ENV_KEY`](/repo/docs/reference/system-environment-variables#nrz_ci_vendor_env_key) | -                                                       |
+| Framework variable exceptions | [`--framework-inference`](/repo/docs/reference/run#--framework-inference) | -                                                                                                      | -                                                       |
+
+</div>
+
+### Debugging outputs
+
+<div className="options-cheat-sheet-table">
+
+| Behavior            | Flags                                                   | Environment Variables                                                                      | nrz.json |
+| ------------------- | ------------------------------------------------------- | ------------------------------------------------------------------------------------------ | ---------- |
+| Run Summaries       | [`--summarize`](/repo/docs/reference/run#--summarize)   | [`NRZ_RUN_SUMMARY`](/repo/docs/reference/system-environment-variables#nrz_run_summary) | -          |
+| Graph visualization | [`--graph`](/repo/docs/reference/run#--graph-file-type) | -                                                                                          | -          |
+| Dry run             | [`--dry`](/repo/docs/reference/run#--dry----dry-run)    | -                                                                                          | -          |
+
+</div>
+
+### Authentication
+
+<div className="options-cheat-sheet-table">
+
+| Behavior                                | Flags                                         | Environment Variables                                                            | nrz.json                                                            |
+| --------------------------------------- | --------------------------------------------- | -------------------------------------------------------------------------------- | --------------------------------------------------------------------- |
+| Login URL                               | -                                             | [`NRZ_LOGIN`](/repo/docs/reference/system-environment-variables#nrz_login)   | [`remoteCache.loginUrl`](/repo/docs/reference/configuration#loginurl) |
+| Team name (for multi-team Remote Cache) | [`--team`](/repo/docs/reference/run#--team)   | [`NRZ_TEAM`](/repo/docs/reference/system-environment-variables#nrz_team)     | -                                                                     |
+| Team ID (for multi-team Remote Cache)   | -                                             | [`NRZ_TEAMID`](/repo/docs/reference/system-environment-variables#nrz_teamid) | -                                                                     |
+| Authentication token                    | [`--token`](/repo/docs/reference/run#--token) | [`NRZ_TOKEN`](/repo/docs/reference/system-environment-variables#nrz_token)   | -                                                                     |
+
+</div>
+
+### Other
+
+<div className="options-cheat-sheet-table">
+
+| Behavior               | Flags                                                                           | Environment Variables                                                                                            | nrz.json                                            |
+| ---------------------- | ------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------- |
+| Binary path            | -                                                                               | [`NRZ_BINARY_PATH`](/repo/docs/reference/system-environment-variables#nrz_binary_path)                       | -                                                     |
+| Download local `nrz` | -                                                                               | [`NRZ_DOWNLOAD_LOCAL_ENABLED`](/repo/docs/reference/system-environment-variables#nrz_download_local_enabled) | -                                                     |
+| Daemon                 | [`--daemon` / `--no-daemon`](/repo/docs/reference/run#--daemon-and---no-daemon) | -                                                                                                                | [`daemon`](/repo/docs/reference/configuration#daemon) |
+
+</div>

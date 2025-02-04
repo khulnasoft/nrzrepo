@@ -1,0 +1,21 @@
+{
+  "private": true,
+  "scripts": {
+    "build": "nrz run build",
+    "dev": "nrz run dev",
+    "lint": "nrz run lint",
+    "clean": "nrz run clean && rm -rf node_modules",
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "changeset": "changeset",
+    "version-packages": "changeset version",
+    "release": "nrz run build --filter=docs^... && changeset publish",
+    "preview-storybook": "nrz preview-storybook"
+  },
+  "devDependencies": {
+    "@changesets/cli": "^2.27.1",
+    "prettier": "^3.2.5",
+    "nrz": "^2.0.3"
+  },
+  "packageManager": "pnpm@8.15.6",
+  "name": "design-system"
+}

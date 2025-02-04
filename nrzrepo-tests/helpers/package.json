@@ -1,0 +1,9 @@
+{
+  "name": "nrzrepo-tests-helpers",
+  "scripts": {
+    "test": ""
+  },
+  "dependencies": {
+    "@nrz/workspaces": "workspace:*"
+  }
+}

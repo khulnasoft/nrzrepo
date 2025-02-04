@@ -1,0 +1,12 @@
+packages:
+  - ".github/actions/*"
+  - "cli"
+  - "docs"
+  - "packages/*"
+  - "nrzrepo-tests/*"
+  # Intentionally exclude the `npm` `nrz` package from the workspaces.
+  - "!packages/nrz"
+  - "crates/*/js"
+  - examples
+  # Exclude the non-monorepo example as it should be treated as independent of this repo
+  - "!examples/non-monorepo"

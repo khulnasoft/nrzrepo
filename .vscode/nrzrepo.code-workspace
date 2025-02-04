@@ -1,0 +1,11 @@
+{
+  "folders": [
+    {
+      "name": "nrz",
+      "path": "../"
+    },
+    {
+      "path": "../packages/eslint-plugin-nrz"
+    }
+  ]
+}

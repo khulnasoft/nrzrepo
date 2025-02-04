@@ -1,0 +1,8 @@
+{
+  "name": "@nrz/exe-stub",
+  "description": "Stub for nrz.exe",
+  "private": true,
+  "scripts": {
+    "build": "bash build.sh"
+  }
+}

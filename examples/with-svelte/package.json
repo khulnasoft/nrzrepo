@@ -1,0 +1,19 @@
+{
+  "name": "with-svelte",
+  "private": true,
+  "scripts": {
+    "build": "nrz run build",
+    "dev": "nrz run dev",
+    "lint": "nrz run lint",
+    "format": "prettier --write ."
+  },
+  "devDependencies": {
+    "prettier": "^3.4.2",
+    "prettier-plugin-svelte": "^3.3.3",
+    "nrz": "^2.4.0"
+  },
+  "packageManager": "pnpm@8.15.6",
+  "engines": {
+    "node": ">=18"
+  }
+}

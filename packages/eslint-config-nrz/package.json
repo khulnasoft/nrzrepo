@@ -1,0 +1,41 @@
+{
+  "name": "eslint-config-nrz",
+  "version": "2.4.1-canary.0",
+  "description": "ESLint config for Nrzrepo",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/khulnasoft/nrzrepo",
+    "directory": "packages/eslint-config-nrz"
+  },
+  "bugs": {
+    "url": "https://github.com/khulnasoft/nrzrepo/issues"
+  },
+  "scripts": {
+    "lint": "eslint ./index.js",
+    "lint:prettier": "prettier -c . --cache --ignore-path=../../.prettierignore"
+  },
+  "keywords": [
+    "nrz",
+    "eslint",
+    "nrzrepo",
+    "eslintconfig",
+    "eslint-config"
+  ],
+  "main": "index.js",
+  "exports": {
+    "./flat": "./flat/index.js",
+    ".": "./index.js"
+  },
+  "author": "Vercel",
+  "dependencies": {
+    "eslint-plugin-nrz": "workspace:*"
+  },
+  "peerDependencies": {
+    "eslint": ">6.6.0"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@nrz/eslint-config": "workspace:*",
+    "@types/eslint": "^8.44.2"
+  }
+}

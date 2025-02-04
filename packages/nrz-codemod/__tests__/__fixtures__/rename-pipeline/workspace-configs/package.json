@@ -1,0 +1,14 @@
+{
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "nrz run build"
+  },
+  "devDependencies": {
+    "nrz": "latest"
+  },
+  "packageManager": "yarn@1.22.19"
+}

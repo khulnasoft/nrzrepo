@@ -1,0 +1,27 @@
+{
+  "name": "@nrz/repository",
+  "version": "0.0.1-canary.11",
+  "description": "",
+  "bugs": "https://github.com/khulnasoft/nrzrepo/issues",
+  "homepage": "https://turbo.build/repo",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "mkdir -p dist && cp index.js dist/index.js && cp index.d.ts dist/index.d.ts"
+  },
+  "files": [
+    "dist/index.js",
+    "dist/index.d.ts"
+  ],
+  "types": "dist/index.d.ts",
+  "optionalDependencies": {
+    "@nrz/repository-darwin-x64": "0.0.1-canary.11",
+    "@nrz/repository-darwin-arm64": "0.0.1-canary.11",
+    "@nrz/repository-linux-x64-gnu": "0.0.1-canary.11",
+    "@nrz/repository-linux-arm64-gnu": "0.0.1-canary.11",
+    "@nrz/repository-linux-x64-musl": "0.0.1-canary.11",
+    "@nrz/repository-linux-arm64-musl": "0.0.1-canary.11",
+    "@nrz/repository-win32-x64-msvc": "0.0.1-canary.11",
+    "@nrz/repository-win32-arm64-msvc": "0.0.1-canary.11"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "name": "create_nrz",
+  "private": true,
+  "engines": {
+    "node": ">=18"
+  },
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ]
+}

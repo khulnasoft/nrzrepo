@@ -1,0 +1,36 @@
+# Used to auto generate nrzrepo release notes
+
+changelog:
+  exclude:
+    labels:
+      - "area: ci"
+      - "release: nrzrepo"
+  categories:
+    - title: Docs
+      labels:
+        - "area: docs"
+        - "area: site"
+    - title: create-nrz
+      labels:
+        - "pkg: create-nrz"
+    - title: nrz-ignore
+      labels:
+        - "pkg: nrz-ignore"
+    - title: "@nrz/codemod"
+      labels:
+        - "pkg: nrz-codemod"
+    - title: "eslint"
+      labels:
+        - "pkg: nrz-eslint"
+    - title: "@nrz/repository"
+      labels:
+        - "pkg: nrz-repository"
+    - title: "@nrz/telemetry"
+      labels:
+        - "pkg: nrz-telemetry"
+    - title: Examples
+      labels:
+        - "area: examples"
+    - title: Changelog
+      labels:
+        - "*"

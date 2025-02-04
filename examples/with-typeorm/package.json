@@ -1,0 +1,21 @@
+{
+  "private": true,
+  "scripts": {
+    "build": "nrz build",
+    "dev": "nrz dev",
+    "lint": "nrz lint",
+    "type-check": "nrz type-check",
+    "format": "prettier --write \"**/*.{ts,tsx,md}\""
+  },
+  "devDependencies": {
+    "@repo/eslint-config": "workspace:*",
+    "@repo/typescript-config": "workspace:*",
+    "prettier": "^3.2.5",
+    "nrz": "^2.0.3"
+  },
+  "packageManager": "pnpm@8.15.5",
+  "engines": {
+    "node": ">=18"
+  },
+  "name": "with-typeorm"
+}

@@ -1,0 +1,14 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "tasks": {
+    "build": {
+      "inputs": ["$NRZ_DEFAULT$", ".env*"],
+      "dependsOn": ["^build"]
+    },
+    "lint": {},
+    "dev": {
+      "persistent": true,
+      "cache": false
+    }
+  }
+}

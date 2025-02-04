@@ -1,0 +1,10 @@
+{
+  "name": "@nrzrepo-examples-tests/basic-npm",
+  "scripts": {
+    "test": "bash ./node_modules/nrzrepo-tests-helpers/setup_example_test.sh basic npm"
+  },
+  "dependencies": {
+    "nrzrepo-tests-helpers": "workspace:*",
+    "nrzrepo-examples": "workspace:*"
+  }
+}

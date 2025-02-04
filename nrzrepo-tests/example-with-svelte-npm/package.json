@@ -1,0 +1,10 @@
+{
+  "name": "@nrzrepo-examples-tests/with-svelte-npm",
+  "scripts": {
+    "test": "bash ./node_modules/nrzrepo-tests-helpers/setup_example_test.sh with-svelte npm"
+  },
+  "dependencies": {
+    "nrzrepo-tests-helpers": "workspace:*",
+    "nrzrepo-examples": "workspace:*"
+  }
+}
