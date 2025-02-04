@@ -7,6 +7,6 @@ runs:
     - name: Install Nrz globally
       shell: bash
       run: |
-        VERSION=$(npm view nrz --json | jq -r '.versions | map(select(test("2."))) | last')
+        VERSION=$(npm view nrz --json | jq -r '.versions | map(select(test("1."))) | last')
         echo "Latest published version: $VERSION"
         npm i -g nrz@$VERSION
